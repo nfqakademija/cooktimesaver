@@ -1,0 +1,7 @@
+parameters:
+#    cts_recipes.example.class: Cts\RecipesBundle\Example
+
+services:
+#    cts_recipes.example:
+#        class: %cts_recipes.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

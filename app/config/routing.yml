@@ -1,0 +1,4 @@
+cts_recipes:
+    resource: "@CtsRecipesBundle/Resources/config/routing.yml"
+    prefix:   /
+
