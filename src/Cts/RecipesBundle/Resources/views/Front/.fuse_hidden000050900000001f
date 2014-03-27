@@ -1,0 +1,71 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-switch.min.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+ 	<!-- TOP DECK START -->
+	<div class="header">
+		<h1>CookTimeSaver</h1>
+	</div>
+	<hr/>
+
+	<div class="col-md-1">
+		<h2 class="cleared text-muted" style='margin-top: 0;'>20:00</h2>
+	</div>
+	<div class="form-group col-md-9">
+		    <input type="text" class="form-control" id="Food-input" placeholder="Enter The Food of your choice">
+	</div>
+
+	<div class='col-md-2'>
+		<input type="checkbox" checked data-on-color="success" data-off-color="danger" name="food-toggle" checked>
+	</div>	
+	<!-- TOP DECK END -->
+
+	<div class='thegoods jumbotron'>
+		<div class='recipe row cold-md-12'>
+			<img alt="200x200" class="image col-md-2" src="http://lorempixel.com/200/200">
+
+			<div class="infocol col-md-8 ">
+				<ul>
+					<strong>Ingridientai:</strong>
+					<li>200g Jautienos</li>
+					<li>150g Surio</li>
+					<li>1 Supjaustytas Batonas</li>
+					<li>1 Skardine Alaus</li>
+					<li>Prieskoniai</li>
+					<li>Ranka ant Peties</li>
+				</ul>
+
+				<strong>Aprasymas</strong>
+				<p>Trumpas Aprasymas. printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+			</div>
+			
+
+
+			<div class='time col-md-1 '>
+				<h4>23 min</h4>
+				<button type="button" class="btn btn-success">Pradeti</button>
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+
+</div>
+	
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/bootstrap-switch.min.js') }}"></script>
+	<script type="text/javascript">
+		$("[name='food-toggle']").bootstrapSwitch();
+	</script>
+{% endblock %}

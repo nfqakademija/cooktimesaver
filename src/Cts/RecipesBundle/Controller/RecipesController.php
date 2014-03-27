@@ -10,4 +10,10 @@ class RecipesController extends Controller
     {
         return $this->render('CtsRecipesBundle:Front:index.html.twig');
     }
+
+
+    public function searchAction()
+    {
+    	return $this->render('CtsRecipesBundle:Front:search.html.twig');
+    }
 }
