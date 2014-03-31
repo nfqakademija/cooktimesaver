@@ -6,10 +6,30 @@
         <div class="fb-container clearfix">
             <span>Mes norime žinoti ką mėgsti labiausiai!</span>
             <a href="#">
-                <img src="/assets/images/fb-login.png" alt="Prisijungti su facebook" />
+                <img src="/assets/images/fb-login.png" alt="Prisijungti su facebook"/>
             </a>
         </div>
     </header>
+    <div class="front-page-heading jumbotron">
+        <h1>CookTimeSaver</h1>
+    </div>
+    <div class="front-page-time-chooser container">
+        <h4 class="text-center">Už kiek laiko nori pradėti valgyti?</h4>
+        <div class="time-chooser clearfix">
+            <div class="time-chooser-hours">
+                <div class="chooser-title text-center">
+                    val
+                </div>
+                <input name="hours" value="00" />
+            </div>
+            <div class="time-chooser-mins">
+                <div class="chooser-title text-center">
+                    min
+                </div>
+                <input name="minutes" value="20" />
+            </div>
+        </div>
+    </div>
 </div>
 {% block javascripts %}
 	{{ parent() }}

@@ -113,24 +113,7 @@ ul {
 =            FOOTER            =
 ==============================*/
 
-footer {
-	border-top: 2px solid #d44848;
-	padding-top: 0.5em;
-	text-decoration: none;
-	color: white;
-	height: 3em;
-	width: 100%;
-	text-align: center;
-	background: black;
-}
-footer a {
-	color: #d44848;
-	color: white;
-}
-footer a:hover {
-	color: #d44848;
-	text-decoration: none;
-}
+
 
 
 
@@ -201,7 +184,7 @@ footer a:hover {
 /* Shared styles */
 
 body {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #000;
     color: #fff;
 }
@@ -218,16 +201,72 @@ header {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: 800px;
+    min-height: 900px;
+}
+
+footer {
+    padding-top: 0.5em;
+    color: white;
+    height: 3em;
+    width: 100%;
+    text-align: center;
+    background: transparent;
+}
+footer a {
+    color: white;
+}
+footer a:hover {
+    color: #d44848;
+    text-decoration: none;
 }
 
 /* Front Page */
 
 header .fb-container {
     float: right;
-    padding: 1.5em;
+    padding: 1.5em 3em;
 }
 
 header .fb-container span {
     padding-right: 4em;
+    font-size: 1.1em;
+}
+
+.front-page-heading {
+    margin-top: 10%;
+    background: transparent;
+}
+
+.front-page-heading h1 {
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.front-page-time-chooser {
+    margin: 2em auto;
+    width: 25em;
+}
+
+.front-page-time-chooser input {
+    width: 1.2em;
+    background: transparent;
+    font-size: 5em;
+    font-weight: 600;
+    border: none;
+    display: block;
+    padding: 0;
+}
+
+.time-chooser {
+    width: 15em;
+    margin: 0 auto;
+}
+
+.time-chooser-hours {
+    float: left;
+}
+
+.time-chooser-mins {
+    float: right;
 }
