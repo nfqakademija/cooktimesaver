@@ -8,20 +8,26 @@ div.thegoods {
 	position: relative; 
 }
 div.recipe {
-	border: 1px solid black;
-	height: 170px;
+	height: 14.500em;
 	overflow: hidden;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	background-color: #D9D9D9;
 	margin-bottom: 0.8em;
+	border-bottom: 1px solid black;
 }
+div.recipe:hover {
+	background: #ddd;
+}
+
 div.time {
 	margin-right: 1em;
+	margin: 2em;
+	text-align: center;
 }
 p {
-	font-size: 12px !important;
+	font-size: 0.750em !important;
 }
 
 ul {
@@ -33,15 +39,57 @@ ul li{
 }
 
 .infocol {
-	height:170px; 
+	height:14.500em; 
 	overflow:auto;
 }
 .image {
 	background-color: none;
 	margin-left: 0;
 	padding: 0;
+	z-index: 1;
 }
-.time {
-	margin: 2em;
+.timer {
+	z-index: 2;
+	position: absolute;
 	text-align: center;
+	border: 1px solid #444;
+	background: #d44848;
+	width: 5em;
+	height: 1.5em;
+	font-size: 1em;
+	color: white;
+	font-weight: bold;
 }
+.button {
+	top: 0.5em;
+	margin: 0.5em;
+	width: 5em;
+	height: 3em;
+	position: relative;
+	z-index: 2;
+} 
+.button:hover {
+	background-color: #d44848;
+}
+
+/*=====================================
+=            MEDIA QUERIES            =
+=====================================*/
+
+@media screen and (max-width: 990px) {
+ 
+.respon {
+	width: 14.5em;
+}
+.infocol {
+	position: static;
+}
+strong {
+	display: none;
+}
+
+}
+
+
+
+
