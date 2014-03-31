@@ -113,6 +113,26 @@ ul {
 
 }
 
+/*==============================
+=            FOOTER            =
+==============================*/
+
+footer {
+	text-decoration: none;
+	color: white;
+	height: 2em;
+	width: 100%;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.6);
+}
+footer a {
+	color: white;
+}
+footer a:hover {
+	color: #d44848;
+	text-decoration: none;
+}
+
 
 
 
