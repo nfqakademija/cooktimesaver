@@ -118,14 +118,16 @@ ul {
 ==============================*/
 
 footer {
+	padding-top: 0.5em;
 	text-decoration: none;
 	color: white;
-	height: 2em;
+	height: 3em;
 	width: 100%;
 	text-align: center;
-	background: rgba(0, 0, 0, 0.6);
+	background: black;
 }
 footer a {
+	color: #d44848;
 	color: white;
 }
 footer a:hover {
