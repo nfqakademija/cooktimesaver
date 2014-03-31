@@ -204,6 +204,8 @@ header {
     min-height: 900px;
 }
 
+textarea, input { outline: none; }
+
 footer {
     padding-top: 0.5em;
     color: white;
@@ -260,7 +262,21 @@ header .fb-container span {
 
 .time-chooser {
     width: 15em;
-    margin: 0 auto;
+    margin: 2em auto;
+}
+
+.time-chooser .chooser-title {
+    margin-bottom: -1em;
+    color: #d44848;
+    font-size: 1.1em;
+}
+
+.time-chooser span {
+    float: left;
+    font-size: 5em;
+    font-weight: 600;
+    width: 0.5em;
+    text-align: center;
 }
 
 .time-chooser-hours {
@@ -269,4 +285,9 @@ header .fb-container span {
 
 .time-chooser-mins {
     float: right;
+}
+
+.front-page-time-chooser button {
+    padding: 0.9em 2.6em;
+    font-size: 1.2em;
 }

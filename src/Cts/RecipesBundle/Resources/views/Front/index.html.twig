@@ -1,38 +1,44 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-<div id="main-container">
-    <header>
-        <div class="fb-container clearfix">
-            <span>Mes norime žinoti ką mėgsti labiausiai!</span>
-            <a href="#">
-                <img src="/assets/images/fb-login.png" alt="Prisijungti su facebook"/>
-            </a>
-        </div>
-    </header>
-    <div class="front-page-heading jumbotron">
-        <h1>CookTimeSaver</h1>
-    </div>
-    <div class="front-page-time-chooser container">
-        <h4 class="text-center">Už kiek laiko nori pradėti valgyti?</h4>
-        <div class="time-chooser clearfix">
-            <div class="time-chooser-hours">
-                <div class="chooser-title text-center">
-                    val
-                </div>
-                <input name="hours" value="00" />
+    <div id="main-container">
+        <header>
+            <div class="fb-container clearfix">
+                <span>Mes norime žinoti ką mėgsti labiausiai!</span>
+                <a href="#">
+                    <img src="/assets/images/fb-login.png" alt="Prisijungti su facebook"/>
+                </a>
             </div>
-            <div class="time-chooser-mins">
-                <div class="chooser-title text-center">
-                    min
+        </header>
+        <div class="front-page-heading jumbotron">
+            <h1>CookTimeSaver</h1>
+        </div>
+        <div class="front-page-time-chooser container text-center">
+            <h4 class="text-center">Už kiek laiko nori pradėti valgyti?</h4>
+
+            <form method="post" action="">
+                <div class="time-chooser clearfix">
+                    <div class="time-chooser-hours">
+                        <div class="chooser-title text-center">
+                            val
+                        </div>
+                        <input name="hours" value="00"/>
+                    </div>
+                    <span>:</span>
+
+                    <div class="time-chooser-mins">
+                        <div class="chooser-title text-center">
+                            min
+                        </div>
+                        <input name="minutes" value="20"/>
+                    </div>
                 </div>
-                <input name="minutes" value="20" />
-            </div>
+                <button type="submit" class="btn btn-primary">Pradėti paiešką</button>
+            </form>
         </div>
     </div>
-</div>
-{% block javascripts %}
-	{{ parent() }}
-	<script src="{{ asset('assets/js/jquery.hoverizr.min.js') }}"></script>
-{% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('assets/js/jquery.hoverizr.min.js') }}"></script>
+    {% endblock %}
 {% endblock %}
