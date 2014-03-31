@@ -78,14 +78,37 @@ ul li{
 
 @media screen and (max-width: 990px) {
  
-.respon {
-	width: 14.5em;
+ .respon {
+ 	padding: 0;
+ 	margin: 0;
+ 	float: left;
+ 	width: 32%;
+ 	height: 100%;
+ }
+
+
+.image {
+	/*display: none;*/
 }
+
 .infocol {
-	position: static;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	float: right;
+	width: 68%;
 }
-strong {
-	display: none;
+.infocol p {
+	margin: 1em;
+}
+.button {
+	position: absolute;
+	width: 20%;
+}
+
+ul {
+	float: right;
+	width: 80%;
 }
 
 }
