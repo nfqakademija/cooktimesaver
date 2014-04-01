@@ -266,6 +266,7 @@ header .fb-container span {
     text-align: center;
     font-weight: 600;
     text-decoration: none;
+    text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.45);
 }
 
 .front-page-time-chooser {
@@ -274,17 +275,22 @@ header .fb-container span {
 }
 
 .front-page-time-chooser input {
-    width: 1.2em;
+    width: 1.4em;
     background: transparent;
     font-size: 5em;
     font-weight: 600;
     border: none;
     display: block;
     padding: 0;
+    text-align: center;
+}
+
+.front-page-time-chooser h4 {
+    text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.45);
 }
 
 .time-chooser {
-    width: 15em;
+    width: 17em;
     margin: 2em auto;
 }
 
@@ -292,6 +298,7 @@ header .fb-container span {
     margin-bottom: -1em;
     color: #d44848;
     font-size: 1.1em;
+    width: 5.2em;
 }
 
 .time-chooser span {
@@ -317,4 +324,8 @@ header .fb-container span {
 
 .front-page-bottom-text {
     margin-top: 7%;
+}
+
+.front-page-bottom-text span {
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.72);
 }
