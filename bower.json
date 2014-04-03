@@ -1,0 +1,18 @@
+{
+  "name": "CookTimeSaver",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass-official": "3.*"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "less": [
+        "less/*.less"
+      ],
+      "js": [
+        "js/*.js"
+      ]
+    }
+  }
+}
