@@ -111,7 +111,7 @@ package { 'bower':provider => npm}
 
 package { 'capistrano':
     provider => 'gem',
-    ensure => '2.15.4'
+    ensure => '3.1.0'
 }
 
 
