@@ -19,3 +19,6 @@ app/config/parameters.yml
 bower_components/*
 node_modules/*
 app/Resources/lib/*
+
+#vagrant machines
+.vagrant/machines
