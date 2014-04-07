@@ -3,12 +3,13 @@
 
 Vagrant.configure(2) do |config|
   config.vm.box = "nfqakademija/wheezy"
+  config.vm.box_check_update = false
   config.vm.network :private_network, ip: "192.168.63.29"
   config.ssh.forward_agent = true
   config.vm.network :forwarded_port, host: 8832, guest: 80
   config.vm.provider :virtualbox do |v|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    v.customize ["modifyvm", :id, "--memory", 1024]
+    v.customize ["modifyvm", :id, "--memory", 512]
     v.customize ["setextradata", :id, "--VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
   end
   config.vm.hostname = "cts.dev"
