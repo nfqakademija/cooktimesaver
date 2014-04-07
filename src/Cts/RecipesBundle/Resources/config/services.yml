@@ -2,6 +2,6 @@ parameters:
 #    cts_recipes.example.class: Cts\RecipesBundle\Example
 
 services:
-#    cts_recipes.example:
-#        class: %cts_recipes.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    recipe:
+        class: Cts\RecipesBundle\Services\Recipe
+        arguments: [24,"200g Jautienos 150g Surio 1 Supjaustytas Batonas 1 Skardine Alaus Prieskoniai Ranka ant Peties","Mėsos gabalą virti garų puode apie valandą laiko (prieš virimą mėsą 1 val. pamarinuoti garstyčiose). Tada sudėti supjaustytas morkas, porą, salierą ir petražoles ir troškinti 40 minučių.Ant mėsos berti pipirų, druskos, sudėti lauro lapus."]

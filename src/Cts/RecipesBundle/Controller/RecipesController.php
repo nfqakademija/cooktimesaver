@@ -3,6 +3,7 @@
 namespace Cts\RecipesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Cts\RecipesBundle\Services;
 
 class RecipesController extends Controller
 {
@@ -14,6 +15,7 @@ class RecipesController extends Controller
 
     public function searchAction()
     {
-    	return $this->render('CtsRecipesBundle:Front:search.html.twig');
+    	$recipe = $this->get('recipe');
+    	return $this->render('CtsRecipesBundle:Front:search.html.twig', ['recipe' => $recipe]);
     }
 }

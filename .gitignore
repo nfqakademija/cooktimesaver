@@ -22,3 +22,5 @@ app/Resources/lib/*
 
 #vagrant machines
 .vagrant/machines
+
+src/Cts/RecipeBundle/Controller/.fuse_*
