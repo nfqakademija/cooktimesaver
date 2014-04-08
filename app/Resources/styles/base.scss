@@ -10,7 +10,12 @@ header {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.33);
   height: 5em;
+  padding: 0 1em;
+  h1 {
+    font-size: 4em;
+  }
 }
+
 
 #main-container {
   background: url(/assets/images/bg-image.png) no-repeat top fixed;

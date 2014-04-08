@@ -4367,7 +4367,10 @@ body {
 header {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.33);
-  height: 5em; }
+  height: 5em;
+  padding: 0 1em; }
+  header h1 {
+    font-size: 4em; }
 
 #main-container {
   background: url(/assets/images/bg-image.png) no-repeat top fixed;
@@ -4393,153 +4396,9 @@ footer {
       color: #d44848;
       text-decoration: none; }
 
-div.header h1 {
-  text-decoration: underline;
-  text-align: center; }
-div.thegoods {
-  margin-top: 5em;
-  position: relative; }
-div.recipe {
-  height: 14.5em;
-  overflow: hidden;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  background-color: #D9D9D9;
-  margin-bottom: 0.8em;
-  border-bottom: 1px solid black; }
-  div.recipe:hover {
-    background: #ddd; }
-div.time {
-  margin-right: 1em;
-  margin: 2em;
-  text-align: center; }
-
-p {
-  font-size: 0.75em !important; }
-
-ul {
-  margin: 1em; }
-  ul li {
-    display: inline-block; }
-
-.infocol {
-  height: 14.5em;
-  overflow: auto; }
-
-.image {
-  background-color: none;
-  margin-left: 0;
-  padding: 0;
-  z-index: 1; }
-
-.timer {
-  z-index: 2;
-  position: absolute;
-  text-align: center;
-  border: 1px solid #444;
-  background: #d44848;
-  width: 5em;
-  height: 1.5em;
-  font-size: 1em;
-  color: white;
-  font-weight: bold; }
-
-.button {
-  top: 0.5em;
-  margin: 0.5em;
-  width: 5em;
-  height: 3em;
-  position: relative;
-  z-index: 2; }
-  .button:hover {
-    background-color: #d44848; }
-
-/*=====================================
-=            MEDIA QUERIES            =
-=====================================*/
-@media screen and (max-width: 990px) {
-  .respon {
-    padding: 0;
-    margin: 0;
-    float: left;
-    width: 32%;
-    height: 100%; }
-  .infocol {
-    padding: 0;
-    margin: 0;
-    position: relative;
-    float: right;
-    width: 68%; }
-    .infocol p {
-      margin: 1em; }
-  .button {
-    position: absolute;
-    width: 20%; }
-  ul {
-    float: right;
-    width: 80%; } }
-
 @media screen and (max-width: 650px) {
   header .fb-container span {
     display: none; } }
-
-/*==============================
-=            FOOTER            =
-==============================*/
-/*==============================
-=            HEADER            =
-==============================*/
-.bg {
-  position: relative;
-  width: 100%;
-  height: 25em;
-  border-bottom: 3px solid #d44848;
-  margin-bottom: 3em;
-  z-index: 1;
-  overflow: hidden; }
-  .bg h4 {
-    font-weight: bold;
-    color: white; }
-  .bg h5 {
-    font-size: 2em;
-    letter-spacing: 4px;
-    text-align: center;
-    margin: auto; }
-
-.head {
-  margin-top: 3%; }
-
-.featurefood img {
-  margin-bottom: 2em;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px; }
-
-.timeface {
-  margin-top: -0.2em;
-  text-align: center;
-  font-size: 4em;
-  font-weight: bold;
-  color: white; }
-
-/*=============================================
-=            Background for Header            =
-=============================================*/
-#bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  /* Preserve aspet ratio */
-  min-width: 100%;
-  min-height: 100%; }
-
-/*==============================
-=            COLORS            =
-==============================*/
-.reddy {
-  color: #d44848; }
 
 header .fb-container {
   float: right;

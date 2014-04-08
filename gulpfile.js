@@ -2,7 +2,7 @@ var gulp = require('gulp');
 
 var bower = require('gulp-bower');
 var sass = require('gulp-sass');
-
+var watch = require('gulp-watch');
 
 //var paths = {
 //   scripts: ['client/js/**/*.coffee', '!client/external/**/*.coffee'],
@@ -32,7 +32,14 @@ var sass = require('gulp-sass');
 //   gulp.watch(paths.images, ['images']);
 //});
 
-
+gulp.task('watch', function () {
+    gulp.src('app/Resources/styles/*')
+        .pipe(watch(function() {
+            return gulp.src('app/Resources/styles/main.scss')
+                .pipe(sass())
+                .pipe(gulp.dest('web/assets/css/'));
+        }));
+});
 // Copy all static images
 gulp.task('bootstrap', function() {
     // Pass in options to the task
