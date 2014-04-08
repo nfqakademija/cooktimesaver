@@ -1,0 +1,15 @@
+{
+    "name": "Cooktimesaver",
+    "version": "0.0.1",
+    "description": "Gurme",
+    "dependencies": {
+        "gulp": "~3.6.0",
+        "gulp-sass": "~0.7.1",
+        "bower": "~1.2.7",
+        "gulp-bower": "~0.0.3"
+    },
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "private": true
+}
