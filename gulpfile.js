@@ -41,7 +41,7 @@ gulp.task('bootstrap', function() {
 });
 
 gulp.task('sass', function () {
-    gulp.src('app/Resources/styles/main2.scss')
+    gulp.src('app/Resources/styles/main.scss')
         .pipe(sass())
         .pipe(gulp.dest('web/assets/css/'));
 });
