@@ -1,50 +1,49 @@
 {% extends '::base.html.twig' %}
-
+{% block header %}
+<div class="fb-container clearfix">
+    <span>Mes norime žinoti ką mėgsti labiausiai!</span>
+    <a href="#">
+        <img src="/assets/images/fb-login.png" alt="Prisijungti su facebook"/>
+    </a>
+</div>
+{% endblock %}
 {% block body %}
-    <div id="main-container">
-        <header>
-            <div class="fb-container clearfix">
-                <span>Mes norime žinoti ką mėgsti labiausiai!</span>
-                <a href="#">
-                    <img src="/assets/images/fb-login.png" alt="Prisijungti su facebook"/>
-                </a>
-            </div>
-        </header>
-        <div class="front-page-heading jumbotron">
-            <h1>CookTimeSaver</h1>
-        </div>
-        <div class="front-page-time-chooser container text-center">
-            <h4 class="text-center">Už kiek laiko nori pradėti valgyti?</h4>
+<div class="front-page-heading jumbotron">
+    <h1>CookTimeSaver</h1>
+</div>
+<div class="front-page-time-chooser container text-center">
+    <h4 class="text-center">Kiek laiko norite skirti maisto ruošimui?</h4>
 
-            <form method="post" action="">
-                <div class="time-chooser clearfix">
-                    <div class="time-chooser-hours">
-                        <div class="chooser-title text-center">
-                            val
-                        </div>
-                        <input name="hours" placeholder="00" maxlength="2" type="number" min="0" max="12" autocomplete="off"/>
-                    </div>
-                    <span>:</span>
-
-                    <div class="time-chooser-mins">
-                        <div class="chooser-title text-center">
-                            min
-                        </div>
-                        <input name="minutes" placeholder="20" maxlength="2" type="number" min="0" max="59" autocomplete="off"/>
-                    </div>
+    <form method="post" action="">
+        <div class="time-chooser clearfix">
+            <div class="time-chooser-hours">
+                <div class="chooser-title text-center">
+                    val
                 </div>
-                <button type="submit" class="btn btn-primary">Pradėti paiešką</button>
-            </form>
+                <input name="hours" placeholder="00" maxlength="2" type="number" min="0" max="12"
+                       autocomplete="off"/>
+            </div>
+            <span>:</span>
+
+            <div class="time-chooser-mins">
+                <div class="chooser-title text-center">
+                    min
+                </div>
+                <input name="minutes" placeholder="20" maxlength="2" type="number" min="0" max="59"
+                       autocomplete="off"/>
+            </div>
         </div>
-        <div class="container front-page-bottom-text text-center">
-            <span>
-                CookTimeSaver - tai aplikacija, kuri padės jums visada, kai maisto ruošimui neturite visos dienos.
+        <h4 class="text-center">
+            Paspaudę "Pradėti paiešką" jūs gausite receptus, kuriuos galėsite
+            paruošti per nurodytą laiko tarpą.
+        </h4>
+        <button type="submit" class="btn btn-primary">Pradėti paiešką</button>
+    </form>
+</div>
+<div class="container front-page-bottom-text text-center">
+        <span>
+            CookTimeSaver - tai aplikacija, kuri padės jums visada, kai maisto ruošimui neturite visos dienos.
 Nesvarbu, ruošiate draugų susitikimą, ar tiesiog prieš darbą norite skaniai pavalgyti. Ir kitas bla bla bla.
-            </span>
-        </div>
-    </div>
-    {% block javascripts %}
-        {{ parent() }}
-        <script src="{{ asset('assets/js/jquery.hoverizr.min.js') }}"></script>
-    {% endblock %}
+        </span>
+</div>
 {% endblock %}
