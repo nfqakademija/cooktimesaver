@@ -1,0 +1,40 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+header {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.33);
+  height: 5em;
+}
+
+#main-container {
+  background: url(/assets/images/bg-image.png) no-repeat top fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 900px;
+}
+
+textarea, input {
+  outline: none;
+}
+
+footer {
+  padding: 2em 0;
+  color: white;
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-top: 3px solid #d44848;
+  a {
+    color: white;
+    &:hover {
+      color: #d44848;
+      text-decoration: none;
+    }
+  }
+}

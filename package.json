@@ -1,7 +1,7 @@
 {
     "name": "Cooktimesaver",
     "version": "0.0.1",
-    "description": "Gurme",
+    "description": "Cooktimesaver",
     "dependencies": {
         "gulp": "~3.6.0",
         "gulp-sass": "~0.7.1",

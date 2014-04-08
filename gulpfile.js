@@ -4,10 +4,10 @@ var bower = require('gulp-bower');
 var sass = require('gulp-sass');
 
 
-// var paths = {
+//var paths = {
 //   scripts: ['client/js/**/*.coffee', '!client/external/**/*.coffee'],
 //   images: 'client/img/**/*'
-// };
+//};
 
 // gulp.task('scripts', function() {
 //   // Minify and copy all JavaScript (except vendor scripts)
@@ -26,11 +26,11 @@ var sass = require('gulp-sass');
 //     .pipe(gulp.dest('build/img'));
 // });
 
-// // Rerun the task when a file changes
+ // Rerun the task when a file changes
 // gulp.task('watch', function() {
 //   gulp.watch(paths.scripts, ['scripts']);
 //   gulp.watch(paths.images, ['images']);
-// });
+//});
 
 
 // Copy all static images
@@ -41,7 +41,7 @@ gulp.task('bootstrap', function() {
 });
 
 gulp.task('sass', function () {
-    gulp.src('app/Resources/styles/start.scss')
+    gulp.src('app/Resources/styles/main2.scss')
         .pipe(sass())
         .pipe(gulp.dest('web/assets/css/'));
 });
