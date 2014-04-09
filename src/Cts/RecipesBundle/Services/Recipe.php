@@ -7,29 +7,51 @@ class Recipe
 	protected $ingredients;
 	protected $about;
 
-	public function __construct($time, $ingredients, $about)
+	/**
+	 * @param mixed $about
+	 */
+	public function setAbout($about)
 	{
-		$this->time        = $time;
+		$this->about = $about;
+	}
+
+	/**
+	 * @param mixed $ingredients
+	 */
+	public function setIngredients($ingredients)
+	{
 		$this->ingredients = $ingredients;
-		$this->about       = $about;
 	}
 
-	public function getTime()
+	/**
+	 * @param mixed $time
+	 */
+	public function setTime($time)
 	{
-		return $this->time;
+		$this->time = $time;
 	}
 
-	public function getIng()
-	{
-		return $this->ingredients;
-	}
-
+	/**
+	 * @return mixed
+	 */
 	public function getAbout()
 	{
 		return $this->about;
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getIngredients()
+	{
+		return $this->ingredients;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getTime()
+	{
+		return $this->time;
+	}
 }
-
-
- ?>

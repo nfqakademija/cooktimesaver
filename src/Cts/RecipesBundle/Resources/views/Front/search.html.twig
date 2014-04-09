@@ -22,9 +22,10 @@
 	<!-- TOP DECK END -->
 
 	<div class='thegoods jumbotron'>
+        {% for recipe in recipes %}
 		<div class='recipe row cold-md-12'>
 			<div class='respon'>
-				<p class='timer'>~{{ recipe.getTime }}min</p>
+				<p class='timer'>~{{ recipe.time }}min</p>
 				<img alt="200x200" class="image col-md-3" src="http://lorempixel.com/200/200">
 			</div>
 
@@ -36,17 +37,17 @@
 				<div class="col-md-11">
 					<ul>
 						<strong>Ingridientai:</strong>
-						{{ recipe.getIng }}
+						{{ recipe.ingredients }}
 					</ul>
 				</div>
 
 				<strong>Aprasymas</strong>
-				<p> {{ recipe.getAbout }} </p>
+				<p> {{ recipe.about }} </p>
 
 			</div>
 
 		</div>
-
+        {% endfor %}
 
 	</div>
 

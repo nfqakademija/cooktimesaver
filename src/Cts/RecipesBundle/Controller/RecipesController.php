@@ -15,7 +15,7 @@ class RecipesController extends Controller
 
     public function searchAction()
     {
-    	$recipe = $this->get('recipe');
-    	return $this->render('CtsRecipesBundle:Front:search.html.twig', ['recipe' => $recipe]);
+    	$recipe = $this->get('cts_recipes.recipes_collection');
+    	return $this->render('CtsRecipesBundle:Front:search.html.twig', ['recipes' => $recipe->getRecipes()]);
     }
 }
