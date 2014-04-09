@@ -89,9 +89,50 @@
     margin: 0 auto 2em auto;
     border-radius: 10px;
     -webkit-box-shadow: 1px 2px 1px 0px rgba(50, 50, 50, 0.52);
-    -moz-box-shadow:    1px 2px 1px 0px rgba(50, 50, 50, 0.52);
-    box-shadow:         1px 2px 1px 0px rgba(50, 50, 50, 0.52);
-    background-color: #fff
+    -moz-box-shadow: 1px 2px 1px 0px rgba(50, 50, 50, 0.52);
+    box-shadow: 1px 2px 1px 0px rgba(50, 50, 50, 0.52);
+    background-color: #fff;
+    position: relative;
+
+    .result-img {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      display: block;
+    }
+
+    .result-description {
+      padding: 15px;
+
+      .icon-space {
+        float: left;
+      }
+
+      .result-title {
+        float: left;
+        width: 135px;
+        margin-left: 5px;
+        padding-top: 6px;
+
+        a {
+          font-size: 0.9em;
+          color: #969696;
+          word-break: break-all;
+        }
+      }
+    }
+
+    .result-time-required {
+      position: absolute;
+      bottom: 15px;
+      left: 20px;
+
+      span {
+        color: #d44848;
+        vertical-align: middle;
+        font-size: 1.3em;
+        margin-left: 5px;
+      }
+    }
   }
 
   .row {

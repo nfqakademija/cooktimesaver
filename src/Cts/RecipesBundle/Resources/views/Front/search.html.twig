@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block header %}
-    <h1>CookTimeSaver | <span>00:20</span></h1>
+    <a href="{{ path('cts_recipes_homepage') }}"><h1>CookTimeSaver | <span>00:20</span></h1></a>
 {% endblock %}
 
 {% block body %}
@@ -44,28 +44,53 @@
 
         </div>
         <div id="search-results-container">
+            <div class="container">
             <h1>Populiariausi</h1>
             <div class="row">
+                {% for y in range(1, 4) %}
                 <div class="col-md-3 col-sm-6">
                     <div class="result">
-                        a
+                        <img src="{{ asset('assets/images/test_images/product.png') }}" alt="Patiekalas" class="result-img"/>
+                        <div class="result-description clearfix">
+                            <div class="icon-space">
+                                <img src="{{ asset('assets/images/cook_icon.png') }}" alt="Recepto pavadinimas" />
+                            </div>
+                            <div class="result-title">
+                                <a href="#">Aštri sriuba su pomidorais ir pupelėmis</a>
+                            </div>
+                        </div>
+                        <div class="result-time-required">
+                            <img src="{{ asset('assets/images/clock_icon.png') }}" alt="Laikas" />
+                            <span>00:12</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="result">
-                        a
+                {% endfor %}
+            </div>
+            </div>
+            <div class="container">
+            <h1>Greičiausiai paruošiami</h1>
+            <div class="row">
+                {% for y in range(1, 4) %}
+                    <div class="col-md-3 col-sm-6">
+                        <div class="result">
+                            <img src="{{ asset('assets/images/test_images/product.png') }}" alt="Patiekalas" class="result-img"/>
+                            <div class="result-description clearfix">
+                                <div class="icon-space">
+                                    <img src="{{ asset('assets/images/cook_icon.png') }}" alt="Recepto pavadinimas" />
+                                </div>
+                                <div class="result-title">
+                                    <a href="#">Aštri sriuba su pomidorais ir pupelėmis</a>
+                                </div>
+                            </div>
+                            <div class="result-time-required">
+                                <img src="{{ asset('assets/images/clock_icon.png') }}" alt="Laikas" />
+                                <span>00:12</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="result">
-                        a
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="result">
-                        a
-                    </div>
-                </div>
+                {% endfor %}
+            </div>
             </div>
         </div>
     </div>

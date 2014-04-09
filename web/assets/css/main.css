@@ -4376,6 +4376,9 @@ header {
     margin: 0; }
     header h1 span {
       color: #d44848; }
+  header a {
+    color: #fff !important;
+    text-decoration: none !important; }
 
 #main-container {
   background: url(/assets/images/bg-image.png) no-repeat top fixed;
@@ -4545,6 +4548,33 @@ header .fb-container {
     -webkit-box-shadow: 1px 2px 1px 0px rgba(50, 50, 50, 0.52);
     -moz-box-shadow: 1px 2px 1px 0px rgba(50, 50, 50, 0.52);
     box-shadow: 1px 2px 1px 0px rgba(50, 50, 50, 0.52);
-    background-color: #fff; }
+    background-color: #fff;
+    position: relative; }
+    #search-results-container .result .result-img {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      display: block; }
+    #search-results-container .result .result-description {
+      padding: 15px; }
+      #search-results-container .result .result-description .icon-space {
+        float: left; }
+      #search-results-container .result .result-description .result-title {
+        float: left;
+        width: 135px;
+        margin-left: 5px;
+        padding-top: 6px; }
+        #search-results-container .result .result-description .result-title a {
+          font-size: 0.9em;
+          color: #969696;
+          word-break: break-all; }
+    #search-results-container .result .result-time-required {
+      position: absolute;
+      bottom: 15px;
+      left: 20px; }
+      #search-results-container .result .result-time-required span {
+        color: #d44848;
+        vertical-align: middle;
+        font-size: 1.3em;
+        margin-left: 5px; }
   #search-results-container .row {
     margin-top: 2em; }
