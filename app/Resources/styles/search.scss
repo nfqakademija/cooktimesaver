@@ -68,11 +68,33 @@
   }
 }
 
-.search-results-container {
+#search-results-container {
   background-color: #eeeeee;
   width: 100%;
   min-height: 500px;
   margin-top: 2em;
   border-top: 4px solid #d44848;
   border-bottom: 4px solid #d44848;
+
+  h1 {
+    color: #d44848;
+    font-size: 1.9em;
+    font-weight: 600;
+    padding-left: 1em;
+  }
+
+  .result {
+    width: 200px;
+    height: 300px;
+    margin: 0 auto 2em auto;
+    border-radius: 10px;
+    -webkit-box-shadow: 1px 2px 1px 0px rgba(50, 50, 50, 0.52);
+    -moz-box-shadow:    1px 2px 1px 0px rgba(50, 50, 50, 0.52);
+    box-shadow:         1px 2px 1px 0px rgba(50, 50, 50, 0.52);
+    background-color: #fff
+  }
+
+  .row {
+    margin-top: 2em;
+  }
 }
