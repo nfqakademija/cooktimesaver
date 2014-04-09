@@ -10,9 +10,15 @@ header {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.33);
   height: 5em;
-  padding: 0 1em;
+  padding: 0 2em;
   h1 {
-    font-size: 4em;
+    font-size: 2.2em;
+    font-weight: 600;
+    padding-top: 0.5em;
+    margin: 0;
+    span {
+      color: #d44848;
+    }
   }
 }
 

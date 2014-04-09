@@ -26,11 +26,6 @@ var watch = require('gulp-watch');
 //     .pipe(gulp.dest('build/img'));
 // });
 
- // Rerun the task when a file changes
-// gulp.task('watch', function() {
-//   gulp.watch(paths.scripts, ['scripts']);
-//   gulp.watch(paths.images, ['images']);
-//});
 
 gulp.task('watch', function () {
     gulp.src('app/Resources/styles/*')

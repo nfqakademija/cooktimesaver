@@ -4368,9 +4368,14 @@ header {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.33);
   height: 5em;
-  padding: 0 1em; }
+  padding: 0 2em; }
   header h1 {
-    font-size: 4em; }
+    font-size: 2.2em;
+    font-weight: 600;
+    padding-top: 0.5em;
+    margin: 0; }
+    header h1 span {
+      color: #d44848; }
 
 #main-container {
   background: url(/assets/images/bg-image.png) no-repeat top fixed;
@@ -4463,8 +4468,49 @@ header .fb-container {
   .front-page-bottom-text span {
     text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.72); }
 
-#search .recipes-row {
-  font-size: 15px;
-  background-color: #101010; }
-  #search .recipes-row div :hover {
-    background-color: red; }
+#search .heading .heading-input {
+  margin-top: 3em; }
+  #search .heading .heading-input input {
+    width: 100%;
+    padding: 0.5em 0.8em;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000000; }
+  #search .heading .heading-input h3 {
+    font-size: 1.5em; }
+
+.searchpage-time-chooser {
+  width: 15.5em;
+  margin: 2em auto;
+  border: 2px solid #d44848;
+  border-radius: 10px;
+  padding-top: 0.55em;
+  background-color: rgba(0, 0, 0, 0.6); }
+  .searchpage-time-chooser input {
+    width: 1.4em;
+    background: transparent;
+    font-size: 5em;
+    font-weight: 600;
+    border: none;
+    display: block;
+    padding: 0;
+    text-align: center; }
+  .searchpage-time-chooser h4 {
+    text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.45);
+    font-weight: 300;
+    font-size: 1.2em; }
+  .searchpage-time-chooser .chooser-title {
+    margin-bottom: -1em;
+    color: #d44848;
+    font-size: 1.1em; }
+  .searchpage-time-chooser span {
+    float: left;
+    font-size: 5em;
+    font-weight: 600;
+    width: 0.2em;
+    text-align: center; }
+  .searchpage-time-chooser .time-chooser-hours {
+    float: left; }
+  .searchpage-time-chooser .time-chooser-mins {
+    float: right; }

@@ -1,0 +1,66 @@
+#search {
+  .heading {
+    .heading-input {
+      margin-top: 3em;
+      input {
+        width: 100%;
+        padding: 0.5em 0.8em;
+        border-radius: 5px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #000000;
+      }
+      h3 {
+        font-size: 1.5em;
+      }
+    }
+  }
+}
+
+.searchpage-time-chooser {
+  width: 15.5em;
+  margin: 2em auto;
+  border: 2px solid #d44848;
+  border-radius: 10px;
+  padding-top: 0.55em;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  input {
+    width: 1.4em;
+    background: transparent;
+    font-size: 5em;
+    font-weight: 600;
+    border: none;
+    display: block;
+    padding: 0;
+    text-align: center;
+  }
+
+  h4 {
+    text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.45);
+    font-weight: 300;
+    font-size: 1.2em;
+  }
+
+  .chooser-title {
+    margin-bottom: -1em;
+    color: #d44848;
+    font-size: 1.1em;
+  }
+
+  span {
+    float: left;
+    font-size: 5em;
+    font-weight: 600;
+    width: 0.2em;
+    text-align: center;
+  }
+
+  .time-chooser-hours {
+    float: left;
+  }
+
+  .time-chooser-mins {
+    float: right;
+  }
+}

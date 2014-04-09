@@ -1,8 +1,47 @@
 {% extends '::base.html.twig' %}
 
 {% block header %}
-<h1>CookTimeSaver</h1>
+    <h1>CookTimeSaver | <span>00:20</span></h1>
 {% endblock %}
 
 {% block body %}
+    <div id="search">
+        <div class="heading container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="heading-input">
+                        <h3>Žinai ką turi šaldytuve?</h3>
+                        <input id="have-in-fridge" placeholder="Noriu receptų su..."/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="searchpage-time-chooser clearfix">
+                        <div class="time-chooser-hours">
+                            <div class="chooser-title text-center">
+                                val
+                            </div>
+                            <input name="hours" placeholder="00" maxlength="2"
+                                   autocomplete="off"/>
+                        </div>
+                        <span>:</span>
+
+                        <div class="time-chooser-mins">
+                            <div class="chooser-title text-center">
+                                min
+                            </div>
+                            <input name="minutes" placeholder="20" maxlength="2"
+                                   autocomplete="off"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="heading-input">
+                        <h3>Gal valgai ne viską?</h3>
+                        <input id="not-eating" placeholder="Nenoriu kad juose būtų..."/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

@@ -14,13 +14,13 @@
 <div class="front-page-time-chooser container text-center">
     <h4 class="text-center">Kiek laiko norite skirti maisto ruošimui?</h4>
 
-    <form method="post" action="">
+    <form method="get" action="{{ path('cts_search_page') }}">
         <div class="time-chooser clearfix">
             <div class="time-chooser-hours">
                 <div class="chooser-title text-center">
                     val
                 </div>
-                <input name="hours" placeholder="00" maxlength="2" type="number" min="0" max="12"
+                <input name="hours" placeholder="00" maxlength="2"
                        autocomplete="off"/>
             </div>
             <span>:</span>
@@ -29,7 +29,7 @@
                 <div class="chooser-title text-center">
                     min
                 </div>
-                <input name="minutes" placeholder="20" maxlength="2" type="number" min="0" max="59"
+                <input name="minutes" placeholder="20" maxlength="2"
                        autocomplete="off"/>
             </div>
         </div>
