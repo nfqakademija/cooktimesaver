@@ -16,9 +16,9 @@ class RecipesController extends Controller
     public function searchAction(Request $request)
     {
         $hours = $request->query->get('hours');
-        $hours? $hours : $hours = "00";
+        $hours = $hours? $hours : 0;
         $minutes = $request->query->get('minutes');
-        $minutes? $minutes : $minutes = 20;
+        $minutes = $minutes? $minutes : 20;
     	return $this->render('CtsRecipesBundle:Front:search.html.twig', ['hr' => $hours, 'min' => $minutes]);
     }
 
