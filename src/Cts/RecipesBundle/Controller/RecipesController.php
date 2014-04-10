@@ -16,4 +16,9 @@ class RecipesController extends Controller
     {
     	return $this->render('CtsRecipesBundle:Front:search.html.twig');
     }
+
+    public function recipeDescriptionAction()
+    {
+        return $this->render('CtsRecipesBundle:Front:recipeDescription.html.twig');
+    }
 }

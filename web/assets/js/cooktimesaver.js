@@ -11,7 +11,7 @@ $(function(){
         var dhis = $(this);
         var value = parseInt(dhis.val());
         console.log(value);
-        if((value < 0) || (value > 60)) {
+        if((value < 0) || (value > 59)) {
             dhis.val('00');
             this.select();
         }
@@ -25,4 +25,19 @@ $(function(){
         return false;
     });
 
+    $('.result-title a').click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type:"POST",
+            url: "recipe_description",
+            data: '',
+            success: function(data){
+                BootstrapDialog.show({
+                    title: 'Recepto aprašymas',
+                    message: data
+                });
+            }
+        });
+
+    });
 });

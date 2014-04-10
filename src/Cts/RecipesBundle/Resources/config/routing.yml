@@ -5,3 +5,7 @@ cts_recipes_homepage:
 cts_search_page:
     path: /search
     defaults: { _controller: CtsRecipesBundle:Recipes:search }
+
+cts_recipe_description:
+    path: /recipe_description
+    defaults: { _controller: CtsRecipesBundle:Recipes:recipeDescription}

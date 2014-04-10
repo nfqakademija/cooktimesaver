@@ -1,13 +1,14 @@
 {% extends '::base.html.twig' %}
 {% block header %}
 <div class="fb-container clearfix">
-    <span>Mes norime žinoti ką mėgsti labiausiai!</span>
+    <span>Mes norime sutaupyti dar daugiau tavo laiko!</span>
     <a href="#">
         <img src="/assets/images/fb-login.png" alt="Prisijungti su facebook"/>
     </a>
 </div>
 {% endblock %}
 {% block body %}
+<div class="front-page-card">
 <div class="front-page-heading jumbotron">
     <h1>CookTimeSaver</h1>
 </div>
@@ -40,6 +41,7 @@
         <button type="submit" class="btn btn-primary">Pradėti paiešką</button>
     </form>
 </div>
+   </div>
 <div class="container front-page-bottom-text text-center">
         <span>
             CookTimeSaver - tai aplikacija, kuri padės jums visada, kai maisto ruošimui neturite visos dienos.

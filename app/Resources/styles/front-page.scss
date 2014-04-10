@@ -25,15 +25,23 @@ header .fb-container {
     text-align: center;
     font-weight: 600;
     text-decoration: none;
-    text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.45);
+    text-shadow: 3px 3px 34px rgba(255,255,255,0.5);
   }
+}
+
+.front-page-card {
+  max-width: 600px;
+  margin: 2em auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-bottom: 2em;
+  border-radius: 10px;
 }
 
 .front-page-time-chooser {
   margin: 2em auto;
   width: 26em;
   input {
-    width: 1.4em;
+    width: 1.2em;
     background: transparent;
     font-size: 5em;
     font-weight: 600;
@@ -47,22 +55,30 @@ header .fb-container {
     font-weight: 600;
     font-size: 1.2em;
   }
+  h5 {
+    font-size: 13px;
+    margin-bottom: 2em;
+  }
 }
 
 .time-chooser {
-  width: 17em;
+  width: 15em;
   margin: 2em auto;
+  border: 2px solid #8A3C3C;
+  padding: 0.5em;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   .chooser-title {
     margin-bottom: -1em;
     color: #d44848;
     font-size: 1.1em;
-    width: 5.2em;
+    width: 100%;
   }
   span {
     float: left;
     font-size: 5em;
     font-weight: 600;
-    width: 0.5em;
+    width: 0.3em;
     text-align: center;
   }
 }

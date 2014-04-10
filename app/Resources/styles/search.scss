@@ -138,3 +138,33 @@
     margin-top: 2em;
   }
 }
+
+.recipe-description {
+  color: #000;
+  .recipe-requirements {
+    h2 {
+      color: #d44848;
+      margin: 0;
+      font-size: 1.5em;
+    }
+    ul {
+      list-style: none;
+      margin-top: 10px;
+      padding: 0;
+
+      li {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  button {
+    width: 200px;
+    height: 40px;
+    margin-bottom: 20px;
+  }
+
+  .recipe-thumbnail {
+    margin-bottom: 1em;
+  }
+}
