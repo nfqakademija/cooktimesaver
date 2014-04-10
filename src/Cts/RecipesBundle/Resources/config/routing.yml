@@ -9,6 +9,7 @@ cts_search_page:
 cts_recipe_description:
     path: /recipe_description
     defaults: { _controller: CtsRecipesBundle:Recipes:recipeDescription}
+    
 cts_recipe_show:
     path: /make_food
     defaults: { _controller: CtsRecipesBundle:Recipes:makeFood}

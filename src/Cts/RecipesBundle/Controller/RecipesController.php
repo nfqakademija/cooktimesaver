@@ -3,6 +3,7 @@
 namespace Cts\RecipesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class RecipesController extends Controller
 {
@@ -12,9 +13,13 @@ class RecipesController extends Controller
     }
 
 
-    public function searchAction()
+    public function searchAction(Request $request)
     {
-    	return $this->render('CtsRecipesBundle:Front:search.html.twig');
+        $hours = $request->query->get('hours');
+        $hours? $hours : $hours = "00";
+        $minutes = $request->query->get('minutes');
+        $minutes? $minutes : $minutes = 20;
+    	return $this->render('CtsRecipesBundle:Front:search.html.twig', ['hr' => $hours, 'min' => $minutes]);
     }
 
     public function recipeDescriptionAction()

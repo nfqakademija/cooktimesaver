@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block header %}
-    <a href="{{ path('cts_recipes_homepage') }}"><h1>CookTimeSaver | <span>00:20</span></h1></a>
+    <a href="{{ path('cts_recipes_homepage') }}"><h1>CookTimeSaver | <span>{{ hr }}:{{ min }}</span></h1></a>
 {% endblock %}
 
 {% block body %}
@@ -20,7 +20,7 @@
                             <div class="chooser-title text-center">
                                 val
                             </div>
-                            <input name="hours" placeholder="00" maxlength="2"
+                            <input name="hours" placeholder="00" value="{{ hr }}" maxlength="2"
                                    autocomplete="off"/>
                         </div>
                         <span>:</span>
@@ -29,7 +29,7 @@
                             <div class="chooser-title text-center">
                                 min
                             </div>
-                            <input name="minutes" placeholder="20" maxlength="2"
+                            <input name="minutes" placeholder="20" value="{{ min }}" maxlength="2"
                                    autocomplete="off"/>
                         </div>
                     </div>
