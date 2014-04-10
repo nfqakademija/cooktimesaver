@@ -4605,9 +4605,26 @@ header .fb-container {
     padding: 0; }
     .recipe-description .recipe-requirements ul li {
       margin-bottom: 5px; }
-  .recipe-description button {
+  .recipe-description a {
     width: 200px;
     height: 40px;
     margin-bottom: 20px; }
   .recipe-description .recipe-thumbnail {
     margin-bottom: 1em; }
+
+#make-recipe {
+  background-color: #eeeeee;
+  width: 100%;
+  min-height: 500px;
+  margin-top: 2em;
+  border-top: 4px solid #d44848;
+  padding: 2em 0; }
+  #make-recipe h1 {
+    color: #000000; }
+
+.recipe-step .recipe-step-timepanel {
+  color: #282828;
+  font-size: 0.9em;
+  margin-top: 1em; }
+.recipe-step .step-description {
+  color: #000; }

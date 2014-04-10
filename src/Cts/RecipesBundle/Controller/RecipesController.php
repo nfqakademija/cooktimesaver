@@ -21,4 +21,9 @@ class RecipesController extends Controller
     {
         return $this->render('CtsRecipesBundle:Front:recipeDescription.html.twig');
     }
+
+    public function makeFoodAction()
+    {
+        return $this->render('CtsRecipesBundle:Front:makeFood.html.twig');
+    }
 }

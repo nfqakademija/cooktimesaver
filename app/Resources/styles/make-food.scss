@@ -1,0 +1,23 @@
+#make-recipe {
+  background-color: #eeeeee;
+  width: 100%;
+  min-height: 500px;
+  margin-top: 2em;
+  border-top: 4px solid #d44848;
+  padding: 2em 0;
+
+  h1{
+    color: #000000;
+  }
+}
+
+.recipe-step {
+  .recipe-step-timepanel {
+    color: #282828;
+    font-size: 0.9em;
+    margin-top: 1em;
+  }
+  .step-description {
+    color: #000;
+  }
+}
