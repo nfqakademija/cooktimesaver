@@ -2,6 +2,7 @@
 namespace Cts\RecipesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -9,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class recipe_ingredients_needed
 {
+    private $recipe;
+    private $ingredient;
 	/**
 	 * @ORM\Column(type="integer")
 	 * @ORM\Id
@@ -18,11 +21,17 @@ class recipe_ingredients_needed
 
 	/**
 	 * @ORM\Column(type="integer")
+     *
+     * @ORM\ManyToOne(targetEntity="recipe", inversedBy="recipe_ingredients_needed")
+     * @ORM\JoinColumn(name="id", referencedColumnName="recipe_id")
 	 */
 	protected $recipe_id;
 
 	/**
 	 * @ORM\Column(type="integer")
+     * 
+     * @ORM\ManyToOne(targetEntity="ingredient", inversedBy="recipe_ingredients_needed")
+     * @ORM\JoinColumn(name="id", referencedColumnName="ingredients_id")
 	 */
 	protected $ingredients_id;
 
@@ -30,6 +39,13 @@ class recipe_ingredients_needed
 	 * @ORM\Column(type="string")
 	 */
 	protected $amount;
+
+
+    public function __construct()
+    {
+        $this->recipe     = new ArrayCollection();
+        $this->ingredient = new ArrayCollection();
+    }
 
     /**
      * Get id

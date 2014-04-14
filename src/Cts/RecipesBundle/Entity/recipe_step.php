@@ -2,6 +2,7 @@
 namespace Cts\RecipesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -9,15 +10,24 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class recipe_step
 {
+    private $recipe;
+    private $step_relationships;
+
 	/**
 	 * @ORM\Column(type="integer")
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @ORM\ManyToMany(targetEntity="step_relationships", inversedBy="recipe_step")
+     * @ORm\JoinTable(name="step_relationships")
 	 */
 	protected $id;
 
 	/**
 	 * @ORM\Column(type="integer")
+     *
+     * @ORM\ManyToOne(targetEntity="recipe", inversedBy="recipe_step")
+     * @ORM\JoinColumn(name="id", referencedColumnName="recipe_id")
 	 */
 	protected $recipe_id;
 
@@ -42,9 +52,16 @@ class recipe_step
 	protected $total_time_count;
 
 	/**
-	 * @ORM\Column(type="tinyint")
+	 * @ORM\Column(type="integer")
 	 */
 	protected $type;
+
+
+    public function __construct()
+    {
+        $this->recipe             = new ArrayCollection();
+        $this->step_relationships = new ArrayCollection();
+    }
 
 
     /**

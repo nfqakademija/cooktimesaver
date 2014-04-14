@@ -2,13 +2,17 @@
 namespace Cts\RecipesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="step_relationships")
  */
 class step_relationships
+
 {
+    private $recipe_step;
+
 	/**
 	 * @ORM\Column(type="integer")
 	 * @ORM\Id
@@ -18,11 +22,13 @@ class step_relationships
 
 	/**
 	 * @ORM\Column(type="integer")
+     * @ORM\ManyToMany(targetEntity="recipe_step", mappedBy="step_relationships")
 	 */
 	protected $recipe_step_id;
 
 	/**
 	 * @ORM\Column(type="integer")
+     * @ORM\ManyToMany(targetEntity="recipe_step", mappedBy="step_relationships")
 	 */
 	protected $parent_id;
 
