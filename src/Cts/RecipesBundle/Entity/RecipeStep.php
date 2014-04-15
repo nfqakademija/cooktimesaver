@@ -54,7 +54,7 @@ class RecipeStep
 	protected $total_time_count;
 
 	/**
-	 * @ORM\Column(type="integer")
+	 * @ORM\Column(type="smallint")
 	 */
 	protected $type;
 
@@ -194,10 +194,10 @@ class RecipeStep
     /**
      * Set type
      *
-     * @param \tinyint $type
+     * @param \smallint $type
      * @return recipe_step
      */
-    public function setType(\tinyint $type)
+    public function setType($type)
     {
         $this->type = $type;
 
@@ -207,7 +207,7 @@ class RecipeStep
     /**
      * Get type
      *
-     * @return \tinyint 
+     * @return \integer 
      */
     public function getType()
     {
@@ -240,10 +240,10 @@ class RecipeStep
     /**
      * Add step_relationships
      *
-     * @param \Cts\RecipesBundle\Entity\step_relationships $stepRelationships
-     * @return recipe_step
+     * @param \Cts\RecipesBundle\Entity\StepRelationship $stepRelationships
+     * @return RecipeStep
      */
-    public function addStepRelationship(\Cts\RecipesBundle\Entity\step_relationships $stepRelationships)
+    public function addStepRelationship(\Cts\RecipesBundle\Entity\StepRelationship $stepRelationships)
     {
         $this->step_relationships[] = $stepRelationships;
 
@@ -253,9 +253,9 @@ class RecipeStep
     /**
      * Remove step_relationships
      *
-     * @param \Cts\RecipesBundle\Entity\step_relationships $stepRelationships
+     * @param \Cts\RecipesBundle\Entity\StepRelationship $stepRelationships
      */
-    public function removeStepRelationship(\Cts\RecipesBundle\Entity\step_relationships $stepRelationships)
+    public function removeStepRelationship(\Cts\RecipesBundle\Entity\StepRelationship $stepRelationships)
     {
         $this->step_relationships->removeElement($stepRelationships);
     }
