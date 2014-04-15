@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Ingredient
 {
     /**
-     * @ORM\OneToMany(targetEntity="RecipeIngredient", mappedBy="ingredients_id")
+     * @ORM\OneToMany(targetEntity="RecipeIngredient", mappedBy="ingredient")
      */
     private $recipe_ingredients;
 

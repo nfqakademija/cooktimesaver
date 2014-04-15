@@ -12,7 +12,7 @@ class StepRelationship
 
 {
     /**
-     * @ORM\OneToMany(targetEntity="RecipeStep", mappedBy="step_relationships")
+     * @ORM\ManyToMany(targetEntity="RecipeStep", mappedBy="step_relationships")
      */
     private $recipe_step;
 
