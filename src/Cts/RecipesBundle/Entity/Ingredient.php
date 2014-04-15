@@ -46,7 +46,7 @@ class Ingredient
      * Set ingredient
      *
      * @param string $ingredient
-     * @return ingredient
+     * @return Ingredient
      */
     public function setIngredient($ingredient)
     {
@@ -66,45 +66,12 @@ class Ingredient
     }
 
     /**
-     * Add recipe_ingredients_needed
-     *
-     * @param \Cts\RecipesBundle\Entity\recipe_ingredients_needed $recipeIngredientsNeeded
-     * @return ingredient
-     */
-    public function addRecipeIngredientsNeeded(\Cts\RecipesBundle\Entity\recipe_ingredients_needed $recipeIngredientsNeeded)
-    {
-        $this->recipe_ingredients_needed[] = $recipeIngredientsNeeded;
-
-        return $this;
-    }
-
-    /**
-     * Remove recipe_ingredients_needed
-     *
-     * @param \Cts\RecipesBundle\Entity\recipe_ingredients_needed $recipeIngredientsNeeded
-     */
-    public function removeRecipeIngredientsNeeded(\Cts\RecipesBundle\Entity\recipe_ingredients_needed $recipeIngredientsNeeded)
-    {
-        $this->recipe_ingredients_needed->removeElement($recipeIngredientsNeeded);
-    }
-
-    /**
-     * Get recipe_ingredients_needed
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRecipeIngredientsNeeded()
-    {
-        return $this->recipe_ingredients_needed;
-    }
-
-    /**
      * Add recipe_ingredients
      *
-     * @param \Cts\RecipesBundle\Entity\RecipeIngredients $recipeIngredients
+     * @param \Cts\RecipesBundle\Entity\RecipeIngredient $recipeIngredients
      * @return Ingredient
      */
-    public function addRecipeIngredient(\Cts\RecipesBundle\Entity\RecipeIngredients $recipeIngredients)
+    public function addRecipeIngredient(\Cts\RecipesBundle\Entity\RecipeIngredient $recipeIngredients)
     {
         $this->recipe_ingredients[] = $recipeIngredients;
 
@@ -114,9 +81,9 @@ class Ingredient
     /**
      * Remove recipe_ingredients
      *
-     * @param \Cts\RecipesBundle\Entity\RecipeIngredients $recipeIngredients
+     * @param \Cts\RecipesBundle\Entity\RecipeIngredient $recipeIngredients
      */
-    public function removeRecipeIngredient(\Cts\RecipesBundle\Entity\RecipeIngredients $recipeIngredients)
+    public function removeRecipeIngredient(\Cts\RecipesBundle\Entity\RecipeIngredient $recipeIngredients)
     {
         $this->recipe_ingredients->removeElement($recipeIngredients);
     }

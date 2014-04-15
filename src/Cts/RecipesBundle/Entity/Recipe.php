@@ -157,71 +157,6 @@ class Recipe
         return $this->time;
     }
 
-    /**
-     * Add recipe_ingredients_needed
-     *
-     * @param \Cts\RecipesBundle\Entity\recipe_ingredients_needed $recipeIngredientsNeeded
-     * @return recipe
-     */
-    public function addRecipeIngredientsNeeded(\Cts\RecipesBundle\Entity\recipe_ingredients_needed $recipeIngredientsNeeded)
-    {
-        $this->recipe_ingredients_needed[] = $recipeIngredientsNeeded;
-
-        return $this;
-    }
-
-    /**
-     * Remove recipe_ingredients_needed
-     *
-     * @param \Cts\RecipesBundle\Entity\recipe_ingredients_needed $recipeIngredientsNeeded
-     */
-    public function removeRecipeIngredientsNeeded(\Cts\RecipesBundle\Entity\recipe_ingredients_needed $recipeIngredientsNeeded)
-    {
-        $this->recipe_ingredients_needed->removeElement($recipeIngredientsNeeded);
-    }
-
-    /**
-     * Get recipe_ingredients_needed
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRecipeIngredientsNeeded()
-    {
-        return $this->recipe_ingredients_needed;
-    }
-
-    /**
-     * Add recipe_step
-     *
-     * @param \Cts\RecipesBundle\Entity\recipe_step $recipeStep
-     * @return recipe
-     */
-    public function addRecipeStep(\Cts\RecipesBundle\Entity\recipe_step $recipeStep)
-    {
-        $this->recipe_step[] = $recipeStep;
-
-        return $this;
-    }
-
-    /**
-     * Remove recipe_step
-     *
-     * @param \Cts\RecipesBundle\Entity\recipe_step $recipeStep
-     */
-    public function removeRecipeStep(\Cts\RecipesBundle\Entity\recipe_step $recipeStep)
-    {
-        $this->recipe_step->removeElement($recipeStep);
-    }
-
-    /**
-     * Get recipe_step
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRecipeStep()
-    {
-        return $this->recipe_step;
-    }
 
     /**
      * Add recipe_ingredients
@@ -254,5 +189,38 @@ class Recipe
     public function getRecipeIngredients()
     {
         return $this->recipe_ingredients;
+    }
+
+    /**
+     * Add recipe_step
+     *
+     * @param \Cts\RecipesBundle\Entity\RecipeStep $recipeStep
+     * @return Recipe
+     */
+    public function addRecipeStep(\Cts\RecipesBundle\Entity\RecipeStep $recipeStep)
+    {
+        $this->recipe_step[] = $recipeStep;
+
+        return $this;
+    }
+
+    /**
+     * Remove recipe_step
+     *
+     * @param \Cts\RecipesBundle\Entity\RecipeStep $recipeStep
+     */
+    public function removeRecipeStep(\Cts\RecipesBundle\Entity\RecipeStep $recipeStep)
+    {
+        $this->recipe_step->removeElement($recipeStep);
+    }
+
+    /**
+     * Get recipe_step
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRecipeStep()
+    {
+        return $this->recipe_step;
     }
 }
