@@ -30,7 +30,6 @@ class RecipesController extends Controller
         $recipes = $query->getResult();
 
         // grazina receptus pagal nustatytas minutes, (valandos itakos neturi) var_dump kad susidarytum nuomone kas vyksta
-        // return var_dump($recipes);
         return $this->render('CtsRecipesBundle:Front:search.html.twig', ['hr' => $hours, 'min' => $minutes, 'recipes' => $recipes]);
     }
 
@@ -46,10 +45,7 @@ class RecipesController extends Controller
 
     public function clickedRecipeAction($id)
     {
-        $recipe = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe')->find($id);
-        $repo = $this->getDoctrine()->getRepository('CtsRecipesBundle:RecipeIngredient')->findby(["recipe_id" => $id]);
-        return var_dump($ingredient_repo);
-
-
+        $recipe = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe')->findOneById($id);
+        return $this->render('CtsRecipesBundle:Front:test.html.twig', ['recipe' => $recipe]);
     }
 }
