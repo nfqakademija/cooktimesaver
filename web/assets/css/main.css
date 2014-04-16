@@ -4567,7 +4567,9 @@ header .fb-container {
     #search-results-container .result .result-img {
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
-      display: block; }
+      display: block;
+      width: 200px;
+      height: 165px; }
     #search-results-container .result .result-description {
       padding: 15px; }
       #search-results-container .result .result-description .icon-space {
