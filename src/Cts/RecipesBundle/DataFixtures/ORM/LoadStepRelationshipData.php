@@ -11,13 +11,20 @@ class LoadStepRelationshipData extends AbstractFixture implements OrderedFixture
 	public function load(ObjectManager $em)
 	{
 		$this->loadSoup($em);
+
 	}
 
 	public function loadSoup(ObjectManager $em)
 	{
+
+		$step_rel = new StepRelationship();
+		$step_rel->setRecipeStepId($this->getReference('soupstep5')->getId());
+		$step_rel->setParentId(null);
+		$em->persist($step_rel);
+
 		$step_rel = new StepRelationship();
 		$step_rel->setRecipeStepId($this->getReference('soupstep4')->getId());
-		$step_rel->setParentId(null);
+		$step_rel->setParentId($this->getReference('soupstep5')->getId());
 		$em->persist($step_rel);
 
 		$step_rel = new StepRelationship();
