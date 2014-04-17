@@ -15,7 +15,7 @@
                                 val
                             </div>
                             <input name="hours" placeholder="00" value="{{ hr }}" maxlength="2"
-                                   autocomplete="off"/>
+                                   autocomplete="off" class="time-input"/>
                         </div>
                         <span>:</span>
 
@@ -24,7 +24,7 @@
                                 min
                             </div>
                             <input name="minutes" placeholder="20" value="{{ min }}" maxlength="2"
-                                   autocomplete="off"/>
+                                   autocomplete="off" class="time-input"/>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                                 <img src="{{ asset('assets/images/cook_icon.png') }}" alt="{{ rcp.title }}" />
                             </div>
                             <div class="result-title">
-                                <a href="#">{{ rcp.title }}</a>
+                                <a href="#" data-recipe-id="{{ rcp.id }}">{{ rcp.title }}</a>
                             </div>
                         </div>
                         <div class="result-time-required">

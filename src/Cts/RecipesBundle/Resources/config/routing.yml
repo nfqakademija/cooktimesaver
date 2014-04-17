@@ -7,13 +7,9 @@ cts_search_page:
     defaults: { _controller: CtsRecipesBundle:Recipes:search }
 
 cts_recipe_description:
-    path: /recipe_description
-    defaults: { _controller: CtsRecipesBundle:Recipes:recipeDescription }
+    path: /recipe_description/{id}
+    defaults: { _controller: CtsRecipesBundle:Recipes:clickedRecipe }
 
 cts_recipe_show:
-    path: /make_food
+    path: /make_food/{id}
     defaults: { _controller: CtsRecipesBundle:Recipes:makeFood }
-
-cts_test_db:
-    path: /test/{id}
-    defaults: { _controller: CtsRecipesBundle:Recipes:clickedRecipe }

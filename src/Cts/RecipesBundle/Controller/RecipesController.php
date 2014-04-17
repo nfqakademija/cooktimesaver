@@ -33,19 +33,13 @@ class RecipesController extends Controller
         return $this->render('CtsRecipesBundle:Front:search.html.twig', ['hr' => $hours, 'min' => $minutes, 'recipes' => $recipes]);
     }
 
-    public function recipeDescriptionAction()
-    {
-        return $this->render('CtsRecipesBundle:Front:recipeDescription.html.twig');
-    }
-
-    public function makeFoodAction()
+    public function makeFoodAction($id)
     {
         return $this->render('CtsRecipesBundle:Front:makeFood.html.twig');
     }
 
-    public function clickedRecipeAction($id)
-    {
+    public function clickedRecipeAction($id) {
         $recipe = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe')->findOneById($id);
-        return $this->render('CtsRecipesBundle:Front:test.html.twig', ['recipe' => $recipe]);
+        return $this->render('CtsRecipesBundle:Front:recipeDescription.html.twig', ['recipe' => $recipe]);
     }
 }
