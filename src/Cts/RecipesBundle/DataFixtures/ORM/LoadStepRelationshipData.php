@@ -18,28 +18,28 @@ class LoadStepRelationshipData extends AbstractFixture implements OrderedFixture
 	{
 
 		$step_rel = new StepRelationship();
-		$step_rel->setRecipeStepId($this->getReference('soupstep5')->getId());
+		$step_rel->setRecipeStepId($this->getReference('firststep5')->getId());
 		$step_rel->setParentId(null);
 		$em->persist($step_rel);
 
 		$step_rel = new StepRelationship();
-		$step_rel->setRecipeStepId($this->getReference('soupstep4')->getId());
-		$step_rel->setParentId($this->getReference('soupstep5')->getId());
+		$step_rel->setRecipeStepId($this->getReference('firststep4')->getId());
+		$step_rel->setParentId($this->getReference('firststep5')->getId());
 		$em->persist($step_rel);
 
 		$step_rel = new StepRelationship();
-		$step_rel->setRecipeStepId($this->getReference('soupstep3')->getId());
-		$step_rel->setParentId($this->getReference('soupstep4')->getId());
+		$step_rel->setRecipeStepId($this->getReference('firststep3')->getId());
+		$step_rel->setParentId($this->getReference('firststep4')->getId());
 		$em->persist($step_rel);
 
 		$step_rel = new StepRelationship();
-		$step_rel->setRecipeStepId($this->getReference('soupstep2')->getId());
-		$step_rel->setParentId($this->getReference('soupstep3')->getId());
+		$step_rel->setRecipeStepId($this->getReference('firststep2')->getId());
+		$step_rel->setParentId($this->getReference('firststep3')->getId());
 		$em->persist($step_rel);
 
 		$step_rel = new StepRelationship();
-		$step_rel->setRecipeStepId($this->getReference('soupstep1')->getId());
-		$step_rel->setParentId($this->getReference('soupstep2')->getId());
+		$step_rel->setRecipeStepId($this->getReference('firststep1')->getId());
+		$step_rel->setParentId($this->getReference('firststep2')->getId());
 		$em->persist($step_rel);
 
 		$em->flush();
