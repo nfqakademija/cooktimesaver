@@ -4557,8 +4557,6 @@ header .fb-container {
     color: #d44848;
     font-size: 1.9em;
     font-weight: 600; }
-  #search-results-container div :first-child .result {
-    margin-left: 0; }
   #search-results-container .result {
     width: 200px;
     height: 300px;
