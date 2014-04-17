@@ -17,14 +17,16 @@ class RecipesController extends Controller
     public function searchAction(Request $request)
     {
         $hours = $request->query->get('hours');
-        $hours = $hours? $hours : 0;
+        $hours = $hours? $hours : '00';
         $minutes = $request->query->get('minutes');
         $minutes = $minutes? $minutes : 20;
+
+        $sum_minutes = ((int) $hours) * 60 + ((int) $minutes);
 
         $repo = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe');
         $query = $repo->createQueryBuilder('recipe')
                         ->where('recipe.time < :time')
-                        ->setParameter('time', $minutes)
+                        ->setParameter('time', $sum_minutes)
                         ->orderBy('recipe.time', 'ASC')
                         ->getQuery();
         $recipes = $query->getResult();
