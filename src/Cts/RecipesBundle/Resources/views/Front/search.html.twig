@@ -1,7 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block header %}
-    <a href="{{ path('cts_recipes_homepage') }}"><h1>CookTimeSaver | <span>{{ hr }}:{{ min }}</span></h1></a>
+    <header>
+        <a href="{{ path('cts_recipes_homepage') }}"><h1>CookTimeSaver | <span>{{ hr }}:{{ min }}</span></h1></a>
+    </header>
 {% endblock %}
 
 {% block body %}
