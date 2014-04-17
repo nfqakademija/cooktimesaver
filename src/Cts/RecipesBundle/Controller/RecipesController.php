@@ -37,7 +37,8 @@ class RecipesController extends Controller
 
     public function makeFoodAction($id)
     {
-        return $this->render('CtsRecipesBundle:Front:makeFood.html.twig', ['id' => $id]);
+        $recipe = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe')->findOneById($id);
+        return $this->render('CtsRecipesBundle:Front:makeFood.html.twig', ['recipe' => $recipe]);
     }
 
     public function clickedRecipeAction($id) {

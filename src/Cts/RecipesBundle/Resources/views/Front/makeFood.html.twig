@@ -5,11 +5,16 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Makaronai su padažu</h1>
+    <h1 class="text-center">{{ recipe.title }}</h1>
 <div id="make-recipe">
     <div class="container">
         <div class="row">
             <h1 class="text-center">Gaminti liko: 19:59</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Vykdomi žingsniai:</h1>
+            </div>
         </div>
         <div class="panel panel-warning recipe-step">
             <div class="panel-heading">
@@ -51,6 +56,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Tuo pačiu metu galite padaryti:</h1>
             </div>
         </div>
         <div class="panel panel-success recipe-step">

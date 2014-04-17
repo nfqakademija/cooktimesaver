@@ -4500,6 +4500,9 @@ header .fb-container {
   #search .heading .heading-input h3 {
     font-size: 1.5em; }
 
+#have-in-fridge, #not-eating {
+  max-width: 350px; }
+
 .searchpage-time-chooser {
   width: 15.5em;
   margin: 2em auto;
@@ -4555,6 +4558,8 @@ header .fb-container {
     color: #d44848;
     font-size: 1.9em;
     font-weight: 600; }
+  #search-results-container div :first-child .result {
+    margin-left: 0; }
   #search-results-container .result {
     width: 200px;
     height: 300px;

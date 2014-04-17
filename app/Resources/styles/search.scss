@@ -17,6 +17,11 @@
   }
 }
 
+#have-in-fridge,
+#not-eating {
+  max-width: 350px;
+}
+
 .searchpage-time-chooser {
   width: 15.5em;
   margin: 2em auto;
@@ -81,6 +86,14 @@
     color: #d44848;
     font-size: 1.9em;
     font-weight: 600;
+  }
+
+  div {
+    :first-child {
+      .result {
+        margin-left: 0;
+      }
+    }
   }
 
   .result {
