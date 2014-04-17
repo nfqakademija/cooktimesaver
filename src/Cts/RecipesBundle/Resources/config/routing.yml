@@ -13,3 +13,7 @@ cts_recipe_description:
 cts_recipe_show:
     path: /make_food/{id}
     defaults: { _controller: CtsRecipesBundle:Recipes:makeFood }
+
+cts_search_results:
+    path: /search_results/{hours}/{minutes}
+    defaults: { _controller: CtsRecipesBundle:Recipes:searchResults }

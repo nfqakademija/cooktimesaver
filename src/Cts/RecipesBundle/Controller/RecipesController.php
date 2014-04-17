@@ -37,11 +37,30 @@ class RecipesController extends Controller
 
     public function makeFoodAction($id)
     {
-        return $this->render('CtsRecipesBundle:Front:makeFood.html.twig');
+        return $this->render('CtsRecipesBundle:Front:makeFood.html.twig', ['id' => $id]);
     }
 
     public function clickedRecipeAction($id) {
         $recipe = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe')->findOneById($id);
         return $this->render('CtsRecipesBundle:Front:recipeDescription.html.twig', ['recipe' => $recipe]);
+    }
+
+    public function searchResultsAction($hours, $minutes) {
+        // Imituojam ilga load:
+        usleep(500000);
+        $hours = $hours? $hours : '00';
+        $minutes = $minutes? $minutes : 20;
+
+        $sum_minutes = ((int) $hours) * 60 + ((int) $minutes);
+
+        $repo = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe');
+        $query = $repo->createQueryBuilder('recipe')
+            ->where('recipe.time < :time')
+            ->setParameter('time', $sum_minutes)
+            ->orderBy('recipe.time', 'ASC')
+            ->getQuery();
+        $recipes = $query->getResult();
+
+        return $this->render('CtsRecipesBundle:Front:searchResults.html.twig', ['recipes' => $recipes]);
     }
 }

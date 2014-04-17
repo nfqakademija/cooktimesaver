@@ -1,0 +1,72 @@
+<div class="container">
+    <h1>Populiariausi</h1>
+    <div class="row">
+        {% for rcp in recipes %}
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="result">
+                    <img src="{{ rcp.img }}" alt="{{ rcp.title }}" class="result-img"/>
+                    <div class="result-description clearfix">
+                        <div class="icon-space">
+                            <img src="{{ asset('assets/images/cook_icon.png') }}" alt="{{ rcp.title }}" />
+                        </div>
+                        <div class="result-title">
+                            <a href="#" data-recipe-id="{{ rcp.id }}">{{ rcp.title }}</a>
+                        </div>
+                    </div>
+                    <div class="result-time-required">
+                        <img src="{{ asset('assets/images/clock_icon.png') }}" alt="Laikas" />
+                           <span>
+                             {% if ((rcp.time / 60)|round(0, 'floor')|length == 1) %}
+                                 {% set hours_start = "0" %}
+                             {% else %}
+                                 {% set hours_start = "" %}
+                             {% endif %}
+                               {% if ((rcp.time % 60)|length == 1) %}
+                                   {% set mins_start = "0" %}
+                               {% else %}
+                                   {% set mins_start = "" %}
+                               {% endif %}
+                               {{ hours_start }}{{ (rcp.time / 60)|round(0, 'floor') }}:{{ mins_start }}{{ (rcp.time % 60) }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="container">
+    <h1>Greičiausiai paruošiami</h1>
+    <div class="row">
+        {% for rcp in recipes %}
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="result">
+                    <img src="{{ rcp.img }}" alt="{{ rcp.title }}" class="result-img"/>
+                    <div class="result-description clearfix">
+                        <div class="icon-space">
+                            <img src="{{ asset('assets/images/cook_icon.png') }}" alt="{{ rcp.title }}" />
+                        </div>
+                        <div class="result-title">
+                            <a href="#">{{ rcp.title }}</a>
+                        </div>
+                    </div>
+                    <div class="result-time-required">
+                        <img src="{{ asset('assets/images/clock_icon.png') }}" alt="Laikas" />
+                        <span>
+                             {% if ((rcp.time / 60)|round(0, 'floor')|length == 1) %}
+                                {% set hours_start = "0" %}
+                                    {% else %}
+                                    {% set hours_start = "" %}
+                             {% endif %}
+                             {% if ((rcp.time % 60)|length == 1) %}
+                                 {% set mins_start = "0" %}
+                                    {% else %}
+                                 {% set mins_start = "" %}
+                             {% endif %}
+                            {{ hours_start }}{{ (rcp.time / 60)|round(0, 'floor') }}:{{ mins_start }}{{ (rcp.time % 60) }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

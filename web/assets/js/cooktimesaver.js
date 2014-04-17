@@ -14,7 +14,6 @@ $(function () {
     time_input.bind("keyup", function () {
         var dhis = $(this);
         var value = parseInt(dhis.val());
-        console.log(value);
         if ((value < 0) || (value > 59)) {
             dhis.val('00');
             this.select();
@@ -37,7 +36,7 @@ $(function () {
         return false;
     });
 
-    $('.result-title a').click(function (e) {
+    $('#search-results-container').on('click','.result-title a',function (e) {
         e.preventDefault();
         var recipe_id = $(this).data('recipe-id');
         $.ajax({
@@ -52,4 +51,26 @@ $(function () {
             }
         });
     });
+});
+
+function updateSearchResults(hours, minutes) {
+    var result_container = $('#search-results-container');
+    result_container.append('<div class="search-ajax-loading"></div>');
+    $.ajax({
+        type: "POST",
+        url: "search_results/"+hours+"/"+minutes,
+        data: '',
+        cache: false,
+        success: function (data) {
+
+            result_container.html(data);
+        }
+    });
+}
+
+$('#search-button').click(function(e) {
+    e.preventDefault();
+    var hrs = $('.time-chooser-hours input').val();
+    var mins = $('.time-chooser-mins input').val();
+    updateSearchResults(hrs, mins);
 });
