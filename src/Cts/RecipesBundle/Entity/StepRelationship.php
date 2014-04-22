@@ -12,7 +12,8 @@ class StepRelationship
 
 {
     /**
-     * @ORM\ManyToMany(targetEntity="RecipeStep", mappedBy="step_relationships")
+     * @ORM\OneToOne(targetEntity="RecipeStep", inversedBy="step_relationships")
+     * @ORM\JoinColumn(name="recipe_step_id", referencedColumnName="id")
      */
     private $recipe_step;
 
@@ -35,7 +36,7 @@ class StepRelationship
 
     public function __construct()
     {
-        $this->recipe_step = new ArrayCollection();
+        //$this->recipe_step = new ArrayCollection();
     }
 
     /**
@@ -57,7 +58,6 @@ class StepRelationship
     public function setRecipeStepId($recipeStepId)
     {
         $this->recipe_step_id = $recipeStepId;
-
         return $this;
     }
 
@@ -80,7 +80,6 @@ class StepRelationship
     public function setParentId($parentId)
     {
         $this->parent_id = $parentId;
-
         return $this;
     }
 
@@ -102,8 +101,7 @@ class StepRelationship
      */
     public function addRecipeStep(\Cts\RecipesBundle\Entity\recipe_step $recipeStep)
     {
-        $this->recipe_step[] = $recipeStep;
-
+        $this->recipe_step = $recipeStep;
         return $this;
     }
 
