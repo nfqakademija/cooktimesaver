@@ -88,7 +88,6 @@
     font-weight: 600;
   }
 
-
   .result {
     width: 200px;
     height: 300px;
@@ -192,4 +191,9 @@
   top: 0;
   position: absolute;
   background: url('/assets/images/ajax-loading.gif') no-repeat center center rgba(0, 0, 0, 0.9);
+}
+
+.not-found-text {
+  color: #B8B8B8;
+  font-weight: bold;
 }

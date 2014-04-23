@@ -17,3 +17,7 @@ cts_recipe_show:
 cts_search_results:
     path: /search_results/{hours}/{minutes}
     defaults: { _controller: CtsRecipesBundle:Recipes:searchResults }
+
+cts_json_tags:
+    path: /ajax_autocomplete
+    defaults: { _controller: CtsRecipesBundle:Recipes:foodTags, format: json }

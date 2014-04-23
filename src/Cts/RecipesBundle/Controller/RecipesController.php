@@ -64,4 +64,18 @@ class RecipesController extends Controller
 
         return $this->render('CtsRecipesBundle:Front:searchResults.html.twig', ['recipes' => $recipes]);
     }
+
+    public function foodTagsAction() {
+        $tags = array();
+
+        $tags['food'] = array(
+            array('id' => 0, 'title' => 'Bulvė'),
+            array('id' => 1, 'title' => 'Morka'),
+            array('id' => 2, 'title' => 'Paprika')
+        );
+
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($tags));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
 }

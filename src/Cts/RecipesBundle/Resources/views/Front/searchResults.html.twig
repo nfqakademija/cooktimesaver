@@ -1,6 +1,11 @@
 <div class="container">
     <h1>Populiariausi</h1>
     <div class="row">
+        {% if recipes|length == 0 %}
+        <div class="col-md-12">
+            <span class="not-found-text">Receptų, atitinkančių jūsų kriterijus rasti nepavyko.</span>
+        </div>
+        {% else %}
         {% for rcp in recipes %}
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="result">
@@ -32,11 +37,17 @@
                 </div>
             </div>
         {% endfor %}
+        {% endif %}
     </div>
 </div>
 <div class="container">
     <h1>Greičiausiai paruošiami</h1>
     <div class="row">
+        {% if recipes|length == 0 %}
+        <div class="col-md-12">
+            <span class="not-found-text">Receptų, atitinkančių jūsų kriterijus rasti nepavyko.</span>
+        </div>
+        {% else %}
         {% for rcp in recipes %}
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="result">
@@ -68,5 +79,6 @@
                 </div>
             </div>
         {% endfor %}
+        {% endif %}
     </div>
 </div>

@@ -6,6 +6,11 @@
     </header>
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}">
+{% endblock %}
+
 {% block body %}
     <div id="search">
         <div class="heading container">
@@ -59,6 +64,40 @@
     <script>
         $(function() {
             updateSearchResults({{ hr }}, {{ min }});
+        });
+    </script>
+    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+    <script>
+        function tagFormatResult(food) {
+            var markup = "<div class='food-title'>" + food.title + "</div>";
+            return markup;
+        }
+
+        function tagFormatSelection(food) {
+            return food.title;
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#have-in-fridge, #not-eating').select2({
+                multiple: true,
+                minimumInputLength: 2,
+                ajax: {
+                    url: "ajax_autocomplete",
+                    dataType: 'json',
+                    data: function (term, page) {
+                        return {
+                            q: term
+                        };
+                    },
+                    results: function (data, page) {
+                        return {results: data.food};
+                    }
+                },
+                formatResult: tagFormatResult,
+                formatSelection: tagFormatSelection,
+                dropdownCssClass: "bigdrop"
+            });
         });
     </script>
 {% endblock %}
