@@ -7,13 +7,13 @@ cts_search_page:
     defaults: { _controller: CtsRecipesBundle:Recipes:search }
 
 cts_recipe_description:
-    path: /recipe_description
-    defaults: { _controller: CtsRecipesBundle:Recipes:recipeDescription}
-    
-cts_recipe_show:
-    path: /make_food
-    defaults: { _controller: CtsRecipesBundle:Recipes:makeFood}
+    path: /recipe_description/{id}
+    defaults: { _controller: CtsRecipesBundle:Recipes:clickedRecipe }
 
-cts_test:
-    path: /get_steps/{recipeId}/{completedStepId}
-    defaults: { _controller: CtsRecipesBundle:Steps:getSteps, completedStepId:0 }
+cts_recipe_show:
+    path: /make_food/{id}
+    defaults: { _controller: CtsRecipesBundle:Recipes:makeFood }
+
+cts_search_results:
+    path: /search_results/{hours}/{minutes}
+    defaults: { _controller: CtsRecipesBundle:Recipes:searchResults }

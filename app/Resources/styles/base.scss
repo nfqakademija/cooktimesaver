@@ -2,6 +2,11 @@ body {
   font-family: $font-stack;
   background-color: #000;
   color: #fff;
+  background: url(/assets/images/bg-image.png) no-repeat top fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 header {
@@ -27,11 +32,7 @@ header {
 
 
 #main-container {
-  background: url(/assets/images/bg-image.png) no-repeat top fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+
 }
 
 textarea, input {
@@ -43,7 +44,7 @@ footer {
   color: white;
   width: 100%;
   text-align: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
   border-top: 3px solid #d44848;
   a {
     color: white;

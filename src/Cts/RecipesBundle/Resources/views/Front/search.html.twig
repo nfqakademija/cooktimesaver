@@ -1,7 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block header %}
-    <a href="{{ path('cts_recipes_homepage') }}"><h1>CookTimeSaver | <span>{{ hr }}:{{ min }}</span></h1></a>
+    <header>
+        <a href="{{ path('cts_recipes_homepage') }}"><h1>CookTimeSaver | <span>{{ hr }}:{{ min }}</span></h1></a>
+    </header>
 {% endblock %}
 
 {% block body %}
@@ -15,7 +17,7 @@
                                 val
                             </div>
                             <input name="hours" placeholder="00" value="{{ hr }}" maxlength="2"
-                                   autocomplete="off"/>
+                                   autocomplete="off" class="time-input"/>
                         </div>
                         <span>:</span>
 
@@ -24,7 +26,7 @@
                                 min
                             </div>
                             <input name="minutes" placeholder="20" value="{{ min }}" maxlength="2"
-                                   autocomplete="off"/>
+                                   autocomplete="off" class="time-input"/>
                         </div>
                     </div>
                 </div>
@@ -42,57 +44,21 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-primary" id="search-button">Ieškoti</button>
+                </div>
+            </div>
 
         </div>
-        <div id="search-results-container">
-            <div class="container">
-            <h1>Populiariausi</h1>
-            <div class="row">
-                {% for y in range(1, 4) %}
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="result">
-                        <img src="{{ asset('assets/images/test_images/product.png') }}" alt="Patiekalas" class="result-img"/>
-                        <div class="result-description clearfix">
-                            <div class="icon-space">
-                                <img src="{{ asset('assets/images/cook_icon.png') }}" alt="Recepto pavadinimas" />
-                            </div>
-                            <div class="result-title">
-                                <a href="#">Aštri sriuba su pomidorais ir pupelėmis</a>
-                            </div>
-                        </div>
-                        <div class="result-time-required">
-                            <img src="{{ asset('assets/images/clock_icon.png') }}" alt="Laikas" />
-                            <span>00:12</span>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            </div>
-            <div class="container">
-            <h1>Greičiausiai paruošiami</h1>
-            <div class="row">
-                {% for y in range(1, 4) %}
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="result">
-                            <img src="{{ asset('assets/images/test_images/product.png') }}" alt="Patiekalas" class="result-img"/>
-                            <div class="result-description clearfix">
-                                <div class="icon-space">
-                                    <img src="{{ asset('assets/images/cook_icon.png') }}" alt="Recepto pavadinimas" />
-                                </div>
-                                <div class="result-title">
-                                    <a href="#">Aštri sriuba su pomidorais ir pupelėmis</a>
-                                </div>
-                            </div>
-                            <div class="result-time-required">
-                                <img src="{{ asset('assets/images/clock_icon.png') }}" alt="Laikas" />
-                                <span>00:12</span>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-            </div>
-        </div>
+        <div id="search-results-container"></div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function() {
+            updateSearchResults({{ hr }}, {{ min }});
+        });
+    </script>
 {% endblock %}

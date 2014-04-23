@@ -16,8 +16,30 @@
     color: #282828;
     font-size: 0.9em;
     margin-top: 1em;
+    text-align: left;
+
+    .row {
+      div:first-child {
+        font-size: 1.5em;
+      }
+    }
   }
+
   .step-description {
     color: #000;
   }
+
+  .recipe-step-img {
+    max-width: 285px;
+    width: 100%;
+  }
+}
+
+.steps-block-title {
+  font-size: 2em;
+  color: #d44848;
+}
+
+#start-clock h1 {
+  display: none;
 }

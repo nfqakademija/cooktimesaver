@@ -4362,7 +4362,12 @@ button.close {
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #000;
-  color: #fff; }
+  color: #fff;
+  background: url(/assets/images/bg-image.png) no-repeat top fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
 
 header {
   width: 100%;
@@ -4380,12 +4385,6 @@ header {
     color: #fff !important;
     text-decoration: none !important; }
 
-#main-container {
-  background: url(/assets/images/bg-image.png) no-repeat top fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }
 
 textarea, input {
   outline: none; }
@@ -4395,7 +4394,7 @@ footer {
   color: white;
   width: 100%;
   text-align: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
   border-top: 3px solid #d44848; }
   footer a {
     color: white; }
@@ -4435,7 +4434,7 @@ header .fb-container {
 
 .front-page-time-chooser {
   margin: 2em auto;
-  width: 26em; }
+  width: 22em; }
   .front-page-time-chooser input {
     width: 1.2em;
     background: transparent;
@@ -4500,6 +4499,9 @@ header .fb-container {
   #search .heading .heading-input h3 {
     font-size: 1.5em; }
 
+#have-in-fridge, #not-eating {
+  max-width: 350px; }
+
 .searchpage-time-chooser {
   width: 15.5em;
   margin: 2em auto;
@@ -4549,7 +4551,8 @@ header .fb-container {
   min-height: 500px;
   margin-top: 2em;
   border-top: 4px solid #d44848;
-  padding: 2em 0; }
+  padding: 2em 0;
+  position: relative; }
   #search-results-container h1 {
     color: #d44848;
     font-size: 1.9em;
@@ -4567,7 +4570,9 @@ header .fb-container {
     #search-results-container .result .result-img {
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
-      display: block; }
+      display: block;
+      width: 200px;
+      height: 165px; }
     #search-results-container .result .result-description {
       padding: 15px; }
       #search-results-container .result .result-description .icon-space {
@@ -4608,9 +4613,23 @@ header .fb-container {
   .recipe-description a {
     width: 200px;
     height: 40px;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    padding-top: 8px; }
   .recipe-description .recipe-thumbnail {
     margin-bottom: 1em; }
+
+#search-button {
+  margin-top: 1em;
+  font-size: 1.3em;
+  padding: 0.4em 2em; }
+
+.search-ajax-loading {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  top: 0;
+  position: absolute;
+  background: url('/assets/images/ajax-loading.gif') no-repeat center center rgba(0, 0, 0, 0.9); }
 
 #make-recipe {
   background-color: #eeeeee;
@@ -4625,6 +4644,19 @@ header .fb-container {
 .recipe-step .recipe-step-timepanel {
   color: #282828;
   font-size: 0.9em;
-  margin-top: 1em; }
+  margin-top: 1em;
+  text-align: left; }
+  .recipe-step .recipe-step-timepanel .row div:first-child {
+    font-size: 1.5em; }
 .recipe-step .step-description {
   color: #000; }
+.recipe-step .recipe-step-img {
+  max-width: 285px;
+  width: 100%; }
+
+.steps-block-title {
+  font-size: 2em;
+  color: #d44848; }
+
+#start-clock h1 {
+  display: none; }

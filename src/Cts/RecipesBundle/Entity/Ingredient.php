@@ -29,7 +29,7 @@ class Ingredient
 
     public function __construct()
     {
-        $this->recipe_ingredients_needed = new ArrayCollection();
+        $this->recipe_ingredients = new ArrayCollection();
     }
 
     /**
