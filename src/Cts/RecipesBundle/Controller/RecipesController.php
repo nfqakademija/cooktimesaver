@@ -3,6 +3,7 @@
 namespace Cts\RecipesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -68,14 +69,12 @@ class RecipesController extends Controller
     public function foodTagsAction() {
         $tags = array();
 
-        $tags['food'] = array(
-            array('id' => 0, 'title' => 'Bulvė'),
-            array('id' => 1, 'title' => 'Morka'),
-            array('id' => 2, 'title' => 'Paprika')
-        );
+        $ingredients = $this->getDoctrine()->getRepository('CtsRecipesBundle:Ingredient')->findAll();
 
-        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($tags));
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
+        foreach($ingredients as $ingredient){
+            $tags['food'][] = array('id' => $ingredient->getId(), 'title' => $ingredient->getIngredient());
+        }
+
+        return new JsonResponse($tags);
     }
 }
