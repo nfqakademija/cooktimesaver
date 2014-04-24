@@ -44,14 +44,6 @@ class StepsNode {
         return $this->_value;
     }
 
-    public function setArrayValue($key, $value){
-        $this->_value[$key] = $value;
-    }
-
-    public function getArrayValue($key){
-        return $this->_value[$key];
-    }
-
     public function getParent() {
         return $this->_parent;
     }

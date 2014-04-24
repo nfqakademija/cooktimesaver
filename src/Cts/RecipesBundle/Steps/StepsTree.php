@@ -50,12 +50,8 @@ class StepsTree {
             throw new Exception('A value is required to create a node');
         }
 
-        if(isset($this->_list[$id])){
-            $this->modifyNode($value, $id, $parentId);
-        }else{
-            $node = new StepsNode($value, $id, $parentId);
-            $this->_list[$id] = $node;
-        }
+        $node = new StepsNode($value, $id, $parentId);
+        $this->_list[$id] = $node;
 
         if(isset($parentId) && !isset($this->_list[$parentId])){
             $parentNode = new StepsNode(null, $parentId);
@@ -66,15 +62,6 @@ class StepsTree {
             $this->addChild($parentId, $id);
         }
 
-        return $id;
-    }
-
-    public function modifyNode($value, $id, $parentId){
-        $node = $this->getNode($id);
-        if($node !== false){
-            $node->setValue($value);
-            $node->setParent($parentId);
-        }
         return $id;
     }
 
@@ -129,18 +116,16 @@ class StepsTree {
         return $node->getValue();
     }
 
-    public function getArrayValue($id, $key){
+    public function getLeafs(){
 
-        if(empty($id)) {
-            throw new Exception('A ID is required.');
+        $leafs = Array();
+
+        foreach($this->getTree() as $step){
+            if($step->getChildren() == null){
+                $leafs[] = $step->getValue();
+            }
         }
-
-        if(empty($key)) {
-            throw new Exception('A key is required.');
-        }
-
-        $node = $this->getNode($id);
-        return $node->getArrayValue($key);
-
+        return $leafs;
     }
+
 }

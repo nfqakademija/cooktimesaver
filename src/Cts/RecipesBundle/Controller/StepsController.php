@@ -18,7 +18,9 @@ class StepsController extends Controller {
     public function getStepsAction(Request $request, $recipeId, $completedStepId)
     {
 
-        $response = null;
+        $response             = null;
+        $stepData[]           = Array();
+        $parentNodeChildren[] = Array();
 
         $session = new Session();
         $session->start();
@@ -30,8 +32,7 @@ class StepsController extends Controller {
             throw new Exception("Such recipe doesn't exist");
         }
 
-        $steps      = $recipe->getRecipeStep();
-        $stepData[] = Array();
+        $steps = $recipe->getRecipeStep();
 
         foreach ($steps as $step) {
 
@@ -49,44 +50,37 @@ class StepsController extends Controller {
             $stepTree->createNode($stepData, $stepData['step_id'], $stepData['parent_id']);
         }
 
-        $stepsIterator = new StepsTreeRecursiveIterator($stepTree, new StepsTreeIterator($stepTree->getTree()), true);
-
         if($completedStepId == 0) {
 
             $session->remove('completedSteps');
-            $response = $stepsIterator->getFirstSteps();
+            $response = $stepTree->getLeafs();
 
         } else {
 
-            $currentNode         = $stepTree->getNode($completedStepId);
+            $completedNode = $stepTree->getNode($completedStepId);
 
-            if(empty($currentNode)){
+            if(empty($completedNode)){
                 throw new Exception("Such step doesn't exist");
             }
 
-            $currentNodeParentId = $currentNode->getParent();
-            $parentNode          = $stepTree->getNode($currentNodeParentId);
+            $completedNodeParentId = $completedNode->getParent();
+            $parentNode            = $stepTree->getNode($completedNodeParentId);
 
-            $stepsIdsOfLevel = $stepsIterator->getStepsIdsOfLevel($completedStepId);
+            if(!empty($parentNode)){
+                $parentNodeChildren  = $parentNode->getChildren();
 
-            $sessionStepsStack = $session->get('completedSteps');
-            $sessionStepsStack = (array)$sessionStepsStack;
-            array_push($sessionStepsStack, $completedStepId);
-            $session->set('completedSteps', $sessionStepsStack);
+                $sessionStepsStack = $session->get('completedSteps');
+                $sessionStepsStack = (array)$sessionStepsStack;
+                array_push($sessionStepsStack, $completedStepId);
+                $session->set('completedSteps', $sessionStepsStack);
 
-            $containsInSessionStack = count(array_intersect($stepsIdsOfLevel, $sessionStepsStack)) == count($stepsIdsOfLevel);
+                $containsInSessionStack = count(array_intersect($parentNodeChildren, $sessionStepsStack)) == count($parentNodeChildren);
 
-            if($containsInSessionStack){
-                if($currentNodeParentId){
-                    if($parentNode->getParent() == null){
-                        $response = $parentNode->getValue();
-                    } else {
-                        $nextLevel  = $stepsIterator->getLevelOf($currentNodeParentId);
-                        $response   = $stepsIterator->getStepsOf($nextLevel);
-                    }
-                } else {
-                    //jei nera parentid, receipto pabaiga
+                if($containsInSessionStack){
+                    $response = $parentNode->getValue();
                 }
+            } else {
+                //recepto pabaiga
             }
         }
         return new JsonResponse($response);
