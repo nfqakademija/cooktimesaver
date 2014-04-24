@@ -66,13 +66,23 @@ class RecipesController extends Controller
         return $this->render('CtsRecipesBundle:Front:searchResults.html.twig', ['recipes' => $recipes]);
     }
 
-    public function foodTagsAction() {
+    public function foodTagsAction(Request $request) {
+
         $tags = array();
 
-        $ingredients = $this->getDoctrine()->getRepository('CtsRecipesBundle:Ingredient')->findAll();
+        $searchKeyword = $request->get('q');
 
-        foreach($ingredients as $ingredient){
-            $tags['food'][] = array('id' => $ingredient->getId(), 'title' => $ingredient->getIngredient());
+        $ingredients = $this->getDoctrine()->getRepository('CtsRecipesBundle:Ingredient');
+
+        $query = $ingredients->createQueryBuilder('p')
+            ->where('p.ingredient LIKE :word')
+            ->setParameter('word', $searchKeyword.'%')
+            ->getQuery();
+
+        $searchResults = $query->getResult();
+
+        foreach($searchResults as $searchResult){
+            $tags['food'][] = array('id' => $searchResult->getId(), 'title' => $searchResult->getIngredient());
         }
 
         return new JsonResponse($tags);
