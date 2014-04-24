@@ -3,6 +3,8 @@
 namespace Cts\RecipesBundle\Controller;
 
 use Cts\RecipesBundle\Entity\StepRelationship;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -22,8 +24,12 @@ class StepsController extends Controller {
         $session->start();
 
         $recipe     = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe')->find($recipeId);
-
         $stepTree   = new StepsTree();
+
+        if(empty($recipe)){
+            throw new Exception("Such recipe doesn't exist");
+        }
+
         $steps      = $recipe->getRecipeStep();
         $stepData[] = Array();
 
@@ -52,21 +58,32 @@ class StepsController extends Controller {
 
         } else {
 
-            $currentLevelStepsIds = $stepsIterator->getLevelStepsIdsById($completedStepId);
-            $sessionStepsStack    = $session->get('completedSteps');
+            $currentNode         = $stepTree->getNode($completedStepId);
 
+            if(empty($currentNode)){
+                throw new Exception("Such step doesn't exist");
+            }
+
+            $currentNodeParentId = $currentNode->getParent();
+            $parentNode          = $stepTree->getNode($currentNodeParentId);
+
+            $stepsIdsOfLevel = $stepsIterator->getStepsIdsOfLevel($completedStepId);
+
+            $sessionStepsStack = $session->get('completedSteps');
             $sessionStepsStack = (array)$sessionStepsStack;
-
             array_push($sessionStepsStack, $completedStepId);
             $session->set('completedSteps', $sessionStepsStack);
 
-            $containsInSessionStack = count(array_intersect($currentLevelStepsIds, $sessionStepsStack)) == count($currentLevelStepsIds);
+            $containsInSessionStack = count(array_intersect($stepsIdsOfLevel, $sessionStepsStack)) == count($stepsIdsOfLevel);
 
             if($containsInSessionStack){
-                $parentStepId = $stepTree->getNode($completedStepId)->getParent();
-                if($parentStepId){
-                    $level    = $stepsIterator->getLevelOf($parentStepId);
-                    $response = $stepsIterator->getStepsOf($level);
+                if($currentNodeParentId){
+                    if($parentNode->getParent() == null){
+                        $response = $parentNode->getValue();
+                    } else {
+                        $nextLevel  = $stepsIterator->getLevelOf($currentNodeParentId);
+                        $response   = $stepsIterator->getStepsOf($nextLevel);
+                    }
                 } else {
                     //jei nera parentid, receipto pabaiga
                 }
@@ -74,5 +91,4 @@ class StepsController extends Controller {
         }
         return new JsonResponse($response);
     }
-
-} 
+}

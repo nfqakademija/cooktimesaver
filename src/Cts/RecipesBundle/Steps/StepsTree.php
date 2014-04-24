@@ -4,18 +4,10 @@ namespace Cts\RecipesBundle\Steps;
 
 class StepsTree {
 
-    private $_root;
-
-    private $_size;
-
     private $_list = array();
 
-    public function __construct($buildHead = false) {
-        if($buildHead === true){
-            $this->_root = $this->createNode('root');
-        }
+    public function __construct() {
 
-        $this->_size = 0;
     }
 
     public function getTree() {
@@ -89,9 +81,6 @@ class StepsTree {
     public function addChild($parentId = null, $childId) {
         if(empty($childId)) {
             throw new Exception('A id for the child is required.');
-        }
-        if(empty($parentId)) {
-            $parentId = $this->_root;
         }
 
         if($parentId == $childId){

@@ -77,7 +77,7 @@ class StepsTreeRecursiveIterator extends RecursiveIteratorIterator {
 
     }
 
-    public function getLevelStepsIdsById($id){
+    public function getStepsIdsOfLevel($id){
 
         $this->level = $this->getLevelOf($id);
 
@@ -89,7 +89,6 @@ class StepsTreeRecursiveIterator extends RecursiveIteratorIterator {
             $this->next();
         }
         return $this->stepIds;
-
     }
 
 }
