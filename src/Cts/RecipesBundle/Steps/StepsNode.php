@@ -2,8 +2,6 @@
 
 namespace Cts\RecipesBundle\Steps;
 
-Use Exception;
-
 class StepsNode {
 
     private $_value;
@@ -22,10 +20,8 @@ class StepsNode {
 
     }
 
-    public function setId($id = null) {
-        if(empty($id)) {
-            $this->_id = uniqid();
-        } else {
+    public function setId($id) {
+        if(!empty($id)){
             $this->_id = $id;
         }
     }
@@ -64,13 +60,13 @@ class StepsNode {
         }
     }
 
-    public function anyChildren() {
-        $ret = false;
+    public function hasChildren() {
+        $hasChildren = false;
 
-        if(count($this->_children) > 0) {
-            $ret = true;
+        if(count($this->getChildren()) > 0) {
+            $hasChildren = true;
         }
-        return $ret;
+        return $hasChildren;
     }
 
 }

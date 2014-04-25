@@ -2,16 +2,12 @@
 
 namespace Cts\RecipesBundle\Controller;
 
-use Cts\RecipesBundle\Entity\StepRelationship;
 use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Cts\RecipesBundle\Steps\StepsTreeRecursiveIterator;
 use Cts\RecipesBundle\Steps\StepsTree;
-use Cts\RecipesBundle\Steps\StepsTreeIterator;
 
 class StepsController extends Controller {
 
@@ -26,7 +22,7 @@ class StepsController extends Controller {
         $session->start();
 
         $recipe     = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe')->find($recipeId);
-        $stepTree   = new StepsTree();
+        $stepsTree  = new StepsTree();
 
         if(empty($recipe)){
             throw new Exception("Such recipe doesn't exist");
@@ -35,9 +31,7 @@ class StepsController extends Controller {
         $steps = $recipe->getRecipeStep();
 
         foreach ($steps as $step) {
-
             $stepData = null;
-
             $stepRelationships             = $step->getStepRelationships();
             $stepData['step_id']           = $stepRelationships->getRecipeStepId();
             $stepData['parent_id']         = $stepRelationships->getParentId();
@@ -47,24 +41,24 @@ class StepsController extends Controller {
             $stepData['image']             = $step->getImage();
             $stepData['type']              = $step->getType();
 
-            $stepTree->createNode($stepData, $stepData['step_id'], $stepData['parent_id']);
+            $stepsTree->createNode($stepData, $stepData['step_id'], $stepData['parent_id']);
         }
 
         if($completedStepId == 0) {
 
             $session->remove('completedSteps');
-            $response = $stepTree->getLeafs();
+            $response = $stepsTree->getLeafs();
 
         } else {
 
-            $completedNode = $stepTree->getNode($completedStepId);
+            $completedNode = $stepsTree->getNode($completedStepId);
 
             if(empty($completedNode)){
                 throw new Exception("Such step doesn't exist");
             }
 
             $completedNodeParentId = $completedNode->getParent();
-            $parentNode            = $stepTree->getNode($completedNodeParentId);
+            $parentNode            = $stepsTree->getNode($completedNodeParentId);
 
             if(!empty($parentNode)){
                 $parentNodeChildren  = $parentNode->getChildren();

@@ -6,9 +6,7 @@ class StepsTree {
 
     private $_list = array();
 
-    public function __construct() {
-
-    }
+    private $_leafs = array();
 
     public function getTree() {
         return $this->_list;
@@ -16,12 +14,12 @@ class StepsTree {
 
     public function getNode($id) {
 
-        $ret = false;
+        $node = false;
 
         if(array_key_exists($id,$this->_list) === true) {
-            $ret = $this->_list[$id];
+            $node = $this->_list[$id];
         }
-        return $ret;
+        return $node;
     }
 
     public function setChild($id, $childId) {
@@ -53,16 +51,22 @@ class StepsTree {
         $node = new StepsNode($value, $id, $parentId);
         $this->_list[$id] = $node;
 
-        if(isset($parentId) && !isset($this->_list[$parentId])){
-            $parentNode = new StepsNode(null, $parentId);
-            $this->_list[$parentId] = $parentNode;
-        }
-
         if(isset($parentId) && isset($this->_list[$parentId])){
             $this->addChild($parentId, $id);
         }
 
+        //Adds children later for the steps, if it was not found previously.
+        $this->updateStepsTreeChildren($id, $node);
+
         return $id;
+    }
+
+    public function updateStepsTreeChildren($id, $node){
+        foreach($this->_list as $step){
+            if($step->getParent() == $id){
+                $node->setChild($step->getId());
+            }
+        }
     }
 
     public function addChild($parentId = null, $childId) {
@@ -117,15 +121,12 @@ class StepsTree {
     }
 
     public function getLeafs(){
-
-        $leafs = Array();
-
-        foreach($this->getTree() as $step){
-            if($step->getChildren() == null){
-                $leafs[] = $step->getValue();
+        foreach($this->getTree() as $stepNode){
+            if(!$stepNode->hasChildren()){
+                $this->leafs[] = $stepNode->getValue();
             }
         }
-        return $leafs;
+        return $this->leafs;
     }
 
 }
