@@ -15,9 +15,9 @@ class RecipeStep
      * @ORM\JoinColumn(name="recipe_id", referencedColumnName="id")
      */
     private $recipe;
+
     /**
-     * @ORM\ManyToMany(targetEntity="StepRelationship", inversedBy="recipe_step")
-     * @ORM\JoinTable(name="step_relationships")
+     * @ORM\OneToOne(targetEntity="StepRelationship", mappedBy="recipe_step")
      */
     private $step_relationships;
 
@@ -62,7 +62,7 @@ class RecipeStep
     public function __construct()
     {
         $this->recipe             = new ArrayCollection();
-        $this->step_relationships = new ArrayCollection();
+        //$this->step_relationships = new ArrayCollection();
     }
 
 
@@ -245,7 +245,7 @@ class RecipeStep
      */
     public function addStepRelationship(\Cts\RecipesBundle\Entity\StepRelationship $stepRelationships)
     {
-        $this->step_relationships[] = $stepRelationships;
+        $this->step_relationships = $stepRelationships;
 
         return $this;
     }

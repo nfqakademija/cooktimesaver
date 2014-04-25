@@ -3,6 +3,7 @@
 namespace Cts\RecipesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -63,5 +64,27 @@ class RecipesController extends Controller
         $recipes = $query->getResult();
 
         return $this->render('CtsRecipesBundle:Front:searchResults.html.twig', ['recipes' => $recipes]);
+    }
+
+    public function foodTagsAction(Request $request) {
+
+        $tags = array();
+
+        $searchKeyword = $request->get('q');
+
+        $ingredients = $this->getDoctrine()->getRepository('CtsRecipesBundle:Ingredient');
+
+        $query = $ingredients->createQueryBuilder('p')
+            ->where('p.ingredient LIKE :word')
+            ->setParameter('word', $searchKeyword.'%')
+            ->getQuery();
+
+        $searchResults = $query->getResult();
+
+        foreach($searchResults as $searchResult){
+            $tags['food'][] = array('id' => $searchResult->getId(), 'title' => $searchResult->getIngredient());
+        }
+
+        return new JsonResponse($tags);
     }
 }
