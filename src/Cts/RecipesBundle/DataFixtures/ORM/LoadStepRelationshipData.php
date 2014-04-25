@@ -6,43 +6,28 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Cts\RecipesBundle\Entity\StepRelationship;
 
-class LoadStepRelationshipData extends AbstractFixture implements OrderedFixtureInterface
+class LoadStepRelationshipData extends AbstractBasicData implements OrderedFixtureInterface
 {
 	public function load(ObjectManager $em)
 	{
-		$this->loadSoup($em);
+        $stepsRel = $this->getRecipeFixtures('steps_relationship.csv');
 
-	}
+        foreach ($stepsRel as $item) {
+            $stepRelationship = new StepRelationship();
+            $recipeStep       = $this->getReference($item['STEP']);
 
-	public function loadSoup(ObjectManager $em)
-	{
+            if($item['PARENT'] != 'null'){
+                $parentId = $this->getReference($item['PARENT'])->getId();
+            } else {
+                $parentId = null;
+            }
+            $stepRelationship->setRecipeStepId($recipeStep->getId());
+            $stepRelationship->setParentId($parentId);
+            $stepRelationship->addRecipeStep($recipeStep);
 
-		$step_rel = new StepRelationship();
-		$step_rel->setRecipeStepId($this->getReference('firststep5')->getId());
-		$step_rel->setParentId(null);
-		$em->persist($step_rel);
-
-		$step_rel = new StepRelationship();
-		$step_rel->setRecipeStepId($this->getReference('firststep4')->getId());
-		$step_rel->setParentId($this->getReference('firststep5')->getId());
-		$em->persist($step_rel);
-
-		$step_rel = new StepRelationship();
-		$step_rel->setRecipeStepId($this->getReference('firststep3')->getId());
-		$step_rel->setParentId($this->getReference('firststep4')->getId());
-		$em->persist($step_rel);
-
-		$step_rel = new StepRelationship();
-		$step_rel->setRecipeStepId($this->getReference('firststep2')->getId());
-		$step_rel->setParentId($this->getReference('firststep3')->getId());
-		$em->persist($step_rel);
-
-		$step_rel = new StepRelationship();
-		$step_rel->setRecipeStepId($this->getReference('firststep1')->getId());
-		$step_rel->setParentId($this->getReference('firststep2')->getId());
-		$em->persist($step_rel);
-
-		$em->flush();
+            $em->persist($stepRelationship);
+            $em->flush();
+        }
 	}
 
 	public function getOrder()
@@ -50,6 +35,3 @@ class LoadStepRelationshipData extends AbstractFixture implements OrderedFixture
 		return 5;
 	}
 }
-
-
- ?>

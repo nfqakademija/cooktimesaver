@@ -34,11 +34,6 @@ class StepRelationship
 	 */
 	protected $parent_id;
 
-    public function __construct()
-    {
-        //$this->recipe_step = new ArrayCollection();
-    }
-
     /**
      * Get id
      *
@@ -96,10 +91,10 @@ class StepRelationship
     /**
      * Add recipe_step
      *
-     * @param \Cts\RecipesBundle\Entity\recipe_step $recipeStep
+     * @param \Cts\RecipesBundle\Entity\RecipeStep $recipeStep
      * @return step_relationships
      */
-    public function addRecipeStep(\Cts\RecipesBundle\Entity\recipe_step $recipeStep)
+    public function addRecipeStep(\Cts\RecipesBundle\Entity\RecipeStep $recipeStep)
     {
         $this->recipe_step = $recipeStep;
         return $this;
@@ -108,9 +103,9 @@ class StepRelationship
     /**
      * Remove recipe_step
      *
-     * @param \Cts\RecipesBundle\Entity\recipe_step $recipeStep
+     * @param \Cts\RecipesBundle\Entity\RecipeStep $recipeStep
      */
-    public function removeRecipeStep(\Cts\RecipesBundle\Entity\recipe_step $recipeStep)
+    public function removeRecipeStep(\Cts\RecipesBundle\Entity\RecipeStep $recipeStep)
     {
         $this->recipe_step->removeElement($recipeStep);
     }
