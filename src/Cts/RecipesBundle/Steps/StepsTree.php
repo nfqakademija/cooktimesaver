@@ -2,11 +2,9 @@
 
 namespace Cts\RecipesBundle\Steps;
 
-class StepsTree {
+class StepsTree{
 
     private $_list = array();
-
-    private $_leafs = array();
 
     public function getTree() {
         return $this->_list;
@@ -49,6 +47,12 @@ class StepsTree {
         }
 
         $node = new StepsNode($value, $id, $parentId);
+
+/*        $node = $this->get('steps_node');
+        $node->setParameter('value', $value);
+        $node->setParameter('id', $id);
+        $node->setParameter('parent_id', $parentId);*/
+
         $this->_list[$id] = $node;
 
         if(isset($parentId) && isset($this->_list[$parentId])){
@@ -121,12 +125,35 @@ class StepsTree {
     }
 
     public function getLeafs(){
+
+        $leafs = array();
+
         foreach($this->getTree() as $stepNode){
             if(!$stepNode->hasChildren()){
-                $this->leafs[] = $stepNode->getValue();
+                $leafs[] = $stepNode->getValue();
             }
         }
-        return $this->leafs;
+        return $leafs;
     }
 
+    public function buildTree($recipe){
+
+        $steps = $recipe->getRecipeStep();
+
+        foreach ($steps as $step) {
+            $stepData = null;
+            $stepRelationships             = $step->getStepRelationships();
+            $stepData['step_id']           = $stepRelationships->getRecipeStepId();
+            $stepData['parent_id']         = $stepRelationships->getParentId();
+            $stepData['description']       = $step->getDescription();
+            $stepData['image']             = $step->getTotalTime();
+            $stepData['total_time_count']  = $step->getTotalTimeCount();
+            $stepData['image']             = $step->getImage();
+            $stepData['type']              = $step->getType();
+
+            $this->createNode($stepData, $stepData['step_id'], $stepData['parent_id']);
+        }
+
+        return $this;
+    }
 }

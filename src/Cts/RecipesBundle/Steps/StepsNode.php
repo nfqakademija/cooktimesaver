@@ -14,8 +14,8 @@ class StepsNode {
 
     public function __construct($value = null, $id = null, $parentId = null) {
 
-        $this->setId($id);
         $this->setValue($value);
+        $this->setId($id);
         $this->setParent($parentId);
 
     }

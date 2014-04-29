@@ -68,3 +68,11 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+services:
+    steps_tree:
+        class:        "Cts\RecipesBundle\Steps\StepsTree"
+
+    steps_handler:
+         class:        "Cts\RecipesBundle\Steps\StepsHandler"
+         arguments:    [ @doctrine.orm.entity_manager, @service_container]
