@@ -4,18 +4,28 @@ namespace Cts\RecipesBundle\Steps;
 
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
-class StepsHandler implements StepsHandlerInterface, ContainerAwareInterface{
-
+class StepsHandler implements StepsHandlerInterface{
+    /**
+     * @var \Doctrine\Common\Persistence\ObjectRepository
+     */
     private $repository;
 
-    private $container;
+    /**
+     * @var StepsTree
+     */
+    private $treeService;
 
-    public function __construct($em, $container) {
+    public function __construct($em) {
         $this->repository = $em->getRepository('CtsRecipesBundle:Recipe');
-        $this->setContainer($container);
+    }
+
+    /**
+     * @param StepsTree $treeService
+     */
+    public function setTreeService($treeService)
+    {
+        $this->treeService = $treeService;
     }
 
     public function getSteps($recipeId, $completedStepId){
@@ -26,16 +36,17 @@ class StepsHandler implements StepsHandlerInterface, ContainerAwareInterface{
             throw new Exception("Such recipe doesn't exist");
         }
 
-        $response = null;
+        $steps = null;
         $session = new Session();
         $session->start();
 
-        $stepsTree = $this->container->get('steps_tree')->buildTree($recipe);
+        $stepsTree = $this->treeService;
+        $stepsTree->buildTree($recipe);
 
         if($completedStepId == 0) {
 
             $session->remove('completedSteps');
-            $response = $stepsTree->getLeafs();
+            $steps = $stepsTree->getLeafs();
 
         } else {
 
@@ -59,17 +70,13 @@ class StepsHandler implements StepsHandlerInterface, ContainerAwareInterface{
                 $containsInSessionStack = count(array_intersect($parentNodeChildren, $sessionStepsStack)) == count($parentNodeChildren);
 
                 if($containsInSessionStack){
-                    $response = $parentNode->getValue();
+                    $steps = $parentNode->getValue();
                 }
             } else {
                 //recepto pabaiga
             }
         }
-        return new JsonResponse($response);
+        return $steps;
     }
 
-    public function setContainer(\Symfony\Component\DependencyInjection\ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }
 }

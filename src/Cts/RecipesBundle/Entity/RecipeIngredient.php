@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="Cts\RecipesBundle\Entity\RecipeIngredientRepository")
+ * @ORM\Entity
  * @ORM\Table(name="recipe_ingredients_needed")
  */
 class RecipeIngredient

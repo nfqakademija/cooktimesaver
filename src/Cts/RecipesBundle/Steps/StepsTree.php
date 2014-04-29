@@ -2,20 +2,24 @@
 
 namespace Cts\RecipesBundle\Steps;
 
+use Cts\RecipesBundle\Entity\Recipe;
+use Cts\RecipesBundle\Entity\RecipeStep;
+use Cts\RecipesBundle\Entity\StepRelationship;
+
 class StepsTree{
 
-    private $_list = array();
+    private $list = array();
 
     public function getTree() {
-        return $this->_list;
+        return $this->list;
     }
 
     public function getNode($id) {
 
         $node = false;
 
-        if(array_key_exists($id,$this->_list) === true) {
-            $node = $this->_list[$id];
+        if(array_key_exists($id,$this->list) === true) {
+            $node = $this->list[$id];
         }
         return $node;
     }
@@ -41,21 +45,19 @@ class StepsTree{
         }
     }
 
-    public function createNode($value, $id = null, $parentId = null) {
+    public function createNode($value) {
         if(!isset($value)) {
             throw new Exception('A value is required to create a node');
         }
 
+        $id       = $value['stepId'];
+        $parentId = $value['parentId'];
+
         $node = new StepsNode($value, $id, $parentId);
 
-/*        $node = $this->get('steps_node');
-        $node->setParameter('value', $value);
-        $node->setParameter('id', $id);
-        $node->setParameter('parent_id', $parentId);*/
+        $this->list[$id] = $node;
 
-        $this->_list[$id] = $node;
-
-        if(isset($parentId) && isset($this->_list[$parentId])){
+        if(isset($parentId) && isset($this->list[$parentId])){
             $this->addChild($parentId, $id);
         }
 
@@ -66,7 +68,7 @@ class StepsTree{
     }
 
     public function updateStepsTreeChildren($id, $node){
-        foreach($this->_list as $step){
+        foreach($this->list as $step){
             if($step->getParent() == $id){
                 $node->setChild($step->getId());
             }
@@ -75,7 +77,7 @@ class StepsTree{
 
     public function addChild($parentId = null, $childId) {
         if(empty($childId)) {
-            throw new Exception('A id for the child is required.');
+            throw new \Exception('A id for the child is required.');
         }
 
         if($parentId == $childId){
@@ -136,24 +138,28 @@ class StepsTree{
         return $leafs;
     }
 
+    /**
+     * @param Recipe $recipe
+     * @return $this
+     */
     public function buildTree($recipe){
 
         $steps = $recipe->getRecipeStep();
 
         foreach ($steps as $step) {
-            $stepData = null;
+            /** @var RecipeStep $step */
+            $stepData = [];
+            /** @var StepRelationship $stepRelationships */
             $stepRelationships             = $step->getStepRelationships();
-            $stepData['step_id']           = $stepRelationships->getRecipeStepId();
-            $stepData['parent_id']         = $stepRelationships->getParentId();
+            $stepData['stepId']            = $stepRelationships->getRecipeStepId();
+            $stepData['parentId']          = $stepRelationships->getParentId();
             $stepData['description']       = $step->getDescription();
             $stepData['image']             = $step->getTotalTime();
-            $stepData['total_time_count']  = $step->getTotalTimeCount();
+            $stepData['totalTimeCount']    = $step->getTotalTimeCount();
             $stepData['image']             = $step->getImage();
             $stepData['type']              = $step->getType();
 
-            $this->createNode($stepData, $stepData['step_id'], $stepData['parent_id']);
+            $this->createNode($stepData);
         }
-
-        return $this;
     }
 }
