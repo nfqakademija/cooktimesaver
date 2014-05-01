@@ -30,9 +30,6 @@ class StepsTree{
 
         if($node !== false) {
             $node->setChild($childId);
-        }else{
-
-            //create node
         }
     }
 
@@ -140,7 +137,6 @@ class StepsTree{
 
     /**
      * @param Recipe $recipe
-     * @return $this
      */
     public function buildTree($recipe){
 

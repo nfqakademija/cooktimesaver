@@ -2,6 +2,7 @@ parameters:
 #    cts_recipes.example.class: Cts\RecipesBundle\Example
     cts_recipes.steps_tree.class: Cts\RecipesBundle\Steps\StepsTree
     cts_recipes.steps_handler.class: Cts\RecipesBundle\Steps\StepsHandler
+    cts_recipes.search_handler.class: Cts\RecipesBundle\Search\SearchHandler
 
 services:
 #    cts_recipes.example:
@@ -16,3 +17,8 @@ services:
              - @doctrine.orm.entity_manager
          calls:
              - [setTreeService, [@cts_recipes.steps_tree]]
+
+    cts_recipes.search_handler:
+         class: %cts_recipes.search_handler.class%
+         arguments:
+             - @doctrine.orm.entity_manager

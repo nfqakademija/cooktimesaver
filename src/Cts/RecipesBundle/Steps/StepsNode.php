@@ -4,13 +4,13 @@ namespace Cts\RecipesBundle\Steps;
 
 class StepsNode {
 
-    private $_value;
+    private $value;
 
-    private $_parent;
+    private $parent;
 
-    private $_children = array();
+    private $children = array();
 
-    private $_id;
+    private $id;
 
     public function __construct($value = null, $id = null, $parentId = null) {
 
@@ -22,41 +22,41 @@ class StepsNode {
 
     public function setId($id) {
         if(!empty($id)){
-            $this->_id = $id;
+            $this->id = $id;
         }
     }
 
     public function getId() {
-        return $this->_id;
+        return $this->id;
     }
 
     public function setValue($value) {
-        if($this->_value !== $value){
-            $this->_value = $value;
+        if($this->value !== $value){
+            $this->value = $value;
         }
     }
 
     public function getValue() {
-        return $this->_value;
+        return $this->value;
     }
 
     public function getParent() {
-        return $this->_parent;
+        return $this->parent;
     }
 
     public function setParent($parent) {
-        if($this->_parent !== $parent){
-            $this->_parent = $parent;
+        if($this->parent !== $parent){
+            $this->parent = $parent;
         }
     }
 
     public function getChildren() {
-        return $this->_children;
+        return $this->children;
     }
 
     public function setChild($child) {
         if(!empty($child)) {
-            $this->_children[] = $child;
+            $this->children[] = $child;
         }
     }
 

@@ -53,16 +53,15 @@ $(function () {
     });
 });
 
-function updateSearchResults(hours, minutes) {
+function updateSearchResults(hours, minutes, products, antiProducts) {
     var result_container = $('#search-results-container');
     result_container.append('<div class="search-ajax-loading"></div>');
     $.ajax({
         type: "POST",
         url: "search_results/"+hours+"/"+minutes,
-        data: '',
+        data: {products: products, antiProducts: antiProducts},
         cache: false,
         success: function (data) {
-
             result_container.html(data);
         }
     });
@@ -70,9 +69,11 @@ function updateSearchResults(hours, minutes) {
 
 $('#search-button').click(function(e) {
     e.preventDefault();
-    var hrs = $('.time-chooser-hours input').val();
-    var mins = $('.time-chooser-mins input').val();
-    updateSearchResults(hrs, mins);
+    var hrs          = $('.time-chooser-hours input').val();
+    var mins         = $('.time-chooser-mins input').val();
+    var products     = $('#have-in-fridge').val();
+    var antiProducts = $('#not-eating').val();
+    updateSearchResults(hrs, mins, products, antiProducts);
 });
 
 function countDown(hours, mins, secs, container) {
