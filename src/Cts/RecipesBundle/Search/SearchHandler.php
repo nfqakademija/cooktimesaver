@@ -27,12 +27,12 @@ class SearchHandler {
      * @param array $antiProducts
      * @return array
      */
-    public function search($sum_minutes, $products = null, $antiProducts = null){
+    public function search($totalMinutes, $products = null, $antiProducts = null){
 
         if(empty($products[0]) && empty($antiProducts[0])){
             $query = $this->repository->createQueryBuilder('recipe')
                 ->where('recipe.time < :time')
-                ->setParameter('time', $sum_minutes)
+                ->setParameter('time', $totalMinutes)
                 ->orderBy('recipe.time', 'ASC')
                 ->getQuery();
             $recipes = $query->getResult();
@@ -46,6 +46,8 @@ class SearchHandler {
 
             if(empty($products[0]) && !empty($antiProducts[0])){
 
+                var_dump($antiProducts);
+
                 $statement = $connection->prepare("SELECT r.*, SUM(ri.ingredients_id NOT IN (". $antiProductsQuestionMarks .")) as inverse_ing_match_count, COUNT(*) as recipe_ing_count
                                                     FROM recipes r
                                                     JOIN recipe_ingredients_needed ri
@@ -55,11 +57,12 @@ class SearchHandler {
                                                     HAVING inverse_ing_match_count = recipe_ing_count
                                                     ORDER BY r.time ASC");
 
-                $position = 1;
-                $statement->bindValue($position, $sum_minutes);
                 foreach ($antiProducts as $k => $id){
-                    $statement->bindValue(($position+$k+1), $id);
+                    $position = $k+1;
+                    $statement->bindValue(($position), $id);
                 }
+                $position = $position +1;
+                $statement->bindValue($position, $totalMinutes);
                 $statement->execute();
                 $recipes = $statement->fetchAll();
 
@@ -74,13 +77,13 @@ class SearchHandler {
                                                     WHERE r.time < ?
                                                     GROUP BY r.id
                                                     HAVING ing_match_count > 0 AND SUM(ri.ingredients_id in (". $antiProductsQuestionMarks .")) = 0
-                                                    ORDER BY ing_match_count DESC, r.time ASC");
+                                                    ORDER BY r.time ASC");
                 foreach ($products as $k => $id){
                     $position = $k+1;
                     $statement->bindValue(($position), $id);
                 }
                 $position = $position +1;
-                $statement->bindValue($position, $sum_minutes);
+                $statement->bindValue($position, $totalMinutes);
                 foreach ($antiProducts as $k => $id){
                     $statement->bindValue(($position+$k+1), $id);
                 }
