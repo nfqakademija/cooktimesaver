@@ -6,9 +6,9 @@
         </div>
         <div class="col-md-7 col-md-offset-1 recipe-requirements">
             <h2>Reikalingi ingridientai:</h2>
-            <ul>
+            <ul class="ingredients">
                 {% for item in recipe.recipeIngredients %}
-                    <li>{{ item.ingredient.ingredient }} ({{ item.amount }})</li>
+                    <li id="{{ item.ingredient.id }}">{{ item.ingredient.ingredient }} ({{ item.amount }})</li>
                 {% endfor %}
             </ul>
         </div>
@@ -20,3 +20,6 @@
         </div>
     </div>
 </div>
+{% block javascripts %}
+    <script src="{{ asset('assets/js/recipeDescription.js') }}"></script>
+{% endblock %}
