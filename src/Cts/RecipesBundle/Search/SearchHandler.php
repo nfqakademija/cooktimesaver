@@ -77,7 +77,7 @@ class SearchHandler {
                                                     WHERE r.time < ?
                                                     GROUP BY r.id
                                                     HAVING ing_match_count > 0 AND SUM(ri.ingredients_id in (". $antiProductsQuestionMarks .")) = 0
-                                                    ORDER BY r.time ASC");
+                                                    ORDER BY ing_match_count DESC, r.time ASC");
                 foreach ($products as $k => $id){
                     $position = $k+1;
                     $statement->bindValue(($position), $id);
