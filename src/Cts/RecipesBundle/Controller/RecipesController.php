@@ -15,7 +15,6 @@ class RecipesController extends Controller
         return $this->render('CtsRecipesBundle:Front:index.html.twig');
     }
 
-
     public function searchAction(Request $request)
     {
         $hours = $request->query->get('hours');
@@ -23,18 +22,7 @@ class RecipesController extends Controller
         $minutes = $request->query->get('minutes');
         $minutes = $minutes? $minutes : 20;
 
-        $sum_minutes = ((int) $hours) * 60 + ((int) $minutes);
-
-        $repo = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe');
-        $query = $repo->createQueryBuilder('recipe')
-                        ->where('recipe.time < :time')
-                        ->setParameter('time', $sum_minutes)
-                        ->orderBy('recipe.time', 'ASC')
-                        ->getQuery();
-        $recipes = $query->getResult();
-
-        // grazina receptus pagal nustatytas minutes, (valandos itakos neturi) var_dump kad susidarytum nuomone kas vyksta
-        return $this->render('CtsRecipesBundle:Front:search.html.twig', ['hr' => $hours, 'min' => $minutes, 'recipes' => $recipes]);
+        return $this->render('CtsRecipesBundle:Front:search.html.twig', ['hr' => $hours, 'min' => $minutes]);
     }
 
     public function makeFoodAction($id)
@@ -54,11 +42,11 @@ class RecipesController extends Controller
         $hours = $hours? $hours : '00';
         $minutes = $minutes? $minutes : 20;
 
-        $products     = explode(",", $request->get('products'));
-        $antiProducts = explode(",", $request->get('antiProducts'));
-        $sum_minutes  = ((int) $hours) * 60 + ((int) $minutes);
+        $products      = explode(",", $request->get('products'));
+        $antiProducts  = explode(",", $request->get('antiProducts'));
+        $totalMinutes  = ((int) $hours) * 60 + ((int) $minutes);
 
-        $recipes = $this->get('cts_recipes.search_handler')->search($sum_minutes, $products, $antiProducts);
+        $recipes = $this->get('cts_recipes.search_handler')->search($totalMinutes, $products, $antiProducts);
 
         return $this->render('CtsRecipesBundle:Front:searchResults.html.twig', ['recipes' => $recipes]);
     }
