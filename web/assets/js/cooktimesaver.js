@@ -51,6 +51,7 @@ $(function () {
             }
         });
     });
+
 });
 
 function updateSearchResults(hours, minutes, products, antiProducts) {
@@ -75,6 +76,15 @@ $('#search-button').click(function(e) {
     var antiProducts = $('#not-eating').val();
     updateSearchResults(hrs, mins, products, antiProducts);
 });
+
+$('#have-in-fridge, #not-eating, .time-chooser-hours input, .time-chooser-mins input').on("change", function(){
+    var hrs          = $('.time-chooser-hours input').val();
+    var mins         = $('.time-chooser-mins input').val();
+    var products     = $('#have-in-fridge').val();
+    var antiProducts = $('#not-eating').val();
+    updateSearchResults(hrs, mins, products, antiProducts);
+});
+
 
 function countDown(hours, mins, secs, container) {
     var time_left = hours * 3600 +  mins * 60 + secs;
@@ -111,3 +121,4 @@ $('#start-clock button').click(function(e) {
     countDown(0, 20, 15, countdown_cont);
     countdown_cont.parent().show();
 });
+
