@@ -4490,11 +4490,11 @@ header .fb-container {
 #search .heading .heading-input {
   margin-top: 3em; }
   #search .heading .heading-input input {
-    width: 90%;
+    width: 90% !important;
     padding: 0.5em 0.8em;
     border-radius: 5px;
     border: none;
-    background-color: rgba(255, 255, 255, 0.9);
+    background: transparent !important;
     color: #000000; }
   #search .heading .heading-input h3 {
     font-size: 1.5em; }

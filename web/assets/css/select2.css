@@ -9,6 +9,8 @@ Version: 3.4.6 Timestamp: Sat Mar 22 22:30:15 EDT 2014
     zoom: 1;
     *display: inline;
     vertical-align: middle;
+    background: rgba(255,255,255,0.8);
+    border-radius: 5px;
 }
 
 .select2-container,
@@ -460,6 +462,8 @@ disabled look for disabled choices in the results dropdown
 
 .select2-container-multi .select2-choices {
     min-height: 26px;
+    background: transparent;
+    border-radius: 5px;
 }
 
 .select2-container-multi.select2-container-active .select2-choices {
