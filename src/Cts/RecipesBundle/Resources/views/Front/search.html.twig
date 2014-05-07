@@ -76,6 +76,18 @@
         function tagFormatSelection(food) {
             return food.title;
         }
+        function getFoodTag(data){
+            var foodTagResults = [];
+            $.each(data, function (index, item) {
+                foodTagResults.push({
+                    id: item.id,
+                    title: item.title
+                });
+            });
+            return {
+                results: foodTagResults
+            };
+        }
     </script>
     <script>
         $(document).ready(function () {
@@ -91,9 +103,7 @@
                             q: term
                         };
                     },
-                    results: function (data, page) {
-                        return {results: data.food};
-                    }
+                    results: getFoodTag
                 },
                 formatResult: tagFormatResult,
                 formatSelection: tagFormatSelection,

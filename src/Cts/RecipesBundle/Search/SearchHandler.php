@@ -45,9 +45,6 @@ class SearchHandler {
             $antiProductsQuestionMarks = str_repeat('?,', count($antiProducts) - 1) . '?';
 
             if(empty($products[0]) && !empty($antiProducts[0])){
-
-                var_dump($antiProducts);
-
                 $statement = $connection->prepare("SELECT r.*, SUM(ri.ingredients_id NOT IN (". $antiProductsQuestionMarks .")) as inverse_ing_match_count, COUNT(*) as recipe_ing_count
                                                     FROM recipes r
                                                     JOIN recipe_ingredients_needed ri
@@ -67,7 +64,6 @@ class SearchHandler {
                 $recipes = $statement->fetchAll();
 
             } else {
-
                 $statement = $connection->prepare("SELECT r.*,
                                                            SUM(ri.ingredients_id IN (". $productsQuestionMarks .")) as ing_match_count,
                                                            COUNT(*) as recipe_ing_count

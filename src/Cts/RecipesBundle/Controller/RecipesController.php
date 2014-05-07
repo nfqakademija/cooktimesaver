@@ -67,7 +67,7 @@ class RecipesController extends Controller
         $searchResults = $query->getResult();
 
         foreach($searchResults as $searchResult){
-            $tags['food'][] = array('id' => $searchResult->getId(), 'title' => $searchResult->getIngredient());
+            $tags[] = array('id' => $searchResult->getId(), 'title' => $searchResult->getIngredient());
         }
 
         return new JsonResponse($tags);
