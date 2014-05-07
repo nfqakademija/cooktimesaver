@@ -56,12 +56,15 @@ class RecipesController extends Controller
         $tags = array();
 
         $searchKeyword = $request->get('q');
+        $excludedIds = explode(",", $request->get('excludedIds'));
 
         $ingredients = $this->getDoctrine()->getRepository('CtsRecipesBundle:Ingredient');
 
         $query = $ingredients->createQueryBuilder('p')
             ->where('p.ingredient LIKE :word')
+            ->andWhere('p.id NOT IN (:ids)')
             ->setParameter('word', $searchKeyword.'%')
+            ->setParameter('ids', $excludedIds)
             ->getQuery();
 
         $searchResults = $query->getResult();
