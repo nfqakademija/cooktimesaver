@@ -2,7 +2,7 @@ $(function () {
     var time_input = $('.time-input');
 
     var specialKeys = new Array();
-    specialKeys.push(8); // Backspace
+    specialKeys.push(8, 13); // Backspace
     $(document).on('click', '.time-input', function () {
         this.select();
     });
@@ -68,22 +68,29 @@ function updateSearchResults(hours, minutes, products, antiProducts) {
     });
 }
 
+$('.searchpage-time-chooser input').on('keypress', function(e) {
+    if(e.which == 13) {
+        doUSR();
+    }
+});
+
 $('#search-button').click(function(e) {
     e.preventDefault();
-    var hrs          = $('.time-chooser-hours input').val();
-    var mins         = $('.time-chooser-mins input').val();
-    var products     = $('#have-in-fridge').val();
-    var antiProducts = $('#not-eating').val();
-    updateSearchResults(hrs, mins, products, antiProducts);
+    doUSR();
 });
 
 $('#have-in-fridge, #not-eating, .time-chooser-hours input, .time-chooser-mins input').on("change", function(){
+    doUSR();
+});
+
+
+function doUSR() {
     var hrs          = $('.time-chooser-hours input').val();
     var mins         = $('.time-chooser-mins input').val();
     var products     = $('#have-in-fridge').val();
     var antiProducts = $('#not-eating').val();
     updateSearchResults(hrs, mins, products, antiProducts);
-});
+}
 
 
 function countDown(hours, mins, secs, container) {
