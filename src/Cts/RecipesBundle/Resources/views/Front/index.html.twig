@@ -1,44 +1,38 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-<div class="front-page-card">
-<div class="front-page-heading jumbotron">
-    <h1>CookTimeSaver</h1>
-</div>
-<div class="front-page-time-chooser container text-center">
-    <h4 class="text-center">Kiek laiko norite skirti maisto ruošimui?</h4>
-
-    <form method="get" action="{{ path('cts_search_page') }}">
-        <div class="time-chooser clearfix">
-            <div class="time-chooser-hours">
-                <div class="chooser-title text-center">
-                    val
-                </div>
-                <input name="hours" placeholder="00" maxlength="2"
-                       autocomplete="off" class="time-input"/>
-            </div>
-            <span>:</span>
-
-            <div class="time-chooser-mins">
-                <div class="chooser-title text-center">
-                    min
-                </div>
-                <input name="minutes" placeholder="20" maxlength="2"
-                       autocomplete="off" class="time-input"/>
-            </div>
+    <div class="front-page-card">
+        <div class="front-page-heading jumbotron">
+            <h1>CookTimeSaver</h1>
         </div>
-        <h5 class="text-center">
-            Paspaudę "Pradėti paiešką" jūs gausite receptus, kuriuos galėsite
-            paruošti per nurodytą laiko tarpą.
-        </h5>
-        <button type="submit" class="btn btn-primary">Pradėti paiešką</button>
-    </form>
-</div>
-   </div>
-<div class="container front-page-bottom-text text-center">
-        <span>
-            CookTimeSaver - tai aplikacija, kuri padės jums visada, kai maisto ruošimui neturite visos dienos.
-Nesvarbu, ruošiate draugų susitikimą, ar tiesiog prieš darbą norite skaniai pavalgyti. Ir kitas bla bla bla.
-        </span>
-</div>
+        <div class="front-page-time-chooser container text-center">
+            <h4 class="text-center">Kiek laiko norite skirti maisto ruošimui?</h4>
+
+            <form method="get" action="{{ path('cts_search_page') }}">
+                <div class="time-chooser clearfix">
+                    <div class="time-chooser-hours">
+                        <div class="chooser-title text-center">
+                            val
+                        </div>
+                        <input name="hours" placeholder="00" maxlength="2"
+                               autocomplete="off" class="time-input"/>
+                    </div>
+                    <span>:</span>
+
+                    <div class="time-chooser-mins">
+                        <div class="chooser-title text-center">
+                            min
+                        </div>
+                        <input name="minutes" placeholder="20" maxlength="2"
+                               autocomplete="off" class="time-input"/>
+                    </div>
+                </div>
+                <h5 class="text-center">
+                    Paspaudę "Pradėti paiešką" jūs gausite receptus, kuriuos galėsite
+                    paruošti per nurodytą laiko tarpą.
+                </h5>
+                <button type="submit" class="btn btn-primary">Pradėti paiešką</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

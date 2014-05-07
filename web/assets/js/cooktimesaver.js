@@ -35,24 +35,28 @@ $(function () {
     time_input.bind("drop", function () {
         return false;
     });
-
-    $('#search-results-container').on('click','.result-title a',function (e) {
-        e.preventDefault();
-        var recipe_id = $(this).data('recipe-id');
-        $.ajax({
-            type: "POST",
-            url: "recipe_description/"+recipe_id,
-            data: {id: recipe_id},
-            success: function (data) {
-                BootstrapDialog.show({
-                    title: 'Recepto aprašymas',
-                    message: data
-                });
-            }
-        });
-    });
-
 });
+
+
+$('body').on('click','#search-results-container .result',function (e) {
+    e.preventDefault();
+    var recipe_id = $(this).find('a').data('recipe-id');
+    showRecipeDescription(recipe_id);
+});
+
+function showRecipeDescription(recipe_id) {
+    $.ajax({
+        type: "POST",
+        url: "recipe_description/"+recipe_id,
+        data: {id: recipe_id},
+        success: function (data) {
+            BootstrapDialog.show({
+                title: 'Recepto aprašymas',
+                message: data
+            });
+        }
+    });
+}
 
 function updateSearchResults(hours, minutes, products, antiProducts) {
     var result_container = $('#search-results-container');
