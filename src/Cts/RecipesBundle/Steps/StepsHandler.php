@@ -6,18 +6,31 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class StepsHandler implements StepsHandlerInterface{
+
     /**
      * @var \Doctrine\Common\Persistence\ObjectRepository
      */
-    private $repository;
+    private $recipeRepository;
+
+    /**
+     * @var \Doctrine\Common\Persistence\ObjectRepository
+     */
+    private $stepRepository;
 
     /**
      * @var StepsTree
      */
     private $treeService;
 
+    /**
+     * @var \Doctrine\Orm\EntityManager
+     */
+    private $em;
+
     public function __construct($em) {
-        $this->repository = $em->getRepository('CtsRecipesBundle:Recipe');
+        $this->em = $em;
+        $this->recipeRepository = $em->getRepository('CtsRecipesBundle:Recipe');
+        $this->stepRepository   = $em->getRepository('CtsRecipesBundle:RecipeStep');
     }
 
     /**
@@ -28,12 +41,14 @@ class StepsHandler implements StepsHandlerInterface{
         $this->treeService = $treeService;
     }
 
-    public function getSteps($recipeId, $completedStepId){
+    public function getSteps($recipeId, $completedStepId, $time){
 
-        $recipe = $this->repository->find($recipeId);
+        $recipe = $this->recipeRepository->find($recipeId);
 
-        if(empty($recipe)){
-            throw new Exception("Such recipe doesn't exist");
+        if(empty($recipe)) {
+            throw $this->createNotFoundException(
+                'No recipe found for id '.$recipeId
+            );
         }
 
         $steps = null;
@@ -52,9 +67,13 @@ class StepsHandler implements StepsHandlerInterface{
 
             $completedNode = $stepsTree->getNode($completedStepId);
 
-            if(empty($completedNode)){
-                throw new Exception("Such step doesn't exist");
+            if(empty($completedNode)) {
+                throw $this->createNotFoundException(
+                    'No step found for id '.$completedStepId
+                );
             }
+
+            $this->updateCompletedStepStats($completedStepId, $time);
 
             $completedNodeParentId = $completedNode->getParent();
             $parentNode            = $stepsTree->getNode($completedNodeParentId);
@@ -79,4 +98,27 @@ class StepsHandler implements StepsHandlerInterface{
         return $steps;
     }
 
+    /**
+     * @param StepsNode $stepNode
+     * @param Integer $time
+     */
+    private function updateCompletedStepStats($completedStepId, $time){
+
+        /**
+         * @var \Cts\RecipesBundle\Entity\RecipeStep $step
+         */
+        $step = $this->stepRepository->find($completedStepId);
+
+        if(empty($step)) {
+            throw $this->createNotFoundException(
+                'No step found for id '.$completedStepId
+            );
+        }
+
+        if($time != 0){
+            $step->setTotalTime($step->getTotalTime() + $time);
+            $step->setTotalTimeCount($step->getTotalTimeCount() + 1);
+            $this->em->flush();
+        }
+    }
 }

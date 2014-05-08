@@ -10,5 +10,5 @@ namespace Cts\RecipesBundle\Steps;
 
 
 Interface StepsHandlerInterface {
-    public function getSteps($recipeId, $completedStepId);
+    public function getSteps($recipeId, $completedStepId, $time);
 } 

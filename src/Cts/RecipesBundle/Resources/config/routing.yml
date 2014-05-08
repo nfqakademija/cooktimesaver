@@ -23,5 +23,5 @@ cts_json_tags:
     defaults: { _controller: CtsRecipesBundle:Recipes:foodTags, format: json }
     
 cts_get_steps:
-    path: /get_steps/{recipeId}/{completedStepId}
-    defaults: { _controller: CtsRecipesBundle:Steps:getSteps, completedStepId:0 }
+    path: /get_steps/{recipeId}/{completedStepId}/{completedStepTime}
+    defaults: { _controller: CtsRecipesBundle:Steps:getSteps, completedStepId:0, completedStepTime:0 }
