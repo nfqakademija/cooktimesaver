@@ -27,10 +27,16 @@ class StepsHandler implements StepsHandlerInterface{
      */
     private $em;
 
+    /**
+     * @var \Symfony\Component\HttpFoundation\Session
+     */
+    private $session;
+
     public function __construct($em) {
         $this->em = $em;
         $this->recipeRepository = $em->getRepository('CtsRecipesBundle:Recipe');
         $this->stepRepository   = $em->getRepository('CtsRecipesBundle:RecipeStep');
+        $this->session = new Session();
     }
 
     /**
@@ -43,6 +49,7 @@ class StepsHandler implements StepsHandlerInterface{
 
     public function getSteps($recipeId, $completedStepId, $time){
 
+        $steps  = null;
         $recipe = $this->recipeRepository->find($recipeId);
 
         if(empty($recipe)) {
@@ -51,20 +58,13 @@ class StepsHandler implements StepsHandlerInterface{
             );
         }
 
-        $steps = null;
-        $session = new Session();
-        $session->start();
-
         $stepsTree = $this->treeService;
         $stepsTree->buildTree($recipe);
 
         if($completedStepId == 0) {
-
-            $session->remove('completedSteps');
+            $this->session->remove('completedSteps');
             $steps = $stepsTree->getLeafs();
-
         } else {
-
             $completedNode = $stepsTree->getNode($completedStepId);
 
             if(empty($completedNode)) {
@@ -74,21 +74,13 @@ class StepsHandler implements StepsHandlerInterface{
             }
 
             $this->updateCompletedStepStats($completedStepId, $time);
+            $this->addCompletedStepIdToSession($completedStepId);
 
             $completedNodeParentId = $completedNode->getParent();
             $parentNode            = $stepsTree->getNode($completedNodeParentId);
 
             if(!empty($parentNode)){
-                $parentNodeChildren = $parentNode->getChildren();
-
-                $sessionStepsStack = $session->get('completedSteps');
-                $sessionStepsStack = (array)$sessionStepsStack;
-                array_push($sessionStepsStack, $completedStepId);
-                $session->set('completedSteps', $sessionStepsStack);
-
-                $containsInSessionStack = count(array_intersect($parentNodeChildren, $sessionStepsStack)) == count($parentNodeChildren);
-
-                if($containsInSessionStack){
+                if($this->isChildrenContainsInSession($parentNode)){
                     $steps = $parentNode->getValue();
                 }
             } else {
@@ -120,5 +112,31 @@ class StepsHandler implements StepsHandlerInterface{
             $step->setTotalTimeCount($step->getTotalTimeCount() + 1);
             $this->em->flush();
         }
+    }
+
+    /**
+     * @param StepsNode $parentNode
+     * @return bool
+     */
+    private function isChildrenContainsInSession($parentNode){
+
+        $sessionStepsStack = $this->session->get('completedSteps');
+
+        $parentNodeChildren = $parentNode->getChildren();
+        $isChildrenContainsInSession = count(array_intersect($parentNodeChildren, $sessionStepsStack)) == count($parentNodeChildren);
+
+        return $isChildrenContainsInSession;
+    }
+
+    /**
+     * @param Integer $completedStepId
+     */
+    private function addCompletedStepIdToSession($completedStepId){
+
+        $sessionStepsStack = $this->session->get('completedSteps');
+        $sessionStepsStack = (array)$sessionStepsStack;
+        array_push($sessionStepsStack, $completedStepId);
+        $this->session->set('completedSteps', $sessionStepsStack);
+
     }
 }
