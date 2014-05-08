@@ -10,9 +10,8 @@
     <h1 class="text-center">{{ recipe.title }}</h1>
     <div id="make-recipe">
         <div class="container">
-            <div class="row text-center" id="start-clock">
-                <button class="btn btn-primary">Pradėti gaminti</button>
-                <h1 class="text-center">Pagaminsite po: <span></span></h1>
+            <div class="row text-center" id="start-recipe">
+                <button class="btn btn-primary" data-recipe-id="{{ recipe.id }}">Pradėti gaminti</button>
             </div>
             <div id="currently-making-steps">
                 <div class="row">
@@ -20,6 +19,39 @@
                         <h2 class="steps-block-title">Vykdomi žingsniai:</h2>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="panel panel-warning recipe-step">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Išvirti bulves</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <img src="http://lorempixel.com/255/255/food/"
+                                         alt="Išvirti bulves" class="recipe-step-img"/>
+                                    <div class="recipe-step-timepanel text-center-not-lg">
+                                        <img src="{{ asset('assets/images/clock_icon.png') }}" alt="Kiti vartotojai užtruko"/>
+                                        <span>00:07</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row text-center-not-lg">
+                                        <div class="col-md-12">
+                                            <p class="step-description">
+                                                Pastabos kaip išvirti bulves
+                                            </p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="btn btn-danger">Baigti</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="panel panel-warning recipe-step">
                     <div class="panel-heading">
                         <h3 class="panel-title">Išvirti bulves</h3>
@@ -29,25 +61,6 @@
                             <div class="col-md-3 text-center">
                                 <img src="http://lorempixel.com/255/255/food/"
                                      alt="Išvirti bulves" class="recipe-step-img"/>
-
-                                <div class="recipe-step-timepanel">
-                                    <div class="row">
-                                        <div class="col-xs-6 text-left">
-                                            Reikia laiko:
-                                        </div>
-                                        <div class="col-xs-6 text-right">
-                                            15:00
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-6 text-left">
-                                            Tau liko:
-                                        </div>
-                                        <div class="col-xs-6 text-right">
-                                            15:00
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="col-md-9">
                                 <div class="row">
@@ -68,7 +81,7 @@
             <div id="steps-queue">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="steps-block-title">Tuo pačiu metu galite padaryti:</h2>
+                        <h2 class="steps-block-title">Šiuo metu galite pradėti daryti:</h2>
                     </div>
                 </div>
                 <div class="panel panel-success recipe-step">

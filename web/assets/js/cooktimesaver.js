@@ -88,6 +88,31 @@ $('#have-in-fridge, #not-eating, .time-chooser-hours input, .time-chooser-mins i
 });
 
 
+$('#start-recipe button').click(function() {
+    getSteps($(this).data('recipe-id'));
+});
+
+function getSteps(recipe_id, step_id) {
+    if(step_id == undefined)
+        step_id = '';
+
+    var request_url = '../get_steps/'+recipe_id;
+
+    if(step_id != '')
+        request_url += '/' + step_id;
+
+    $.ajax({
+        type: "GET",
+        url: request_url,
+        success: function (data) {
+            console.log(data);
+        }
+    });
+}
+
+
+
+
 function doUSR() {
     var hrs          = $('.time-chooser-hours input').val();
     var mins         = $('.time-chooser-mins input').val();

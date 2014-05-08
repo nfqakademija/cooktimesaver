@@ -9,37 +9,45 @@
   h1{
     color: #000000;
   }
-}
 
-.recipe-step {
-  .recipe-step-timepanel {
-    color: #282828;
-    font-size: 0.9em;
-    margin-top: 1em;
-    text-align: left;
+  .recipe-step {
+    .recipe-step-timepanel {
+      color: #282828;
+      font-size: 0.9em;
+      margin-top: 1em;
+      text-align: left;
 
-    .row {
-      div:first-child {
-        font-size: 1.5em;
+      span {
+        vertical-align: middle;
+        padding-left: 0.3em;
+        font-size: 1.3em;
+        color: #d44848;
       }
+
+      .row {
+        div:first-child {
+          font-size: 1.5em;
+        }
+      }
+    }
+
+    .step-description {
+      color: #000;
+    }
+
+    .recipe-step-img {
+      max-width: 285px;
+      width: 100%;
     }
   }
 
-  .step-description {
-    color: #000;
+  .steps-block-title {
+    font-size: 1.7em;
+    color: #d44848;
   }
 
-  .recipe-step-img {
-    max-width: 285px;
-    width: 100%;
+  #start-clock h1 {
+    display: none;
   }
 }
 
-.steps-block-title {
-  font-size: 2em;
-  color: #d44848;
-}
-
-#start-clock h1 {
-  display: none;
-}
