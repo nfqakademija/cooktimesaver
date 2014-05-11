@@ -2,7 +2,6 @@
   background-color: #eeeeee;
   width: 100%;
   min-height: 500px;
-  margin-top: 2em;
   border-top: 4px solid #d44848;
   padding: 2em 0;
 
@@ -58,4 +57,15 @@
   color: #fff;
   font-size: 4em;
   text-shadow: 4px 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+.make-food-bg {
+  background-size: 100% auto !important;
+}
+
+
+@media screen and (orientation: portrait) {
+  .make-food-bg {
+    background-size: auto 20% !important;
+  }
 }

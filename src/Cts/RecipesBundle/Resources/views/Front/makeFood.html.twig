@@ -10,7 +10,7 @@
     <div class="recipe-title">
         {{ recipe.title }}
     </div>
-    <div id="make-recipe">
+    <div id="make-recipe" data-recipe-image="{{ asset('uploads/recipe_images/large/' ~ recipe.img) }}">
         <div class="container">
             <div class="row text-center" id="start-recipe">
                 <button class="btn btn-primary" data-recipe-id="{{ recipe.id }}">Pradėti gaminti</button>
@@ -177,4 +177,5 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('assets/js/make_food.js') }}"></script>
 {% endblock %}
