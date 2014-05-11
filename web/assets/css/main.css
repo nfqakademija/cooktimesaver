@@ -4725,3 +4725,11 @@ header .fb-container {
     color: #d44848; }
   #make-recipe #start-clock h1 {
     display: none; }
+
+.recipe-title {
+  padding: 120px 0;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  font-size: 4em;
+  text-shadow: 4px 2px 3px rgba(0, 0, 0, 0.7); }

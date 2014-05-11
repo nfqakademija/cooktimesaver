@@ -6,7 +6,7 @@ $(function () {
         $('.ingredients li').each(function(){
             var ingredientId = $(this).attr('id');
             if(products.split(',').indexOf(ingredientId) > -1){
-                $(this).css("color", "green");
+                $(this).css("text-decoration", "underline");
             }
         });
     }

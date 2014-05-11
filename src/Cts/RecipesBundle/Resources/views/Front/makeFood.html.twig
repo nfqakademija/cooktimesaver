@@ -7,7 +7,9 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="text-center">{{ recipe.title }}</h1>
+    <div class="recipe-title">
+        {{ recipe.title }}
+    </div>
     <div id="make-recipe">
         <div class="container">
             <div class="row text-center" id="start-recipe">
@@ -29,8 +31,10 @@
                                 <div class="col-md-3 text-center">
                                     <img src="http://lorempixel.com/255/255/food/"
                                          alt="Išvirti bulves" class="recipe-step-img"/>
+
                                     <div class="recipe-step-timepanel text-center-not-lg">
-                                        <img src="{{ asset('assets/images/clock_icon.png') }}" alt="Kiti vartotojai užtruko"/>
+                                        <img src="{{ asset('assets/images/clock_icon.png') }}"
+                                             alt="Kiti vartotojai užtruko"/>
                                         <span>00:07</span>
                                     </div>
                                 </div>
@@ -50,27 +54,33 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="panel panel-warning recipe-step">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Išvirti bulves</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3 text-center">
-                                <img src="http://lorempixel.com/255/255/food/"
-                                     alt="Išvirti bulves" class="recipe-step-img"/>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p class="step-description">
-                                            Pastabos kaip išvirti bulves
-                                        </p>
+                <div class="col-md-6">
+                    <div class="panel panel-warning recipe-step">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Išvirti bulves</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <img src="http://lorempixel.com/255/255/food/"
+                                         alt="Išvirti bulves" class="recipe-step-img"/>
+
+                                    <div class="recipe-step-timepanel text-center-not-lg">
+                                        <img src="{{ asset('assets/images/clock_icon.png') }}"
+                                             alt="Kiti vartotojai užtruko"/>
+                                        <span>00:07</span>
                                     </div>
-                                    <div class="col-md-12">
-                                        <button class="btn btn-danger">Baigti</button>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row text-center-not-lg">
+                                        <div class="col-md-12">
+                                            <p class="step-description">
+                                                Pastabos kaip išvirti bulves
+                                            </p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="btn btn-danger">Baigti</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -164,4 +174,7 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

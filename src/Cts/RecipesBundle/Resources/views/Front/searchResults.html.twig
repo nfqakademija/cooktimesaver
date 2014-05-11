@@ -9,7 +9,7 @@
         {% for rcp in recipes %}
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="result">
-                    <img src="{{ rcp.img }}" alt="{{ rcp.title }}" class="result-img"/>
+                    <img src="{{ asset('uploads/recipe_images/small/' ~ rcp.img) }}" alt="{{ rcp.title }}" class="result-img"/>
                     <div class="result-description clearfix">
                         <div class="icon-space">
                             <img src="{{ asset('assets/images/cook_icon.png') }}" alt="{{ rcp.title }}" />
@@ -51,7 +51,7 @@
         {% for rcp in recipes %}
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="result">
-                    <img src="{{ rcp.img }}" alt="{{ rcp.title }}" class="result-img"/>
+                    <img src="{{ asset('uploads/recipe_images/small/' ~ rcp.img) }}" alt="{{ rcp.title }}" class="result-img"/>
                     <div class="result-description clearfix">
                         <div class="icon-space">
                             <img src="{{ asset('assets/images/cook_icon.png') }}" alt="{{ rcp.title }}" />
