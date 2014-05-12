@@ -26,17 +26,20 @@ header .fb-container {
     font-weight: 600;
     text-decoration: none;
     text-shadow: 3px 3px 34px rgba(255,255,255,0.5);
-    color: #555 !important;
   }
 }
 
 .front-page-card {
   max-width: 600px;
-  margin: 2em auto;
+  margin: 2em auto 7em auto;
   background-color: rgba(0, 0, 0, 0.5);
   padding-bottom: 2em;
   border-radius: 10px;
   color: #fff;
+
+  .jumbotron {
+    background: transparent;
+  }
 }
 
 .front-page-time-chooser {

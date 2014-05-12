@@ -1,12 +1,18 @@
 /**
  * Created by lukas on 11/05/14.
  */
+
+var timers = {};
+
 $(function() {
+
     var recipe_img = $("#make-recipe").data('recipe-image');
     var recipe_id = $("#make-recipe").data('recipe-id');
 
-    $('body').css('background','url('+recipe_img+') top center').addClass('make-food-bg');
+    $('body').css('background','url('+recipe_img+') top center fixed').addClass('make-food-bg');
     loadSteps(recipe_id);
+
+    clockWork();
 });
 
 // Mygtukas "Pradeti"
@@ -31,14 +37,14 @@ $('#currently-making-steps .steps-container').on('click','.control-button',funct
 });
 
 // Užkraunami žingsniai pagal buvusio ID ir recepto ID
-function loadSteps(recipe_id, step_id) {
+function loadSteps(recipe_id, step_id, time_spent) {
     if(step_id == undefined)
         step_id = '';
 
     var request_url = '../get_steps/'+recipe_id;
 
     if(step_id != '')
-        request_url += '/' + step_id;
+        request_url += '/' + step_id + '/' + time_spent;
 
     $.ajax({
         type: "GET",
@@ -47,7 +53,7 @@ function loadSteps(recipe_id, step_id) {
             var queue_block = $('#steps-queue .steps-container');
             queue_block.append(data).find('.panel-body')
                 .stop().css("background-color", "#FFFED9")
-                .animate({ backgroundColor: "#f7f8fa"}, 1500);;
+                .animate({ backgroundColor: "#f7f8fa"}, 1500);
             checkMakingStepsEmpty();
             checkQueueStepsEmpty();
         }
@@ -59,6 +65,7 @@ function startStep(step_id) {
     var st_html = '<div class="col-md-6" data-step-id="'+step_id+'">';
     st_html += curr_step.html();
     st_html += '</div>';
+    timers[step_id] = 0;
 
     $('#currently-making-steps .steps-container').append(st_html).find('.panel-body')
         .stop().css("background-color", "#FFFED9")
@@ -71,7 +78,8 @@ function startStep(step_id) {
 function endStep(step_id, recipe_id) {
     var curr_step = $('#currently-making-steps .steps-container div[data-step-id="'+step_id+'"]');
     curr_step.fadeOut(1000).remove();
-    loadSteps(recipe_id, step_id);
+    loadSteps(recipe_id, step_id, timers[step_id]);
+    delete timers[step_id];
     checkMakingStepsEmpty();
 }
 
@@ -90,3 +98,14 @@ function checkQueueStepsEmpty() {
         st_container.html('<div class="no-steps">Tam kad galėtumėte pradėti kitus žingsnius, reikia baigti jau pradėtus.</div>');
     }
 }
+
+//Sukam laikrodukus:
+function clockWork() {
+    setTimeout(function () {
+        for (var key in timers) {
+            timers[key] += 1;
+        }
+        clockWork();
+    }, 1000);
+}
+

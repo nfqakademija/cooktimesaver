@@ -112,11 +112,5 @@
 }
 
 .make-food-bg {
-  background-size: 100% auto !important;
-}
-
-@media screen and (orientation: portrait) {
-  .make-food-bg {
-    background-size: auto 20% !important;
-  }
+  background-size: cover !important;
 }

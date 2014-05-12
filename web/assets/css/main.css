@@ -4390,11 +4390,11 @@ textarea, input {
   outline: none; }
 
 footer {
-  padding: 2em 0;
-  color: white;
+  padding: 1em;
+  color: #d8d8d8;
   width: 100%;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  background: rgba(51, 51, 51, 0.9);
   border-top: 3px solid #d44848; }
   footer a {
     color: white; }
@@ -4484,16 +4484,17 @@ header .fb-container {
     text-align: center;
     font-weight: 600;
     text-decoration: none;
-    text-shadow: 3px 3px 34px rgba(255, 255, 255, 0.5);
-    color: #555 !important; }
+    text-shadow: 3px 3px 34px rgba(255, 255, 255, 0.5); }
 
 .front-page-card {
   max-width: 600px;
-  margin: 2em auto;
+  margin: 2em auto 7em auto;
   background-color: rgba(0, 0, 0, 0.5);
   padding-bottom: 2em;
   border-radius: 10px;
   color: #fff; }
+  .front-page-card .jumbotron {
+    background: transparent; }
 
 .front-page-time-chooser {
   margin: 2em auto;
@@ -4770,8 +4771,4 @@ header .fb-container {
   text-shadow: 4px 2px 3px rgba(0, 0, 0, 0.7); }
 
 .make-food-bg {
-  background-size: 100% auto !important; }
-
-@media screen and (orientation: portrait) {
-  .make-food-bg {
-    background-size: auto 20% !important; } }
+  background-size: cover !important; }

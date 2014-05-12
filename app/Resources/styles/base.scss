@@ -40,11 +40,11 @@ textarea, input {
 }
 
 footer {
-  padding: 2em 0;
-  color: white;
+  padding: 1em;
+  color: rgb(216, 216, 216);
   width: 100%;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  background: rgba(51, 51, 51, 0.9);
   border-top: 3px solid #d44848;
   a {
     color: white;
