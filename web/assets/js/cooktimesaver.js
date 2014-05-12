@@ -68,8 +68,14 @@ function updateSearchResults(hours, minutes, products, antiProducts) {
         cache: false,
         success: function (data) {
             result_container.html(data);
+            searchUpdateTitleURL(hours, minutes);
         }
     });
+}
+
+function searchUpdateTitleURL(hours, minutes) {
+    $('header a h1 span').html(hours + ':'+ minutes);
+    window.history.replaceState({},'CookTimeSaver','/app_dev.php/search?hours='+hours+'&minutes='+minutes);
 }
 
 $('.searchpage-time-chooser input').on('keypress', function(e) {
