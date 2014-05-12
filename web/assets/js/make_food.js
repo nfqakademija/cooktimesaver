@@ -13,6 +13,7 @@ $(function() {
     loadSteps(recipe_id);
 
     clockWork();
+    updateMakingStepsClocks();
 });
 
 // Mygtukas "Pradeti"
@@ -67,8 +68,9 @@ function startStep(step_id) {
     st_html += '</div>';
     timers[step_id] = 0;
 
-    $('#currently-making-steps .steps-container').append(st_html).find('.panel-body')
-        .stop().css("background-color", "#FFFED9")
+    var c_mst = $('#currently-making-steps .steps-container');
+    //c_mst.find('.recipe-step-timepanel span').text('0 min.');
+    c_mst.append(st_html).find('.recipe-step-timepanel span').text('0 min.').find('.panel-body').stop().css("background-color", "#FFFED9")
         .animate({ backgroundColor: "#f7f8fa"}, 1500);
     checkMakingStepsEmpty();
     curr_step.remove();
@@ -109,3 +111,12 @@ function clockWork() {
     }, 60000);
 }
 
+function updateMakingStepsClocks() {
+    setTimeout(function() {
+        for (var key in timers) {
+            var curr_step = $('#currently-making-steps .steps-container div[data-step-id="' + key + '"]');
+            curr_step.find('.recipe-step-timepanel span').text(timers[key] + ' min.');
+        }
+        updateMakingStepsClocks();
+    }, 30000);
+}
