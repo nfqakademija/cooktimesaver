@@ -4774,7 +4774,7 @@ header .fb-container {
     border-left-color: #C5C5C5;
     border-right-color: #C5C5C5; }
     #make-recipe #steps-progress .progress-line {
-      width: 50%;
+      width: 2%;
       height: 20px;
       border-radius: 10px;
       border: 1px solid;

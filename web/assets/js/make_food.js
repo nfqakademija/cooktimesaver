@@ -3,6 +3,7 @@
  */
 
 var timers = {};
+var st_done = 0;
 
 $(function() {
 
@@ -82,6 +83,7 @@ function endStep(step_id, recipe_id) {
     curr_step.fadeOut(1000).remove();
     loadSteps(recipe_id, step_id, timers[step_id]);
     delete timers[step_id];
+    updateProgressBar(5);
     checkMakingStepsEmpty();
 }
 
@@ -119,4 +121,13 @@ function updateMakingStepsClocks() {
         }
         updateMakingStepsClocks();
     }, 30000);
+}
+
+function updateProgressBar(st_count) {
+    st_done++;
+    var percentage = (st_done / st_count) * 100;
+    $('#steps-progress .progress-line').animate({
+        width: percentage + "%"
+    }, 800 );
+    $('.progress-row span').text(st_done + '/' + st_count);
 }
