@@ -14,7 +14,7 @@
       color: #282828;
       font-size: 0.9em;
       margin-top: 1em;
-      text-align: left;
+      text-align: center;
 
       span {
         vertical-align: middle;
@@ -31,11 +31,13 @@
     }
 
     .step-description {
-      color: #000;
+      color: #585858;
+      margin-top: 10px;
+      font-weight: bold;
     }
 
     .recipe-step-img {
-      max-width: 285px;
+      max-width: 225px;
       width: 100%;
     }
   }
@@ -43,10 +45,6 @@
   .steps-block-title {
     font-size: 1.7em;
     color: #d44848;
-  }
-
-  #start-clock h1 {
-    display: none;
   }
 
   .panel-wizard {
@@ -98,6 +96,41 @@
 
   #currently-making-steps {
     margin-bottom: 3em;
+  }
+
+  #steps-progress {
+    width: 100%;
+    height: 33px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #E7E7E7;
+    border: 1px solid;
+    border-top-width: 2px;
+    border-top-color: #A7A7A7;
+    border-bottom-color: #FFF;
+    border-left-color: #C5C5C5;
+    border-right-color: #C5C5C5;
+
+    .progress-line {
+      width: 50%;
+      height: 20px;
+      border-radius: 10px;
+      border: 1px solid;
+      border-top-color: #726161;
+      border-left-color: #9E4F4F;
+      border-bottom-color: #9B8484;
+      border-right-color: #9E4F4F;
+      background: url('/assets/images/bar-pattern.png') repeat #7E0202;
+    }
+  }
+
+  .progress-row {
+    margin-bottom: 1em;
+    span {
+      font-weight: bold;
+      color: #838383;
+      font-size: 1.6em;
+    }
   }
 
 }

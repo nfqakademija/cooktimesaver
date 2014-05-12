@@ -12,6 +12,16 @@
     </div>
     <div id="make-recipe" data-recipe-image="{{ asset('uploads/recipe_images/large/' ~ recipe.img) }}" data-recipe-id="{{ recipe.id }}">
         <div class="container">
+            <div class="row progress-row">
+                <div class="col-md-1 text-center">
+                    <span>7/14</span>
+                </div>
+                <div class="col-md-11">
+                    <div id="steps-progress">
+                        <div class="progress-line"></div>
+                    </div>
+                </div>
+            </div>
             <div id="currently-making-steps">
                 <div class="row">
                     <div class="col-md-12">

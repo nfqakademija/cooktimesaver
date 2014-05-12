@@ -4712,7 +4712,7 @@ header .fb-container {
     color: #282828;
     font-size: 0.9em;
     margin-top: 1em;
-    text-align: left; }
+    text-align: center; }
     #make-recipe .recipe-step .recipe-step-timepanel span {
       vertical-align: middle;
       padding-left: 0.3em;
@@ -4721,15 +4721,15 @@ header .fb-container {
     #make-recipe .recipe-step .recipe-step-timepanel .row div:first-child {
       font-size: 1.5em; }
   #make-recipe .recipe-step .step-description {
-    color: #000; }
+    color: #585858;
+    margin-top: 10px;
+    font-weight: bold; }
   #make-recipe .recipe-step .recipe-step-img {
-    max-width: 285px;
+    max-width: 225px;
     width: 100%; }
   #make-recipe .steps-block-title {
     font-size: 1.7em;
     color: #d44848; }
-  #make-recipe #start-clock h1 {
-    display: none; }
   #make-recipe .panel-wizard {
     border-color: #A5A5A5;
     background-color: #f7f8fa;
@@ -4761,6 +4761,34 @@ header .fb-container {
       margin-left: 1.5em; }
   #make-recipe #currently-making-steps {
     margin-bottom: 3em; }
+  #make-recipe #steps-progress {
+    width: 100%;
+    height: 33px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #E7E7E7;
+    border: 1px solid;
+    border-top-width: 2px;
+    border-top-color: #A7A7A7;
+    border-bottom-color: #FFF;
+    border-left-color: #C5C5C5;
+    border-right-color: #C5C5C5; }
+    #make-recipe #steps-progress .progress-line {
+      width: 50%;
+      height: 20px;
+      border-radius: 10px;
+      border: 1px solid;
+      border-top-color: #726161;
+      border-left-color: #9E4F4F;
+      border-bottom-color: #9B8484;
+      border-right-color: #9E4F4F;
+      background: url('/assets/images/bar-pattern.png') repeat #7E0202; }
+  #make-recipe .progress-row {
+    margin-bottom: 1em; }
+    #make-recipe .progress-row span {
+      font-weight: bold;
+      color: #838383;
+      font-size: 1.6em; }
 
 .recipe-title {
   padding: 120px 0;
