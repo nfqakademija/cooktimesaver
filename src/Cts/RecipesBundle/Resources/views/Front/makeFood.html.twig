@@ -1,10 +1,5 @@
 {% extends '::base.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
-{% endblock %}
-
 {% block header %}
     <header>
         <a href="{{ path('cts_recipes_homepage') }}"><h1>CookTimeSaver | <span>00:20</span></h1></a>
@@ -23,7 +18,7 @@
                         <h2 class="steps-block-title">Vykdomi žingsniai:</h2>
                     </div>
                 </div>
-                <div class="steps-container"></div>
+                <div class="steps-container clearfix"></div>
             </div>
             <div id="steps-queue">
                 <div class="row">
@@ -31,12 +26,13 @@
                         <h2 class="steps-block-title">Šiuo metu galite pradėti daryti:</h2>
                     </div>
                 </div>
-                <div class="steps-container"></div>
+                <div class="steps-container clearfix"></div>
             </div>
         </div>
     </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('assets/js/jquery.color.js') }}"></script>
     <script src="{{ asset('assets/js/make_food.js') }}"></script>
 {% endblock %}

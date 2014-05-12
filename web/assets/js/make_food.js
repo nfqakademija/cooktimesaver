@@ -18,7 +18,6 @@ $('#steps-queue .steps-container').on('click','.control-button',function(e) {
     $(this).text('Baigti');
 
     startStep(step_id);
-
 });
 
 // Mygtukas "Baigti"
@@ -46,7 +45,11 @@ function loadSteps(recipe_id, step_id) {
         url: request_url,
         success: function (data) {
             var queue_block = $('#steps-queue .steps-container');
-            queue_block.append(data);
+            queue_block.append(data).find('.panel-body')
+                .stop().css("background-color", "#FFFED9")
+                .animate({ backgroundColor: "#f7f8fa"}, 1500);;
+            checkMakingStepsEmpty();
+            checkQueueStepsEmpty();
         }
     });
 }
@@ -57,13 +60,33 @@ function startStep(step_id) {
     st_html += curr_step.html();
     st_html += '</div>';
 
-    $('#currently-making-steps .steps-container').append(st_html);
-
+    $('#currently-making-steps .steps-container').append(st_html).find('.panel-body')
+        .stop().css("background-color", "#FFFED9")
+        .animate({ backgroundColor: "#f7f8fa"}, 1500);
+    checkMakingStepsEmpty();
     curr_step.remove();
+    checkQueueStepsEmpty();
 }
 
 function endStep(step_id, recipe_id) {
     var curr_step = $('#currently-making-steps .steps-container div[data-step-id="'+step_id+'"]');
-    curr_step.fadeOut(1000);
+    curr_step.fadeOut(1000).remove();
     loadSteps(recipe_id, step_id);
+    checkMakingStepsEmpty();
+}
+
+function checkMakingStepsEmpty() {
+    var st_container = $('#currently-making-steps .steps-container');
+    st_container.find('.no-steps').remove();
+    if(st_container.is(':empty')) {
+        st_container.html('<div class="no-steps">Šiuo metu ruošiamų žingsnių nėra.</div>');
+    }
+}
+
+function checkQueueStepsEmpty() {
+    var st_container = $('#steps-queue .steps-container');
+    st_container.find('.no-steps').remove();
+    if(st_container.html().trim() == '') {
+        st_container.html('<div class="no-steps">Tam kad galėtumėte pradėti kitus žingsnius, reikia baigti jau pradėtus.</div>');
+    }
 }

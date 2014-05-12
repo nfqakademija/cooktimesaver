@@ -4746,6 +4746,15 @@ header .fb-container {
   #make-recipe .panel-wizard > .panel-heading {
     background-image: url(/assets/images/panel-top-bg.png);
     background-repeat: repeat-x; }
+  #make-recipe .steps-block-title {
+    margin-left: 15px; }
+  #make-recipe .steps-container {
+    margin-top: 0.5em; }
+    #make-recipe .steps-container .no-steps {
+      color: #696969;
+      margin-left: 1.5em; }
+  #make-recipe #currently-making-steps {
+    margin-bottom: 3em; }
 
 .recipe-title {
   padding: 120px 0;
