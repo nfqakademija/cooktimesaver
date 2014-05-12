@@ -1,0 +1,67 @@
+{% if steps[0] is defined %}
+{% for st in steps %}
+<div class="col-md-6" data-step-id="{{ st.stepId }}">
+    <div class="panel panel-wizard recipe-step">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title">{{ st.description }}</h3>
+            <button class="btn btn-primary control-button" data-step-id="{{ st.stepId }}">Pradėti</button>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <img src="{{ st.image }}"
+                         alt="Išvirti bulves" class="recipe-step-img"/>
+
+                    <div class="recipe-step-timepanel text-center-not-lg">
+                        <img src="{{ asset('assets/images/clock_icon.png') }}"
+                             alt="Kiti vartotojai užtruko"/>
+                        <span>{{ st.totalTimeCount }}min.</span>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row text-center-not-lg">
+                        <div class="col-md-12">
+                            <p class="step-description">
+                                {{ st.description }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="col-md-6" data-step-id="{{ steps.stepId }}">
+    <div class="panel panel-wizard recipe-step">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title">{{ steps.description }}</h3>
+            <button class="btn btn-primary control-button" data-step-id="{{ steps.stepId }}">Pradėti</button>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <img src="{{ steps.image }}"
+                         alt="Išvirti bulves" class="recipe-step-img"/>
+
+                    <div class="recipe-step-timepanel text-center-not-lg">
+                        <img src="{{ asset('assets/images/clock_icon.png') }}"
+                             alt="Kiti vartotojai užtruko"/>
+                        <span>{{ steps.totalTimeCount }}min.</span>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row text-center-not-lg">
+                        <div class="col-md-12">
+                            <p class="step-description">
+                                {{ steps.description }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

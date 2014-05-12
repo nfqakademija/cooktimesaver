@@ -11,7 +11,7 @@ class StepsController extends Controller {
     public function getStepsAction(Request $request, $recipeId, $completedStepId, $completedStepTime)
     {
         $steps = $this->get('cts_recipes.steps_handler')->getSteps($recipeId, $completedStepId, $completedStepTime);
-        return new JsonResponse($steps);
-
+        //return new JsonResponse($steps);
+        return $this->render('CtsRecipesBundle:Front:loadedStep.html.twig', ['steps' => $steps]);
     }
 }

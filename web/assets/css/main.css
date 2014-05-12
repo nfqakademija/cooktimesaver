@@ -4724,6 +4724,28 @@ header .fb-container {
     color: #d44848; }
   #make-recipe #start-clock h1 {
     display: none; }
+  #make-recipe .panel-wizard {
+    border-color: #A5A5A5;
+    background-color: #f7f8fa;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75); }
+  #make-recipe .panel-wizard > .panel-heading {
+    color: #464a55;
+    background-color: #fcf8e3;
+    border-color: #A5A5A5; }
+  #make-recipe .panel-wizard > .panel-heading h3 {
+    float: left;
+    margin-top: 8px; }
+  #make-recipe .panel-wizard > .panel-heading button {
+    float: right; }
+  #make-recipe .panel-wizard > .panel-heading + .panel-collapse .panel-body {
+    border-top-color: #96846c; }
+  #make-recipe .panel-wizard > .panel-footer + .panel-collapse .panel-body {
+    border-bottom-color: #faebcc; }
+  #make-recipe .panel-wizard > .panel-heading {
+    background-image: url(/assets/images/panel-top-bg.png);
+    background-repeat: repeat-x; }
 
 .recipe-title {
   padding: 120px 0;
