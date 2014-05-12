@@ -106,6 +106,6 @@ function clockWork() {
             timers[key] += 1;
         }
         clockWork();
-    }, 1000);
+    }, 60000);
 }
 
