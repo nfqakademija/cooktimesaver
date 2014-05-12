@@ -4484,14 +4484,16 @@ header .fb-container {
     text-align: center;
     font-weight: 600;
     text-decoration: none;
-    text-shadow: 3px 3px 34px rgba(255, 255, 255, 0.5); }
+    text-shadow: 3px 3px 34px rgba(255, 255, 255, 0.5);
+    color: #555 !important; }
 
 .front-page-card {
   max-width: 600px;
   margin: 2em auto;
   background-color: rgba(0, 0, 0, 0.5);
   padding-bottom: 2em;
-  border-radius: 10px; }
+  border-radius: 10px;
+  color: #fff; }
 
 .front-page-time-chooser {
   margin: 2em auto;
@@ -4545,17 +4547,20 @@ header .fb-container {
 .front-page-bottom-text {
   margin: 2em auto; }
 
-#search .heading .heading-input {
-  margin-top: 3em; }
-  #search .heading .heading-input input {
-    width: 90% !important;
-    padding: 0.5em 0.8em;
-    border-radius: 5px;
-    border: none;
-    background: transparent !important;
-    color: #000000; }
-  #search .heading .heading-input h3 {
-    font-size: 1.5em; }
+#search .heading {
+  color: #fff; }
+  #search .heading .heading-input {
+    margin-top: 3em; }
+    #search .heading .heading-input input {
+      width: 90% !important;
+      padding: 0.5em 0.8em;
+      border-radius: 5px;
+      border: none;
+      background: transparent !important;
+      color: #000000; }
+    #search .heading .heading-input h3 {
+      font-size: 1.5em;
+      text-shadow: 2px 2px 2px #969696; }
 
 #have-in-fridge, #not-eating {
   max-width: 350px; }
@@ -4644,7 +4649,7 @@ header .fb-container {
         #search-results-container .result .result-description .result-title a {
           font-size: 0.9em;
           color: #969696;
-          word-break: break-all; }
+          word-break: break-word; }
     #search-results-container .result .result-time-required {
       position: absolute;
       bottom: 15px;
