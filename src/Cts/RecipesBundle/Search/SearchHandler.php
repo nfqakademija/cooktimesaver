@@ -43,6 +43,7 @@ class SearchHandler {
 
             $productsQuestionMarks     = str_repeat('?,', count($products) - 1) . '?';
             $antiProductsQuestionMarks = str_repeat('?,', count($antiProducts) - 1) . '?';
+            $position = 0;
 
             if(empty($products[0]) && !empty($antiProducts[0])){
                 $statement = $connection->prepare("SELECT r.*, SUM(ri.ingredients_id NOT IN (". $antiProductsQuestionMarks .")) as inverse_ing_match_count, COUNT(*) as recipe_ing_count
@@ -53,10 +54,11 @@ class SearchHandler {
                                                     GROUP BY r.id
                                                     HAVING inverse_ing_match_count = recipe_ing_count
                                                     ORDER BY r.time ASC");
-
-                foreach ($antiProducts as $k => $id){
-                    $position = $k+1;
-                    $statement->bindValue(($position), $id);
+                if(is_array($antiProducts)){
+                    foreach ($antiProducts as $k => $id){
+                        $position = $k+1;
+                        $statement->bindValue(($position), $id);
+                    }
                 }
                 $position = $position +1;
                 $statement->bindValue($position, $totalMinutes);
@@ -74,9 +76,11 @@ class SearchHandler {
                                                     GROUP BY r.id
                                                     HAVING ing_match_count > 0 AND SUM(ri.ingredients_id in (". $antiProductsQuestionMarks .")) = 0
                                                     ORDER BY ing_match_count DESC, r.time ASC");
-                foreach ($products as $k => $id){
-                    $position = $k+1;
-                    $statement->bindValue(($position), $id);
+                if(is_array($products)){
+                    foreach ($products as $k => $id){
+                        $position = $k+1;
+                        $statement->bindValue(($position), $id);
+                    }
                 }
                 $position = $position +1;
                 $statement->bindValue($position, $totalMinutes);
