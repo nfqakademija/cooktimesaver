@@ -4553,7 +4553,6 @@ header .fb-container {
   #search .heading .heading-input {
     margin-top: 3em; }
     #search .heading .heading-input input {
-      width: 90% !important;
       padding: 0.5em 0.8em;
       border-radius: 5px;
       border: none;
