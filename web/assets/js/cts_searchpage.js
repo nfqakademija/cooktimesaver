@@ -9,7 +9,7 @@ $(function () {
     updateSearchResults(hours, mins);
 
     $('#have-in-fridge, #not-eating').select2({
-        width: '210px',
+        width: '320px',
         multiple: true,
         minimumInputLength: 2,
         ajax: {
