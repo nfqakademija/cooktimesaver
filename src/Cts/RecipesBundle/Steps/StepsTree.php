@@ -5,6 +5,7 @@ namespace Cts\RecipesBundle\Steps;
 use Cts\RecipesBundle\Entity\Recipe;
 use Cts\RecipesBundle\Entity\RecipeStep;
 use Cts\RecipesBundle\Entity\StepRelationship;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class StepsTree{
 
@@ -74,7 +75,7 @@ class StepsTree{
 
     public function addChild($parentId = null, $childId) {
         if(empty($childId)) {
-            throw new \Exception('A id for the child is required.');
+            throw new Exception('A id for the child is required.');
         }
 
         if($parentId == $childId){

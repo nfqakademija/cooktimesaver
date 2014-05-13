@@ -2,8 +2,8 @@
 
 namespace Cts\RecipesBundle\Steps;
 
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class StepsHandler implements StepsHandlerInterface{
 
@@ -53,7 +53,7 @@ class StepsHandler implements StepsHandlerInterface{
         $recipe = $this->recipeRepository->find($recipeId);
 
         if(empty($recipe)) {
-            throw $this->createNotFoundException(
+            throw new NotFoundHttpException(
                 'No recipe found for id '.$recipeId
             );
         }
@@ -68,7 +68,7 @@ class StepsHandler implements StepsHandlerInterface{
             $completedNode = $stepsTree->getNode($completedStepId);
 
             if(empty($completedNode)) {
-                throw $this->createNotFoundException(
+                throw new NotFoundHttpException(
                     'No step found for id '.$completedStepId
                 );
             }
@@ -102,7 +102,7 @@ class StepsHandler implements StepsHandlerInterface{
         $step = $this->stepRepository->find($completedStepId);
 
         if(empty($step)) {
-            throw $this->createNotFoundException(
+            throw new NotFoundHttpException(
                 'No step found for id '.$completedStepId
             );
         }

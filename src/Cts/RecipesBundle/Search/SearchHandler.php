@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 class SearchHandler {
 
     /**
-     * @var \Doctrine\Common\Persistence\ObjectRepository
+     * @var \Doctrine\ORM\EntityRepository
      */
     private $repository;
 
