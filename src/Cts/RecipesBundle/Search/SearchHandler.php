@@ -22,12 +22,24 @@ class SearchHandler {
     }
 
     /**
-     * @param integer $sum_minutes
+     * @param integer $totalMinutes
      * @param array $products
      * @param array $antiProducts
      * @return array
      */
-    public function search($totalMinutes, $products, $antiProducts){
+    public function search($totalMinutes, $products, $antiProducts)
+    {
+        if (!empty($products)) {
+            $products = explode(",", $products);
+        } else {
+            $products = [];
+        }
+
+        if (!empty($antiProducts)) {
+            $antiProducts = explode(",", $antiProducts);
+        } else {
+            $antiProducts = [];
+        }
 
         if(empty($products) && empty($antiProducts)){
             $query = $this->repository->createQueryBuilder('recipe')
@@ -41,8 +53,11 @@ class SearchHandler {
 
             $connection = $this->em->getConnection();
 
-            $productsQuestionMarks     = str_repeat('?,', count($products) - 1) . '?';
-            $antiProductsQuestionMarks = str_repeat('?,', count($antiProducts) - 1) . '?';
+            if(count($antiProducts) > 0){
+                $antiProductsQuestionMarks = str_repeat('?,', count($antiProducts) - 1) . '?';
+            } else {
+                $antiProductsQuestionMarks = '0';
+            }
             $position = 0;
 
             if(empty($products) && !empty($antiProducts)){
@@ -66,6 +81,7 @@ class SearchHandler {
                 $recipes = $statement->fetchAll();
 
             } else {
+                $productsQuestionMarks     = str_repeat('?,', count($products) - 1) . '?';
                 $statement = $connection->prepare("SELECT r.*,
                                                            SUM(ri.ingredients_id IN (". $productsQuestionMarks .")) as ing_match_count,
                                                            COUNT(*) as recipe_ing_count
