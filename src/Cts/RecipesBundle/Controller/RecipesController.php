@@ -42,8 +42,8 @@ class RecipesController extends Controller
         $hours = $hours? $hours : '00';
         $minutes = $minutes? $minutes : 20;
 
-        $products      = explode(",", $request->get('products'));
-        $antiProducts  = explode(",", $request->get('antiProducts'));
+        $products      = $request->get('products') ? explode(",", $request->get('products')) : [];
+        $antiProducts  = $request->get('antiProducts') ? explode(",", $request->get('antiProducts')) : [];
         $totalMinutes  = ((int) $hours) * 60 + ((int) $minutes);
 
         $recipes = $this->get('cts_recipes.search_handler')->search($totalMinutes, $products, $antiProducts);

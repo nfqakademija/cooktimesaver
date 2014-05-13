@@ -27,9 +27,9 @@ class SearchHandler {
      * @param array $antiProducts
      * @return array
      */
-    public function search($totalMinutes, $products = null, $antiProducts = null){
+    public function search($totalMinutes, $products, $antiProducts){
 
-        if(empty($products[0]) && empty($antiProducts[0])){
+        if(empty($products) && empty($antiProducts)){
             $query = $this->repository->createQueryBuilder('recipe')
                 ->where('recipe.time < :time')
                 ->setParameter('time', $totalMinutes)
@@ -37,7 +37,7 @@ class SearchHandler {
                 ->getQuery();
             $recipes = $query->getResult();
 
-        } else{
+        } else {
 
             $connection = $this->em->getConnection();
 
@@ -45,7 +45,7 @@ class SearchHandler {
             $antiProductsQuestionMarks = str_repeat('?,', count($antiProducts) - 1) . '?';
             $position = 0;
 
-            if(empty($products[0]) && !empty($antiProducts[0])){
+            if(empty($products) && !empty($antiProducts)){
                 $statement = $connection->prepare("SELECT r.*, SUM(ri.ingredients_id NOT IN (". $antiProductsQuestionMarks .")) as inverse_ing_match_count, COUNT(*) as recipe_ing_count
                                                     FROM recipes r
                                                     JOIN recipe_ingredients_needed ri
