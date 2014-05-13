@@ -37,8 +37,7 @@ class RecipesController extends Controller
     }
 
     public function searchResultsAction(Request $request, $hours, $minutes) {
-        // Imituojam ilga load:
-        usleep(50000);
+
         $hours = $hours? $hours : '00';
         $minutes = $minutes? $minutes : 20;
 
