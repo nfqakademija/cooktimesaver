@@ -238,12 +238,12 @@ class RecipeStep
     }
 
     /**
-     * Add step_relationships
+     * Set step_relationships
      *
      * @param \Cts\RecipesBundle\Entity\StepRelationship $stepRelationships
      * @return RecipeStep
      */
-    public function addStepRelationship(\Cts\RecipesBundle\Entity\StepRelationship $stepRelationships)
+    public function setStepRelationships(\Cts\RecipesBundle\Entity\StepRelationship $stepRelationships = null)
     {
         $this->step_relationships = $stepRelationships;
 
@@ -251,19 +251,9 @@ class RecipeStep
     }
 
     /**
-     * Remove step_relationships
-     *
-     * @param \Cts\RecipesBundle\Entity\StepRelationship $stepRelationships
-     */
-    public function removeStepRelationship(\Cts\RecipesBundle\Entity\StepRelationship $stepRelationships)
-    {
-        $this->step_relationships->removeElement($stepRelationships);
-    }
-
-    /**
      * Get step_relationships
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Cts\RecipesBundle\Entity\StepRelationship 
      */
     public function getStepRelationships()
     {

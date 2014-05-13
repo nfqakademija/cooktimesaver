@@ -22,7 +22,7 @@ class LoadStepRelationshipData extends AbstractBasicData implements OrderedFixtu
                 $parentId = null;
             }
             $stepRelationship->setParentId($parentId);
-            $stepRelationship->addRecipeStep($recipeStep);
+            $stepRelationship->setRecipeStep($recipeStep);
 
             $em->persist($stepRelationship);
             $em->flush();

@@ -88,32 +88,25 @@ class StepRelationship
         return $this->parent_id;
     }
 
-    /**
-     * Add recipe_step
-     *
-     * @param \Cts\RecipesBundle\Entity\RecipeStep $recipeStep
-     * @return step_relationships
-     */
-    public function addRecipeStep(\Cts\RecipesBundle\Entity\RecipeStep $recipeStep)
-    {
-        $this->recipe_step = $recipeStep;
-        return $this;
-    }
+
 
     /**
-     * Remove recipe_step
+     * Set recipe_step
      *
      * @param \Cts\RecipesBundle\Entity\RecipeStep $recipeStep
+     * @return StepRelationship
      */
-    public function removeRecipeStep(\Cts\RecipesBundle\Entity\RecipeStep $recipeStep)
+    public function setRecipeStep(\Cts\RecipesBundle\Entity\RecipeStep $recipeStep = null)
     {
-        $this->recipe_step->removeElement($recipeStep);
+        $this->recipe_step = $recipeStep;
+
+        return $this;
     }
 
     /**
      * Get recipe_step
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Cts\RecipesBundle\Entity\RecipeStep 
      */
     public function getRecipeStep()
     {
