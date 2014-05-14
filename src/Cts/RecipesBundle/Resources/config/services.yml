@@ -3,6 +3,7 @@ parameters:
     cts_recipes.steps_tree.class: Cts\RecipesBundle\Steps\StepsTree
     cts_recipes.steps_handler.class: Cts\RecipesBundle\Steps\StepsHandler
     cts_recipes.search_handler.class: Cts\RecipesBundle\Search\SearchHandler
+    cts_recipes.search_query_builder.class: Cts\RecipesBundle\Search\SearchQueryBuilder
 
 services:
 #    cts_recipes.example:
@@ -22,3 +23,10 @@ services:
          class: %cts_recipes.search_handler.class%
          arguments:
              - @doctrine.orm.entity_manager
+         calls:
+             - [setSearchQueryBuilderService, [@cts_recipes.search_query_builder]]
+
+    cts_recipes.search_query_builder:
+        class: %cts_recipes.search_query_builder.class%
+        arguments:
+            - @doctrine.orm.entity_manager

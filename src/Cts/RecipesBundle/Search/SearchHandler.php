@@ -17,9 +17,9 @@ class SearchHandler {
     private $em;
 
     /**
-     * @var SearchQueryBuilder
+     * @var SearchQueryBuilder $searchQueryBuilderService
      */
-    private $searchQueryBuilder;
+    private $searchQueryBuilderService;
 
     public function __construct($em) {
         $this->em = $em;
@@ -34,7 +34,6 @@ class SearchHandler {
      */
     public function search($totalMinutes, $products, $antiProducts)
     {
-
         if (!empty($products)) {
             $products = explode(",", $products);
         } else {
@@ -54,14 +53,18 @@ class SearchHandler {
                 ->orderBy('recipe.time', 'ASC')
                 ->getQuery();
             $recipes = $query->getResult();
-
         } else {
-
-            $searchQueryBuilder = new SearchQueryBuilder($this->em, $products, $antiProducts, $totalMinutes);
-            $recipes = $searchQueryBuilder->getSearchResults();
-
+            $searchQueryBuilder = $this->searchQueryBuilderService;
+            $recipes = $searchQueryBuilder->getSearchResults($products, $antiProducts, $totalMinutes);
         }
         return $recipes;
     }
 
+    /**
+     * @param \Cts\RecipesBundle\Search\SearchQueryBuilder $searchQueryBuilderService
+     */
+    public function setSearchQueryBuilderService($searchQueryBuilderService)
+    {
+        $this->searchQueryBuilderService = $searchQueryBuilderService;
+    }
 } 

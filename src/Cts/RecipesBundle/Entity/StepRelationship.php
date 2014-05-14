@@ -2,7 +2,6 @@
 namespace Cts\RecipesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -48,7 +47,7 @@ class StepRelationship
      * Set recipe_step_id
      *
      * @param integer $recipeStepId
-     * @return step_relationships
+     * @return StepRelationship
      */
     public function setRecipeStepId($recipeStepId)
     {
@@ -70,7 +69,7 @@ class StepRelationship
      * Set parent_id
      *
      * @param integer $parentId
-     * @return step_relationships
+     * @return StepRelationship
      */
     public function setParentId($parentId)
     {

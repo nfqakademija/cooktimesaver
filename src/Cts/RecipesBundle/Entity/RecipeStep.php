@@ -61,8 +61,7 @@ class RecipeStep
 
     public function __construct()
     {
-        $this->recipe             = new ArrayCollection();
-        //$this->step_relationships = new ArrayCollection();
+        $this->recipe = new ArrayCollection();
     }
 
 
@@ -80,7 +79,7 @@ class RecipeStep
      * Set recipe_id
      *
      * @param integer $recipeId
-     * @return recipe_step
+     * @return RecipeStep
      */
     public function setRecipeId($recipeId)
     {
@@ -103,7 +102,7 @@ class RecipeStep
      * Set total_time
      *
      * @param integer $totalTime
-     * @return recipe_step
+     * @return RecipeStep
      */
     public function setTotalTime($totalTime)
     {
@@ -126,7 +125,7 @@ class RecipeStep
      * Set description
      *
      * @param string $description
-     * @return recipe_step
+     * @return RecipeStep
      */
     public function setDescription($description)
     {
@@ -149,7 +148,7 @@ class RecipeStep
      * Set image
      *
      * @param string $image
-     * @return recipe_step
+     * @return RecipeStep
      */
     public function setImage($image)
     {
@@ -172,7 +171,7 @@ class RecipeStep
      * Set total_time_count
      *
      * @param integer $totalTimeCount
-     * @return recipe_step
+     * @return RecipeStep
      */
     public function setTotalTimeCount($totalTimeCount)
     {
@@ -195,7 +194,7 @@ class RecipeStep
      * Set type
      *
      * @param \smallint $type
-     * @return recipe_step
+     * @return RecipeStep
      */
     public function setType($type)
     {
@@ -218,7 +217,7 @@ class RecipeStep
      * Set recipe
      *
      * @param \Cts\RecipesBundle\Entity\recipe $recipe
-     * @return recipe_step
+     * @return RecipeStep
      */
     public function setRecipe(\Cts\RecipesBundle\Entity\recipe $recipe = null)
     {
@@ -251,7 +250,7 @@ class RecipeStep
     }
 
     /**
-     * Get step_relationships
+     * Get StepRelationship
      *
      * @return \Cts\RecipesBundle\Entity\StepRelationship 
      */

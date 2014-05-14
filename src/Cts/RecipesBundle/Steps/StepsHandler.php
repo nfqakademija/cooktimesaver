@@ -2,18 +2,18 @@
 
 namespace Cts\RecipesBundle\Steps;
 
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class StepsHandler implements StepsHandlerInterface{
 
     /**
-     * @var \Doctrine\Common\Persistence\ObjectRepository
+     * @var \Doctrine\Orm\EntityRepository
      */
     private $recipeRepository;
 
     /**
-     * @var \Doctrine\Common\Persistence\ObjectRepository
+     * @var \Doctrine\Orm\EntityRepository
      */
     private $stepRepository;
 
@@ -91,8 +91,9 @@ class StepsHandler implements StepsHandlerInterface{
     }
 
     /**
-     * @param StepsNode $stepNode
-     * @param Integer $time
+     * @param string $completedStepId
+     * @param integer $time
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     private function updateCompletedStepStats($completedStepId, $time){
 
