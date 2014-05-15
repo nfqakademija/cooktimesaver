@@ -2,7 +2,7 @@
 
 namespace Cts\RecipesBundle\Steps;
 
-use Symfony\Component\HttpFoundation\Session;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class StepsHandler implements StepsHandlerInterface{
@@ -28,7 +28,7 @@ class StepsHandler implements StepsHandlerInterface{
     private $em;
 
     /**
-     * @var \Symfony\Component\HttpFoundation\Session
+     * @var Session
      */
     private $session;
 
