@@ -4680,7 +4680,10 @@ header .fb-container {
     margin-bottom: 20px;
     padding-top: 8px; }
   .recipe-description .recipe-thumbnail {
-    margin-bottom: 1em; }
+    margin-bottom: 1em;
+    height: auto;
+    max-width: 100%;
+  }
 
 #search-button {
   margin-top: 1em;

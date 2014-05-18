@@ -1,10 +1,10 @@
 <div class="recipe-description">
     <div class="row">
-        <div class="col-md-4 text-center">
+        <div class="col-md-6 text-center">
             <img src="{{ asset('uploads/recipe_images/small/' ~ recipe.img) }}" alt="Receptas" class="recipe-thumbnail"/><br/>
             <a class="btn btn-primary" href="make_food/{{ recipe.id }}">Pradėti gaminti</a>
         </div>
-        <div class="col-md-7 col-md-offset-1 recipe-requirements">
+        <div class="col-md-6 recipe-requirements">
             <h2>Reikalingi ingridientai:</h2>
             <ul class="ingredients">
                 {% for item in recipe.recipeIngredients %}
