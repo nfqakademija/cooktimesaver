@@ -4776,12 +4776,15 @@ header .fb-container {
       width: 2%;
       height: 20px;
       border-radius: 10px;
-      border: 1px solid;
-      border-top-color: #726161;
-      border-left-color: #9E4F4F;
-      border-bottom-color: #9B8484;
-      border-right-color: #9E4F4F;
-      background: url('/assets/images/bar-pattern.png') repeat #7E0202; }
+      border: 1px solid #CC4343;
+      background: #f85032;
+      background: -moz-linear-gradient(top, #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f85032), color-stop(50%, #f16f5c), color-stop(51%, #f6290c), color-stop(71%, #f02f17), color-stop(100%, #e73827));
+      background: -webkit-linear-gradient(top, #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%);
+      background: -o-linear-gradient(top, #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%);
+      background: -ms-linear-gradient(top, #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%);
+      background: linear-gradient(to bottom, #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 ); }
   #make-recipe .progress-row {
     margin-bottom: 1em; }
     #make-recipe .progress-row span {
