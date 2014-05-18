@@ -31,10 +31,10 @@ $('#steps-queue .steps-container').on('click','.control-button',function(e) {
 // Mygtukas "Baigti"
 $('#currently-making-steps .steps-container').on('click','.control-button',function(e) {
     e.preventDefault();
-    var step_id = $(this).data('step-id');
-    var recipe_id = $("#make-recipe").data('recipe-id');
-
-    endStep(step_id, recipe_id);
+    var step_id    = $(this).data('step-id');
+    var recipe_id  = $("#make-recipe").data('recipe-id');
+    var step_count = $("#progress-bar-span").data('steps-count');
+    endStep(step_id, recipe_id, step_count);
 
 });
 
@@ -78,12 +78,12 @@ function startStep(step_id) {
     checkQueueStepsEmpty();
 }
 
-function endStep(step_id, recipe_id) {
+function endStep(step_id, recipe_id, step_count) {
     var curr_step = $('#currently-making-steps .steps-container div[data-step-id="'+step_id+'"]');
     curr_step.fadeOut(1000).remove();
     loadSteps(recipe_id, step_id, timers[step_id]);
     delete timers[step_id];
-    updateProgressBar(5);
+    updateProgressBar(step_count);
     checkMakingStepsEmpty();
 }
 
