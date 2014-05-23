@@ -22,23 +22,22 @@
     {% block header %}{% endblock %}
 
     {% block body %}{% endblock %}
+    {% block footer %}
+        <footer>
+            <div class="row">
+                <div class="col-md-8 front-page-bottom-text text-left text-center-not-lg">
+                    CookTimeSaver - tai aplikacija, kuri padės jums visada, kai maisto ruošimui neturite visos dienos.
+                    Nesvarbu, ruošiate draugų susitikimą, ar tiesiog prieš darbą norite skaniai pavalgyti. Ir kitas bla bla
+                    bla.
+                </div>
+                <div class="col-md-4 front-page-bottom-text text-right text-center-not-lg">
+                    <a href="http://www.nfq.lt/">NFQAkademija 2014</a> |
+                    <a href="https://github.com/nfqakademija/cooktimesaver">Komanda nr. 1</a>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
 </div>
-{% block footer %}
-    <footer>
-        <div class="row">
-            <div class="col-md-8 front-page-bottom-text text-left text-center-not-lg">
-                CookTimeSaver - tai aplikacija, kuri padės jums visada, kai maisto ruošimui neturite visos dienos.
-                Nesvarbu, ruošiate draugų susitikimą, ar tiesiog prieš darbą norite skaniai pavalgyti. Ir kitas bla bla
-                bla.
-            </div>
-            <div class="col-md-4 front-page-bottom-text text-right text-center-not-lg">
-                <a href="http://www.nfq.lt/">NFQAkademija 2014</a> |
-                <a href="https://github.com/nfqakademija/cooktimesaver">Komanda nr. 1</a>
-            </div>
-        </div>
-    </footer>
-{% endblock %}
-
 {% block javascripts %}
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>

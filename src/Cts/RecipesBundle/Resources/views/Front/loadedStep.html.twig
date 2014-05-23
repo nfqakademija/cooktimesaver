@@ -4,7 +4,7 @@
     <div class="panel panel-wizard recipe-step">
         <div class="panel-heading clearfix">
             <h3 class="panel-title">{{ st.description }}</h3>
-            <button class="btn btn-primary control-button" data-step-id="{{ st.stepId }}">Pradėti</button>
+            <button class="btn btn-danger control-button" data-step-id="{{ st.stepId }}">Baigiau</button>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -14,6 +14,7 @@
 
                     <div class="recipe-step-timepanel">
                         <img src="{{ asset('assets/images/clock_icon.png') }}"
+                             title="Tai yra vidutinis laikas, kurį užtruko varototjai vykdydami šį žingsnį"
                              alt="Kiti vartotojai užtruko"/>
                         <span>{{ st.totalTimeCount }} min.</span>
                     </div>
@@ -37,7 +38,7 @@
     <div class="panel panel-wizard recipe-step">
         <div class="panel-heading clearfix">
             <h3 class="panel-title">{{ steps.description }}</h3>
-            <button class="btn btn-primary control-button" data-step-id="{{ steps.stepId }}">Pradėti</button>
+            <button class="btn btn-danger control-button" data-step-id="{{ steps.stepId }}">Baigiau</button>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -47,6 +48,7 @@
 
                     <div class="recipe-step-timepanel">
                         <img src="{{ asset('assets/images/clock_icon.png') }}"
+                             title="Tai yra vidutinis laikas, kurį užtruko varototjai vykdydami šį žingsnį"
                              alt="Kiti vartotojai užtruko"/>
                         <span>{{ steps.totalTimeCount }} min.</span>
                     </div>

@@ -6,6 +6,11 @@
     </header>
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/tooltipster.css') }}">
+{% endblock %}
+
 {% block body %}
     <div class="recipe-title">
         {{ recipe.title }}
@@ -25,15 +30,7 @@
             <div id="currently-making-steps">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="steps-block-title">Vykdomi žingsniai:</h2>
-                    </div>
-                </div>
-                <div class="steps-container clearfix"></div>
-            </div>
-            <div id="steps-queue">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="steps-block-title">Galite pradėti daryti:</h2>
+                        <h2 class="steps-block-title">Recepto žingsniai:</h2>
                     </div>
                 </div>
                 <div class="steps-container clearfix"></div>
@@ -44,5 +41,6 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('assets/js/jquery.color.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.tooltipster.min.js') }}"></script>
     <script src="{{ asset('assets/js/make_food.js') }}"></script>
 {% endblock %}

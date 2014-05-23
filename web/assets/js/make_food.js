@@ -6,26 +6,17 @@ var timers = {};
 var st_done = 0;
 
 $(function() {
-
-    var recipe_img = $("#make-recipe").data('recipe-image');
     var recipe_id = $("#make-recipe").data('recipe-id');
+    var first_img = 1;
+    var last_img = 4;
+    var random_img = Math.floor(Math.random() * (last_img - first_img + 1)) + first_img;
 
-    $('body').css('background','url('+recipe_img+') top center fixed').addClass('make-food-bg');
+    var bg_image = '/assets/images/make-step-bg-' + random_img + '.jpg';
+    $('body').css('background','url('+bg_image+') top center fixed').addClass('make-food-bg');
     loadSteps(recipe_id);
 
     clockWork();
     updateMakingStepsClocks();
-});
-
-// Mygtukas "Pradeti"
-$('#steps-queue .steps-container').on('click','.control-button',function(e) {
-    e.preventDefault();
-    var step_id = $(this).data('step-id');
-    $(this).removeClass('btn-primary');
-    $(this).addClass('btn-danger');
-    $(this).text('Baigti');
-
-    startStep(step_id);
 });
 
 // Mygtukas "Baigti"
@@ -35,7 +26,6 @@ $('#currently-making-steps .steps-container').on('click','.control-button',funct
     var recipe_id  = $("#make-recipe").data('recipe-id');
     var step_count = $("#progress-bar-span").data('steps-count');
     endStep(step_id, recipe_id, step_count);
-
 });
 
 // Užkraunami žingsniai pagal buvusio ID ir recepto ID
@@ -52,12 +42,15 @@ function loadSteps(recipe_id, step_id, time_spent) {
         type: "GET",
         url: request_url,
         success: function (data) {
-            var queue_block = $('#steps-queue .steps-container');
-            queue_block.append(data).find('.panel-body')
-                .stop().css("background-color", "#FFFED9")
-                .animate({ backgroundColor: "#f7f8fa"}, 1500);
+            var queue_block = $('#currently-making-steps .steps-container');
+            queue_block.append(data).children(':last').hide().fadeIn(500).find('.recipe-step-timepanel img').tooltipster({
+                animation: 'fade',
+                delay: 200,
+                theme: 'tooltipster-light',
+                touchDevices: false,
+                trigger: 'hover'
+            });
             checkMakingStepsEmpty();
-            checkQueueStepsEmpty();
         }
     });
 }
@@ -75,13 +68,16 @@ function startStep(step_id) {
         .animate({ backgroundColor: "#f7f8fa"}, 1500);
     checkMakingStepsEmpty();
     curr_step.remove();
-    checkQueueStepsEmpty();
 }
 
 function endStep(step_id, recipe_id, step_count) {
     var curr_step = $('#currently-making-steps .steps-container div[data-step-id="'+step_id+'"]');
-    curr_step.fadeOut(1000).remove();
-    loadSteps(recipe_id, step_id, timers[step_id]);
+    curr_step.fadeOut(500);
+    setTimeout(function() {
+        curr_step.remove();
+        loadSteps(recipe_id, step_id, timers[step_id]);
+    }, 500);
+
     delete timers[step_id];
     updateProgressBar(step_count);
     checkMakingStepsEmpty();
@@ -92,14 +88,6 @@ function checkMakingStepsEmpty() {
     st_container.find('.no-steps').remove();
     if(st_container.is(':empty')) {
         st_container.html('<div class="no-steps">Šiuo metu ruošiamų žingsnių nėra.</div>');
-    }
-}
-
-function checkQueueStepsEmpty() {
-    var st_container = $('#steps-queue .steps-container');
-    st_container.find('.no-steps').remove();
-    if(st_container.html().trim() == '') {
-        st_container.html('<div class="no-steps">Tam kad galėtumėte pradėti kitus žingsnius, reikia baigti jau pradėtus.</div>');
     }
 }
 
