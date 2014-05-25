@@ -13,7 +13,17 @@
 
 {% block body %}
     <div class="recipe-title">
-        {{ recipe.title }}
+        <h1>{{ recipe.title }}</h1>
+        <div class="recipe-description">
+            <a href="#" id="recipe-desc-trigger">
+                <img src="{{ asset('assets/images/make-step-dropdown.png') }}" alt="Drop down" />
+            </a>
+            <div class="desc">
+                <p>
+                    {{ recipe.description }}
+                </p>
+            </div>
+        </div>
     </div>
     <div id="make-recipe" data-recipe-image="{{ asset('uploads/recipe_images/large/' ~ recipe.img) }}" data-recipe-id="{{ recipe.id }}">
         <div class="container">
@@ -42,5 +52,6 @@
     {{ parent() }}
     <script src="{{ asset('assets/js/jquery.color.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.tooltipster.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jQueryRotateCompressed.js') }}"></script>
     <script src="{{ asset('assets/js/make_food.js') }}"></script>
 {% endblock %}

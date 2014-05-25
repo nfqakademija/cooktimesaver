@@ -119,3 +119,22 @@ function updateProgressBar(st_count) {
     }, 800 );
     $('.progress-row span').text(st_done + '/' + st_count);
 }
+
+$('#recipe-desc-trigger').click(function(e) {
+    e.preventDefault();
+    var dhis = $(this);
+    var desc = $('.desc');
+    console.log(desc.height());
+
+    if(desc.height() == 0) {
+        desc.css('height', 'auto');
+        var a_height = desc.height();
+        desc.height(0).animate({height: a_height},400);
+        dhis.rotate({animateTo:180});
+    }
+    else {
+        dhis.rotate({animateTo:0});
+        desc.animate({height: 0}, 400);
+    }
+});
+

@@ -4740,7 +4740,8 @@ header .fb-container {
   #make-recipe .panel-wizard > .panel-heading {
     color: #464a55;
     background-color: #fcf8e3;
-    border-color: #A5A5A5; }
+    border-color: #A5A5A5;
+    padding: 4px 15px; }
   #make-recipe .panel-wizard > .panel-heading h3 {
     float: left;
     margin-top: 8px; }
@@ -4795,12 +4796,32 @@ header .fb-container {
       font-size: 1.6em; }
 
 .recipe-title {
-  padding: 120px 0;
-  text-align: center;
-  font-weight: bold;
-  color: #fff;
-  font-size: 4em;
-  text-shadow: 4px 2px 3px rgba(0, 0, 0, 0.7); }
+  padding: 120px 0; }
+  .recipe-title h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 4em;
+    text-shadow: 4px 2px 3px rgba(0, 0, 0, 0.7); }
+  .recipe-title .recipe-description {
+    width: 100%;
+    max-width: 1000px;
+    margin: 2em auto;
+    text-align: center; }
+    .recipe-title .recipe-description #recipe-desc-trigger {
+      width: 64px;
+      height: 64px;
+      display: block;
+      margin: 0 auto; }
+    .recipe-title .recipe-description .desc {
+      height: 0;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.6);
+      margin-top: 2em; }
+      .recipe-title .recipe-description .desc p {
+        color: #fff;
+        padding: 2em;
+        font-size: 1.3em; }
 
 .make-food-bg {
   background-size: cover !important; }

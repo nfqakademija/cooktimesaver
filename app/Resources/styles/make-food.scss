@@ -58,6 +58,7 @@
     color: #464a55;
     background-color: #fcf8e3;
     border-color: #A5A5A5;
+    padding: 4px 15px;
   }
 
   .panel-wizard > .panel-heading h3 {
@@ -141,11 +142,42 @@
 
 .recipe-title {
   padding: 120px 0;
-  text-align: center;
-  font-weight: bold;
-  color: #fff;
-  font-size: 4em;
-  text-shadow: 4px 2px 3px rgba(0, 0, 0, 0.7);
+
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 4em;
+    text-shadow: 4px 2px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  .recipe-description {
+    width: 100%;
+    max-width: 1000px;
+    margin: 2em auto;
+    text-align: center;
+
+
+    #recipe-desc-trigger {
+      width: 64px;
+      height: 64px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .desc {
+      height: 0;
+      overflow: hidden;
+      background: rgba(0,0,0,0.6);
+      margin-top: 2em;
+
+      p {
+        color: #fff;
+        padding: 2em;
+        font-size: 1.3em;
+      }
+    }
+  }
 }
 
 .make-food-bg {
