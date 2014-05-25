@@ -49,7 +49,7 @@ class RecipeStep
 	protected $image;
 
 	/**
-	 * @ORM\Column(type="integer")
+	 * @ORM\Column(type="float")
 	 */
 	protected $total_time_count;
 

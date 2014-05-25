@@ -4,3 +4,17 @@ STEP;PARENT
 "firststep3";"firststep4"
 "firststep2";"firststep3"
 "firststep1";"firststep2"
+
+"fourthstep11";null
+"fourthstep10";"fourthstep11"
+"fourthstep9";"fourthstep11"
+
+"fourthstep8";"fourthstep10"
+"fourthstep7";"fourthstep8"
+"fourthstep6";"fourthstep7"
+
+"fourthstep5";"fourthstep9"
+"fourthstep4";"fourthstep5"
+"fourthstep3";"fourthstep4"
+"fourthstep2";"fourthstep3"
+"fourthstep1";"fourthstep2"

@@ -3,13 +3,13 @@
 <div class="col-md-6" data-step-id="{{ st.stepId }}">
     <div class="panel panel-wizard recipe-step">
         <div class="panel-heading clearfix">
-            <h3 class="panel-title">{{ st.description }}</h3>
+            <h3 class="panel-title col-md-10">{{ st.description }}</h3>
             <button class="btn btn-danger control-button" data-step-id="{{ st.stepId }}">Baigiau</button>
         </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-4 text-center">
-                    <img src="{{ st.image }}"
+                    <img src="{{ asset('uploads/recipe_images/vistienosrcp/' ~ st.image) }}"
                          alt="Išvirti bulves" class="recipe-step-img"/>
 
                     <div class="recipe-step-timepanel">
@@ -37,13 +37,13 @@
 <div class="col-md-6" data-step-id="{{ steps.stepId }}">
     <div class="panel panel-wizard recipe-step">
         <div class="panel-heading clearfix">
-            <h3 class="panel-title">{{ steps.description }}</h3>
+            <h3 class="panel-title col-md-10">{{ steps.description }}</h3>
             <button class="btn btn-danger control-button" data-step-id="{{ steps.stepId }}">Baigiau</button>
         </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-4 text-center">
-                    <img src="{{ steps.image }}"
+                   <img src="{{ asset('uploads/recipe_images/vistienosrcp/' ~ steps.image) }}"
                          alt="Išvirti bulves" class="recipe-step-img"/>
 
                     <div class="recipe-step-timepanel">
