@@ -44,6 +44,18 @@ class RecipesController extends Controller
 
     public function searchResultsAction(Request $request, $hours, $minutes) {
 
+        /** Returns 4 recipe objects in Descending order
+         * @return object
+         */
+        $oRecipes = $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe');
+        $sQuery = $oRecipes->createQueryBuilder('p')
+            ->setMaxResults(4)
+            ->orderBy('p.id', 'DESC')
+            ->getQuery();
+        $oMostPopular = $sQuery->getResult();
+
+
+
         $hours = $hours? $hours : '00';
         $minutes = $minutes? $minutes : 20;
 
@@ -53,7 +65,7 @@ class RecipesController extends Controller
 
         $recipes = $this->get('cts_recipes.search_handler')->search($totalMinutes, $products, $antiProducts);
 
-        return $this->render('CtsRecipesBundle:Front:searchResults.html.twig', ['recipes' => $recipes]);
+        return $this->render('CtsRecipesBundle:Front:searchResults.html.twig', ['recipes' => $recipes, 'popular' => $oMostPopular]);
     }
 
     public function foodTagsAction(Request $request) {
