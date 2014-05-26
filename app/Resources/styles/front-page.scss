@@ -31,7 +31,8 @@ header .fb-container {
 
 .front-page-card {
   max-width: 600px;
-  margin: 2em auto 7em auto;
+  margin: 0 auto;
+  margin-top: calc(50% - 800px);
   background-color: rgba(0, 0, 0, 0.5);
   padding-bottom: 2em;
   border-radius: 10px;

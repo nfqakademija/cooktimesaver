@@ -35,6 +35,12 @@
         </div>
     </div>
     <div id="make-recipe" data-recipe-id="{{ recipe.id }}">
+        <div class="reminder">
+            <span>Priminimas: patikrinkite vykdomus žingsnius (kepimą, virimą ir pan.)</span>
+            <a href="#" class="close-btn">
+                <img src="{{ asset('assets/images/close-reminder.png') }}" alt="Uždaryti" />
+            </a>
+        </div>
         <div class="container">
             <div class="row progress-row">
                 <div class="col-md-1 text-center">

@@ -115,6 +115,8 @@ function clockWork() {
     setTimeout(function () {
         for (var key in timers) {
             timers[key] += 1;
+            if(timers[key] == 15)
+                show_reminder();
         }
         clockWork();
     }, 1000);
@@ -125,6 +127,16 @@ function globalClock() {
         timer += 1;
         globalClock();
     }, 60000);
+}
+
+function show_reminder() {
+    var remind = $('.reminder');
+
+    if(!remind.is(':visible')) {
+        var alert = new Audio('/assets/sounds/reminder.mp3');
+        alert.play();
+        remind.fadeIn(300);
+    }
 }
 
 function updateMakingStepsClocks() {
@@ -173,5 +185,10 @@ $('#recipe-desc-trigger').click(function(e) {
         dhis.rotate({animateTo:0});
         desc.animate({height: 0}, 400);
     }
+});
+
+$('.reminder .close-btn').click(function(e) {
+    e.preventDefault();
+    $(this).parent().fadeOut(300);
 });
 

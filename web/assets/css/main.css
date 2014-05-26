@@ -4371,7 +4371,7 @@ body {
 
 header {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.33);
+  background-color: rgba(0, 0, 0, 0.7);
   height: 5em;
   padding: 0 2em; }
   header h1 {
@@ -4379,7 +4379,7 @@ header {
     font-weight: 600;
     padding-top: 0.5em;
     margin: 0;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7); }
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 0.5); }
     header h1 span {
       color: #d44848; }
   header a {
@@ -4490,7 +4490,8 @@ header .fb-container {
 
 .front-page-card {
   max-width: 600px;
-  margin: 2em auto 7em auto;
+  margin: 0 auto;
+  margin-top: calc(50% - 800px);
   background-color: rgba(0, 0, 0, 0.5);
   padding-bottom: 2em;
   border-radius: 10px;
@@ -4562,7 +4563,7 @@ header .fb-container {
       color: #000000; }
     #search .heading .heading-input h3 {
       font-size: 1.5em;
-      text-shadow: 2px 2px 2px #969696; }
+      color: #000; }
 
 #have-in-fridge, #not-eating {
   max-width: 350px; }
@@ -4724,6 +4725,20 @@ header .fb-container {
   min-height: 500px;
   border-top: 4px solid #d44848;
   padding: 2em 0; }
+  #make-recipe .reminder {
+    width: 100%;
+    padding: 1em 0;
+    background-color: #faff92;
+    text-align: center;
+    margin: -30px 0 30px 0;
+    display: none; }
+    #make-recipe .reminder span {
+      font-weight: bold;
+      color: #464646; }
+    #make-recipe .reminder a {
+      display: inline-block;
+      float: right;
+      margin-right: 2em; }
   #make-recipe .skanaus {
     display: none;
     text-align: center; }
