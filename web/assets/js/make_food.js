@@ -4,6 +4,7 @@
 
 var timers = {};
 var st_done = 0;
+var timer = 0;
 
 $(function() {
     var recipe_id = $("#make-recipe").data('recipe-id');
@@ -16,6 +17,7 @@ $(function() {
     loadSteps(recipe_id);
 
     clockWork();
+    globalClock();
     updateMakingStepsClocks();
 });
 
@@ -75,8 +77,12 @@ function endStep(step_id, recipe_id, step_count) {
     curr_step.fadeOut(500);
     setTimeout(function() {
         curr_step.remove();
-        loadSteps(recipe_id, step_id, timers[step_id]);
+        loadSteps(recipe_id, step_id, timer);
     }, 500);
+
+    console.log(timer);
+    timer = 0;
+
 
     delete timers[step_id];
     updateProgressBar(step_count);
@@ -91,6 +97,20 @@ function checkMakingStepsEmpty() {
     }
 }
 
+$('#currently-making-steps .steps-container').on('click','.start-clock', function(e) {
+    e.preventDefault();
+    var step_id    = $(this).data('step-id');
+    console.log(step_id);
+    var curr_step = $('#currently-making-steps .steps-container div[data-step-id="'+step_id+'"]');
+    timers[step_id] = 0;
+    var timer_cont = curr_step.find('.recipe-step-timepanel .step-timer');
+    timer_cont.html('');
+    timer_cont.append('<img src="/assets/images/clock_icon.png" alt="" />');
+    timer_cont.append($('<span>00:00</span>'));
+    updateMakingStepsClocks();
+
+});
+
 //Sukam laikrodukus:
 function clockWork() {
     setTimeout(function () {
@@ -98,6 +118,13 @@ function clockWork() {
             timers[key] += 1;
         }
         clockWork();
+    }, 1000);
+}
+
+function globalClock() {
+    setTimeout(function () {
+        timer += 1;
+        globalClock();
     }, 60000);
 }
 
@@ -105,10 +132,21 @@ function updateMakingStepsClocks() {
     setTimeout(function() {
         for (var key in timers) {
             var curr_step = $('#currently-making-steps .steps-container div[data-step-id="' + key + '"]');
-            curr_step.find('.recipe-step-timepanel span').text(timers[key] + ' min.');
+            var time_s = timers[key];
+
+            var mins = Math.floor(time_s / 60);
+            var seconds = (time_s - mins * 60);
+
+            if(mins.toString().length == 1)
+                mins = '0' + mins.toString();
+
+            if(seconds.toString().length == 1)
+                seconds = '0' + seconds.toString();
+
+            curr_step.find('.recipe-step-timepanel .step-timer span').text(mins + ':' + seconds);
         }
         updateMakingStepsClocks();
-    }, 30000);
+    }, 1000);
 }
 
 function updateProgressBar(st_count) {

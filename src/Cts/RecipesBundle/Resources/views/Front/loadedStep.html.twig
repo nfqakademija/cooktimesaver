@@ -1,6 +1,6 @@
 {% if steps[0] is defined %}
 {% for st in steps %}
-<div class="col-md-6" data-step-id="{{ st.stepId }}">
+<div class="col-md-6" data-step-id="{{ st.stepId }}" data-step-type="{{ st.type }}">
     <div class="panel panel-wizard recipe-step">
         <div class="panel-heading clearfix">
             <button class="btn btn-danger control-button col-md-offset-10" data-step-id="{{ st.stepId }}">Baigiau</button>
@@ -12,10 +12,16 @@
                          alt="Išvirti bulves" class="recipe-step-img"/>
 
                     <div class="recipe-step-timepanel">
-                        <img src="{{ asset('assets/images/clock_icon.png') }}"
-                             title="Tai yra vidutinis laikas, kurį užtruko varototjai vykdydami šį žingsnį"
-                             alt="Kiti vartotojai užtruko"/>
-                        <span>{{ st.totalTimeCount }} min.</span>
+                        {% if st.type == 0 %}
+                            <img src="{{ asset('assets/images/clock_icon.png') }}"
+                                 title="Tai yra vidutinis laikas, kurį užtruko varototjai vykdydami šį žingsnį"
+                                 alt="Kiti vartotojai užtruko"/>
+                            <span>{{ st.totalTimeCount }} min.</span>
+                        {% else %}
+                            <div class="step-timer">
+                                <button class="btn btn-primary start-clock" data-step-id="{{ st.stepId }}">Leisti laikmatį</button>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-8 col-sm-8">
@@ -33,7 +39,7 @@
 </div>
 {% endfor %}
 {% else %}
-<div class="col-md-6" data-step-id="{{ steps.stepId }}">
+<div class="col-md-6" data-step-id="{{ steps.stepId }}" data-step-type="{{ steps.type }}">
     <div class="panel panel-wizard recipe-step">
         <div class="panel-heading clearfix">
             <button class="btn btn-danger col-md-offset-10 control-button" data-step-id="{{ steps.stepId }}">Baigiau</button>
@@ -45,10 +51,16 @@
                          alt="Išvirti bulves" class="recipe-step-img"/>
 
                     <div class="recipe-step-timepanel">
-                        <img src="{{ asset('assets/images/clock_icon.png') }}"
-                             title="Tai yra vidutinis laikas, kurį užtruko varototjai vykdydami šį žingsnį"
-                             alt="Kiti vartotojai užtruko"/>
-                        <span>{{ steps.totalTimeCount }} min.</span>
+                        {% if steps.type == 0 %}
+                            <img src="{{ asset('assets/images/clock_icon.png') }}"
+                                 title="Tai yra vidutinis laikas, kurį užtruko varototjai vykdydami šį žingsnį"
+                                 alt="Kiti vartotojai užtruko"/>
+                            <span>{{ steps.totalTimeCount }} min.</span>
+                        {% else %}
+                            <div class="step-timer">
+                                <button class="btn btn-primary start-clock" data-step-id="{{ steps.stepId }}">Leisti laikmatį</button>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-8 col-sm-8">

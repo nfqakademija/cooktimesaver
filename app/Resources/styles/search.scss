@@ -199,3 +199,32 @@
   color: #B8B8B8;
   font-weight: bold;
 }
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  #search-results-container {
+    .result {
+      margin: 0 0 2em 0;
+    }
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+
+}
