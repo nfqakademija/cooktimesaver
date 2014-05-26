@@ -7,50 +7,80 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-
+/**
+ * Class RecipesController
+ * @package Cts\RecipesBundle\Controller
+ */
 class RecipesController extends Controller
 {
+    /** Returns mainpage template
+     * @return Response
+     */
     public function indexAction()
     {
         return $this->render('CtsRecipesBundle:Front:index.html.twig');
     }
 
+    /** Recipe search method, returns search object
+     * @param Request $request
+     * @return Response object
+     */
     public function searchAction(Request $request)
     {
-        $hours = $request->query->get('hours');
-        $hours = $hours? $hours : '00';
-        $minutes = $request->query->get('minutes');
-        $minutes = $minutes? $minutes : 20;
+        $sHours = $request->query->get('hours');
+        $sHours = $sHours? $sHours : '00';
+        $sMinutes = $request->query->get('minutes');
+        $sMinutes = $sMinutes? $sMinutes : 20;
 
-        return $this->render('CtsRecipesBundle:Front:search.html.twig', ['hr' => $hours, 'min' => $minutes]);
+        return $this->render('CtsRecipesBundle:Front:search.html.twig', ['hr' => $sHours, 'min' => $sMinutes]);
     }
 
-    public function makeFoodAction($id)
+    /** Recipe step get method.
+     * @param $id string
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return Response object
+     */
+    public function makeFoodAction($id, Request $request)
     {
-        $recipe = $this->getRecipe($id);
-        $stepsCount = count($recipe->getRecipeStep());
-        $recipe_img = $this->getRequest()->getUriForPath('/uploads/recipe_images/small/'. $recipe->getImg());
-        $recipe_url = $this->getRequest()->getUriForPath('/make_food/'. $id);
+        $oRecipe = $this->getRecipe($id);
+        $sStepsCount = count($oRecipe->getRecipeStep());
+        $sRecipe_img = $request->getUriForPath('/uploads/recipe_images/small/'. $oRecipe->getImg());
+        $sRecipe_url = $request->getUriForPath('/make_food/'. $id);
 
         $urls = [
-            'recipe_img' => $recipe_img,
-            'recipe_url' => $recipe_url
+            'recipe_img' => $sRecipe_img,
+            'recipe_url' => $sRecipe_url
         ];
 
-        return $this->render('CtsRecipesBundle:Front:makeFood.html.twig', ['recipe' => $recipe, 'steps_count' => $stepsCount, 'urls' => $urls]);
+        return $this->render('CtsRecipesBundle:Front:makeFood.html.twig', ['recipe' => $oRecipe, 'steps_count' => $sStepsCount, 'urls' => $urls]);
     }
 
+    /** Recipe step click method.
+     * @param $id string
+     * @return Response object
+     */
     public function clickedRecipeAction($id)
     {
         return $this->render('CtsRecipesBundle:Front:recipeDescription.html.twig', ['recipe' => $this->getRecipe($id)]);
     }
 
+    /** Recipe getter method.
+     * @param $id string
+     * @return mixed / object
+     */
     protected function getRecipe($id)
     {
         return $this->getDoctrine()->getRepository('CtsRecipesBundle:Recipe')->findOneById($id);
     }
 
-    public function searchResultsAction(Request $request, $hours, $minutes) {
+    /** Search result method.
+     * @param Request $request
+     * @param $hours string
+     * @param $minutes string
+     * @return Response Object
+     */
+    public function searchResultsAction(Request $request, $hours, $minutes)
+    {
 
         /** Returns 4 recipe objects in Descending order
          * @return object
@@ -61,8 +91,6 @@ class RecipesController extends Controller
             ->orderBy('p.id', 'DESC')
             ->getQuery();
         $oMostPopular = $sQuery->getResult();
-
-
 
         $hours = $hours? $hours : '00';
         $minutes = $minutes? $minutes : 20;
@@ -76,9 +104,13 @@ class RecipesController extends Controller
         return $this->render('CtsRecipesBundle:Front:searchResults.html.twig', ['recipes' => $recipes, 'popular' => $oMostPopular]);
     }
 
+    /** Recipe ingredient tag method.
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function foodTagsAction(Request $request) {
 
-        $tags = array();
+        $tags = [];
 
         $searchKeyword = $request->get('q');
         $excludedIds = explode(",", $request->get('excludedIds'));
