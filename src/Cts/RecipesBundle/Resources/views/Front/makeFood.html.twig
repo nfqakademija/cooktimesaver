@@ -1,5 +1,14 @@
 {% extends '::base.html.twig' %}
 
+{% block metatags %}
+    {{ parent() }}
+    <meta property="og:title" content="{{ recipe.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ urls.recipe_img }}" />
+    <meta property="og:url" content="{{ urls.recipe_url }}" />
+    <meta property="og:description" content="{{ recipe.description }}" />
+{% endblock %}
+
 {% block header %}
     <header>
         <a href="{{ path('cts_recipes_homepage') }}"><h1>CookTimeSaver | <span>Recepto gamyba</span></h1></a>
@@ -25,7 +34,7 @@
             </div>
         </div>
     </div>
-    <div id="make-recipe" data-recipe-image="{{ asset('uploads/recipe_images/large/' ~ recipe.img) }}" data-recipe-id="{{ recipe.id }}">
+    <div id="make-recipe" data-recipe-id="{{ recipe.id }}">
         <div class="container">
             <div class="row progress-row">
                 <div class="col-md-1 text-center">
@@ -45,6 +54,13 @@
                 </div>
                 <div class="steps-container clearfix"></div>
             </div>
+        </div>
+        <div class="skanaus">
+            <h1>Skanaus!</h1>
+            <h2>Pasidalink šiuo receptu su draugais:</h2>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urls.recipe_url }}" target="_blank">
+                <img src="{{ asset('assets/images/fb_share.png') }}" alt="FB share" />
+            </a>
         </div>
     </div>
 {% endblock %}

@@ -29,7 +29,15 @@ class RecipesController extends Controller
     {
         $recipe = $this->getRecipe($id);
         $stepsCount = count($recipe->getRecipeStep());
-        return $this->render('CtsRecipesBundle:Front:makeFood.html.twig', ['recipe' => $recipe, 'steps_count' => $stepsCount]);
+        $recipe_img = $this->getRequest()->getUriForPath('/uploads/recipe_images/small/'. $recipe->getImg());
+        $recipe_url = $this->getRequest()->getUriForPath('/make_food/'. $id);
+
+        $urls = [
+            'recipe_img' => $recipe_img,
+            'recipe_url' => $recipe_url
+        ];
+
+        return $this->render('CtsRecipesBundle:Front:makeFood.html.twig', ['recipe' => $recipe, 'steps_count' => $stepsCount, 'urls' => $urls]);
     }
 
     public function clickedRecipeAction($id)

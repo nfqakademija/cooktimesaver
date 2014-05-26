@@ -5,6 +5,22 @@
   border-top: 4px solid #d44848;
   padding: 2em 0;
 
+  .skanaus {
+    display: none;
+    text-align: center;
+
+    h1 {
+      color: #8F8F8F;
+      font-size: 5em;
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+  }
+
   h1 {
     color: #000000;
   }

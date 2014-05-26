@@ -16,7 +16,7 @@
                             <img src="{{ asset('assets/images/clock_icon.png') }}"
                                  title="Tai yra vidutinis laikas, kurį užtruko varototjai vykdydami šį žingsnį"
                                  alt="Kiti vartotojai užtruko"/>
-                            <span>{{ st.totalTimeCount }} min.</span>
+                            <span>{{ st.totalTimeCount | round(0, 'ceil')}} min.</span>
                         {% else %}
                             <div class="step-timer">
                                 <button class="btn btn-primary start-clock" data-step-id="{{ st.stepId }}">Leisti laikmatį</button>
@@ -55,7 +55,7 @@
                             <img src="{{ asset('assets/images/clock_icon.png') }}"
                                  title="Tai yra vidutinis laikas, kurį užtruko varototjai vykdydami šį žingsnį"
                                  alt="Kiti vartotojai užtruko"/>
-                            <span>{{ steps.totalTimeCount }} min.</span>
+                            <span>{{ steps.totalTimeCount | round(0, 'ceil')}} min.</span>
                         {% else %}
                             <div class="step-timer">
                                 <button class="btn btn-primary start-clock" data-step-id="{{ steps.stepId }}">Leisti laikmatį</button>

@@ -21,13 +21,23 @@ $(function() {
     updateMakingStepsClocks();
 });
 
+function recipeDone() {
+    var st_cont = $('#make-recipe .container');
+    st_cont.hide();
+    st_cont.parent().find('.skanaus').fadeIn(600);
+}
+
 // Mygtukas "Baigti"
 $('#currently-making-steps .steps-container').on('click','.control-button',function(e) {
     e.preventDefault();
     var step_id    = $(this).data('step-id');
     var recipe_id  = $("#make-recipe").data('recipe-id');
     var step_count = $("#progress-bar-span").data('steps-count');
+
     endStep(step_id, recipe_id, step_count);
+
+    if(step_count == st_done)
+        recipeDone();
 });
 
 // Užkraunami žingsniai pagal buvusio ID ir recepto ID
@@ -52,7 +62,6 @@ function loadSteps(recipe_id, step_id, time_spent) {
                 touchDevices: false,
                 trigger: 'hover'
             });
-            checkMakingStepsEmpty();
         }
     });
 }
@@ -65,10 +74,8 @@ function startStep(step_id) {
     timers[step_id] = 0;
 
     var c_mst = $('#currently-making-steps .steps-container');
-    //c_mst.find('.recipe-step-timepanel span').text('0 min.');
     c_mst.append(st_html).find('.recipe-step-timepanel span').text('0 min.').find('.panel-body').stop().css("background-color", "#FFFED9")
         .animate({ backgroundColor: "#f7f8fa"}, 1500);
-    checkMakingStepsEmpty();
     curr_step.remove();
 }
 
@@ -83,19 +90,11 @@ function endStep(step_id, recipe_id, step_count) {
     console.log(timer);
     timer = 0;
 
-
     delete timers[step_id];
     updateProgressBar(step_count);
-    checkMakingStepsEmpty();
+
 }
 
-function checkMakingStepsEmpty() {
-    var st_container = $('#currently-making-steps .steps-container');
-    st_container.find('.no-steps').remove();
-    if(st_container.is(':empty')) {
-        st_container.html('<div class="no-steps">Šiuo metu ruošiamų žingsnių nėra.</div>');
-    }
-}
 
 $('#currently-making-steps .steps-container').on('click','.start-clock', function(e) {
     e.preventDefault();
