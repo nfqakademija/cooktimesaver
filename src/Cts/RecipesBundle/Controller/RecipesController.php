@@ -19,7 +19,6 @@ class RecipesController extends Controller
      */
     public function indexAction()
     {
-        $this->get('twig.loader')->addPath('../app');
         return $this->render('CtsRecipesBundle:Front:index.html.twig');
     }
 
@@ -46,7 +45,7 @@ class RecipesController extends Controller
     {
         $oRecipe = $this->getRecipe($id);
         $sStepsCount = count($oRecipe->getRecipeStep());
-        $sRecipe_img = $request->getUriForPath('/uploads/recipe_images/small/'. $oRecipe->getImg());
+        $sRecipe_img = $request->getUriForPath('/uploads/recipe_images/large/'. $oRecipe->getImg());
         $sRecipe_url = $request->getUriForPath('/make_food/'. $id);
 
         $urls = [
