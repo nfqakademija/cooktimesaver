@@ -45,7 +45,7 @@ class RecipesController extends Controller
     {
         $oRecipe = $this->getRecipe($id);
         $sStepsCount = count($oRecipe->getRecipeStep());
-        $sRecipe_img = $request->getUriForPath('/uploads/recipe_images/large/'. $oRecipe->getImg());
+        $sRecipe_img = $request->getUriForPath('/uploads/recipe_images/small/'. $oRecipe->getImg());
         $sRecipe_url = $request->getUriForPath('/make_food/'. $id);
 
         $urls = [
