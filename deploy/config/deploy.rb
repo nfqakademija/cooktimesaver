@@ -6,7 +6,7 @@ set :repo_url, 'https://github.com/nfqakademija/cooktimesaver.git'
 
 set :deploy_to, '/home/cooktimesaver/public_html'
 set :linked_files, %w{app/config/parameters.yml}
-set :linked_dirs, %w{app/logs app/cache vendor}
+set :linked_dirs, %w{app/logs vendor}
 set :keep_releases, 5
 
 namespace :deploy do
