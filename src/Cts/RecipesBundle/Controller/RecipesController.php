@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+
 /**
  * Class RecipesController
  * @package Cts\RecipesBundle\Controller
@@ -18,6 +19,7 @@ class RecipesController extends Controller
      */
     public function indexAction()
     {
+        $this->get('twig.loader')->addPath('../app');
         return $this->render('CtsRecipesBundle:Front:index.html.twig');
     }
 
