@@ -187,8 +187,8 @@ $('#recipe-desc-trigger').click(function(e) {
     }
 });
 
-$('.reminder .close-btn').click(function(e) {
+$('.reminder .close-btn, .reminder').click(function(e) {
     e.preventDefault();
-    $(this).parent().fadeOut(300);
+    $('.reminder').fadeOut(300);
 });
 

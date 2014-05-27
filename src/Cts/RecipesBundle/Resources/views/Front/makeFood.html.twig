@@ -1,14 +1,5 @@
 {% extends '::base.html.twig' %}
 
-{% block metatags %}
-    {{ parent() }}
-    <meta property="og:title" content="{{ recipe.title }}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="{{ urls.recipe_img }}" />
-    <meta property="og:url" content="{{ urls.recipe_url }}" />
-    <meta property="og:description" content="{{ recipe.description }}" />
-{% endblock %}
-
 {% block header %}
     <header>
         <a href="{{ path('cts_recipes_homepage') }}"><h1>CookTimeSaver | <span>Recepto gamyba</span></h1></a>
@@ -70,10 +61,20 @@
         </div>
     </div>
 {% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('assets/js/jquery.color.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.tooltipster.min.js') }}"></script>
     <script src="{{ asset('assets/js/jQueryRotateCompressed.js') }}"></script>
     <script src="{{ asset('assets/js/make_food.js') }}"></script>
+{% endblock %}
+
+{% block metatags %}
+    {{ parent() }}
+    <meta property="og:title" content="{{ recipe.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ urls.recipe_img }}" />
+    <meta property="og:url" content="{{ urls.recipe_url }}" />
+    <meta property="og:description" content="{{ recipe.description }}" />
 {% endblock %}
